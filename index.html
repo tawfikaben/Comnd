@@ -1,16 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Commander un plat</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, select, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 300px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Commander un plat</h2>
+  <h2>Menu du jour</h2>
   <form onsubmit="envoyerCommande(); return false;">
-    <input type="text" id="nom" placeholder="Votre nom" required><br><br>
-    <input type="text" id="plat" placeholder="Votre commande" required><br><br>
-    <button type="submit">Envoyer</button>
+    <input type="text" id="nom" placeholder="Votre nom" required><br>
+
+    <label for="plat">Choisissez votre plat :</label><br>
+    <select id="plat" required>
+      <option value="">-- Sélectionner un plat --</option>
+      <option value="Couscous">Couscous</option>
+      <option value="Tajine au poulet">Tajine au poulet</option>
+      <option value="Harira">Harira</option>
+      <option value="Pastilla">Pastilla</option>
+      <option value="Brochettes">Brochettes</option>
+    </select><br>
+
+    <button type="submit">Commander</button>
   </form>
 
   <!-- Firebase SDK -->
@@ -33,8 +51,13 @@
     const database = firebase.database();
 
     function envoyerCommande() {
-      const nom = document.getElementById("nom").value;
+      const nom = document.getElementById("nom").value.trim();
       const plat = document.getElementById("plat").value;
+
+      if (nom === "" || plat === "") {
+        alert("Veuillez remplir tous les champs.");
+        return;
+      }
 
       database.ref("commandes").push({
         nom: nom,
@@ -42,7 +65,7 @@
         timestamp: Date.now()
       });
 
-      alert("Commande envoyée avec succès !");
+      alert("✅ Commande envoyée !");
       document.getElementById("nom").value = "";
       document.getElementById("plat").value = "";
     }

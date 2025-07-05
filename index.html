@@ -3,200 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suivi de Commande - Dar Hassna</title>
+  <title>Commander - Dar Hassna</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f8f1e9;
+      background-color: #f5f0e8;
+      color: #5d4037;
       margin: 0;
       padding: 20px;
-      color: #5d4037;
     }
     .container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
-      background-color: #fff;
+      background-color: #fff9f0;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(93, 64, 55, 0.1);
     }
     h1 {
-      color: #d35400;
+      color: #6d4c41;
       text-align: center;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      text-align: center;
+      font-style: italic;
+      color: #8d6e63;
       margin-bottom: 30px;
     }
-    .order-info {
-      margin-bottom: 20px;
-      padding: 15px;
-      background-color: #f9f9f9;
-      border-radius: 8px;
+    .menu-section {
+      margin-bottom: 30px;
     }
-    .info-row {
+    .menu-item {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .info-label {
-      font-weight: bold;
-    }
-    .status-container {
-      margin: 30px 0;
-    }
-    .status-step {
-      display: flex;
-      align-items: center;
       margin-bottom: 15px;
-    }
-    .status-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      color: white;
-      font-weight: bold;
-    }
-    .status-icon.active {
-      background-color: #d35400;
-    }
-    .status-text {
-      flex: 1;
-    }
-    .status-title {
-      font-weight: bold;
-      margin-bottom: 3px;
-    }
-    .status-desc {
-      font-size: 0.9em;
-      color: #7f8c8d;
-    }
-    .order-items {
-      margin: 20px 0;
-    }
-    .order-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
       padding-bottom: 10px;
-      border-bottom: 1px dashed #ddd;
+      border-bottom: 1px dashed #bcaaa4;
     }
     .item-name {
-      display: flex;
-      align-items: center;
-    }
-    .item-quantity {
       font-weight: bold;
-      margin-right: 8px;
+      color: #5d4037;
     }
-    .order-total {
-      text-align: right;
+    .item-price {
+      color: #8d6e63;
       font-weight: bold;
-      font-size: 1.2em;
-      margin-top: 20px;
     }
-    .refresh-btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background-color: #d35400;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
+    .item-desc {
+      font-size: 0.9em;
+      color: #a1887f;
+      margin-top: 5px;
     }
-    .refresh-btn:hover {
-      background-color: #e67e22;
-    }
-    .not-found {
-      text-align: center;
-      color: #d35400;
-      font-size: 1.2em;
-      margin: 40px 0;
-    }
-    .input-group {
-      margin-bottom: 20px;
+    form {
+      background-color: #efebe9;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
     }
     label {
       display: block;
-      margin-bottom: 8px;
+      margin: 15px 0 5px;
       font-weight: bold;
+      color: #5d4037;
     }
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid #d7ccc8;
       border-radius: 4px;
       font-size: 16px;
+      background-color: #fff;
     }
-    .search-btn {
-      background-color: #d35400;
+    button {
+      background-color: #6d4c41;
       color: white;
       border: none;
       padding: 12px 20px;
+      margin-top: 20px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
       width: 100%;
+      transition: background-color 0.3s;
     }
-    .search-btn:hover {
-      background-color: #e67e22;
+    button:hover {
+      background-color: #8d6e63;
+    }
+    .confirmation {
+      display: none;
+      background-color: #d7ccc8;
+      color: #3e2723;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    #loading {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+    h2 {
+      color: #5d4037;
+      border-bottom: 2px solid #d7ccc8;
+      padding-bottom: 5px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Suivi de Commande<br>Dar Hassna</h1>
+    <h1>Dar Hassna</h1>
+    <p class="subtitle">Cuisine marocaine authentique</p>
     
-    <div id="searchSection">
-      <div class="input-group">
-        <label for="tableNumber">Numéro de table:</label>
-        <input type="number" id="tableNumber" min="1" placeholder="Entrez votre numéro de table">
-      </div>
-      <button class="search-btn" id="searchBtn">Vérifier ma commande</button>
-    </div>
+    <h2>Notre Menu</h2>
     
-    <div id="orderSection" style="display: none;">
-      <div class="order-info">
-        <div class="info-row">
-          <span class="info-label">Numéro de table:</span>
-          <span id="displayTable">-</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Heure de commande:</span>
-          <span id="orderTime">-</span>
-        </div>
-      </div>
-      
-      <div class="status-container" id="statusContainer">
-        <!-- Les étapes du statut seront ajoutées ici -->
-      </div>
-      
-      <div class="order-items" id="orderItems">
-        <!-- Les articles commandés seront ajoutés ici -->
-      </div>
-      
-      <div class="order-total" id="orderTotal">Total: 0 MAD</div>
-      
-      <button class="refresh-btn" id="refreshBtn">Actualiser</button>
-    </div>
+    <!-- قائمة الطعام هنا -->
     
-    <div id="notFoundSection" class="not-found" style="display: none;">
-      Aucune commande trouvée pour cette table.<br>
-      Vérifiez le numéro ou contactez le serveur.
-    </div>
+    <form id="commandeForm">
+      <h2>Passer Commande</h2>
+      
+      <label for="table">Numéro de table:</label>
+      <input type="number" id="table" min="1" required>
+      
+      <!-- حقول اختيار الطعام -->
+      
+      <button type="submit">Confirmer la Commande</button>
+      
+      <div id="loading">
+        <img src="https://i.gifer.com/ZZ5H.gif" width="50" alt="En cours...">
+      </div>
+      
+      <div id="confirmation" class="confirmation"></div>
+    </form>
   </div>
 
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
+  
   <script>
-    // Configuration Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyDpSF4J0bsd6T0ImMpse0KQQRADaxiYUQw",
       authDomain: "darhassna-484c3.firebaseapp.com",
@@ -207,163 +151,41 @@
       appId: "1:141393162149:web:0717227eac221f5ddfc24c"
     };
 
-    // Initialiser Firebase
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
-    // Référence à la base de données
-    const ordersRef = database.ref('commandes');
-
-    // Fonction pour formater la date
-    function formatDate(timestamp) {
-      const date = new Date(timestamp);
-      return date.toLocaleTimeString('fr-FR') + ' ' + date.toLocaleDateString('fr-FR');
+    function showLoading(show) {
+      document.getElementById('loading').style.display = show ? 'block' : 'none';
     }
 
-    // Fonction pour afficher le statut de la commande
-    function displayOrderStatus(status) {
-      const statusContainer = document.getElementById('statusContainer');
-      statusContainer.innerHTML = '';
+    document.getElementById('commandeForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
       
-      const statusSteps = [
-        {
-          id: 'pending',
-          title: 'Commande reçue',
-          desc: 'Votre commande a été enregistrée',
-          active: ['en attente', 'en préparation', 'prêt', 'livré'].includes(status)
-        },
-        {
-          id: 'preparing',
-          title: 'En préparation',
-          desc: 'Nos chefs préparent votre commande',
-          active: ['en préparation', 'prêt', 'livré'].includes(status)
-        },
-        {
-          id: 'ready',
-          title: 'Prêt à servir',
-          desc: 'Votre commande est prête',
-          active: ['prêt', 'livré'].includes(status)
-        },
-        {
-          id: 'delivered',
-          title: 'Servi',
-          desc: 'Bon appétit!',
-          active: status === 'livré'
-        }
-      ];
+      // جمع بيانات الطلب
+      const orderData = {
+        table: document.getElementById('table').value,
+        commandes: [...], // قائمة الأطباق المختارة
+        statut: "en attente",
+        timestamp: firebase.database.ServerValue.TIMESTAMP
+      };
+
+      showLoading(true);
       
-      statusSteps.forEach(step => {
-        const stepElement = document.createElement('div');
-        stepElement.className = 'status-step';
+      try {
+        const newOrderRef = database.ref('commandes').push();
+        await newOrderRef.set(orderData);
         
-        stepElement.innerHTML = `
-          <div class="status-icon ${step.active ? 'active' : ''}">${step.active ? '✓' : ''}</div>
-          <div class="status-text">
-            <div class="status-title">${step.title}</div>
-            <div class="status-desc">${step.desc}</div>
-          </div>
-        `;
+        document.getElementById('confirmation').textContent = 
+          `Commande confirmée pour la table ${orderData.table}!`;
+        document.getElementById('confirmation').style.display = 'block';
         
-        statusContainer.appendChild(stepElement);
-      });
-    }
-
-    // Fonction pour afficher les détails de la commande
-    function displayOrderDetails(order) {
-      document.getElementById('displayTable').textContent = order.table;
-      document.getElementById('orderTime').textContent = formatDate(order.timestamp);
-      
-      // Afficher les articles commandés
-      const orderItems = document.getElementById('orderItems');
-      orderItems.innerHTML = '';
-      
-      order.commandes.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.className = 'order-item';
-        
-        itemElement.innerHTML = `
-          <div class="item-name">
-            <span class="item-quantity">${item.quantite}x</span>
-            ${item.plat}
-          </div>
-          <div>${item.prix * item.quantite} MAD</div>
-        `;
-        
-        orderItems.appendChild(itemElement);
-      });
-      
-      // Afficher le total
-      document.getElementById('orderTotal').textContent = `Total: ${order.total} MAD`;
-      
-      // Afficher le statut
-      displayOrderStatus(order.statut);
-    }
-
-    // Fonction pour rechercher une commande
-    function searchOrder() {
-      const tableNumber = document.getElementById('tableNumber').value.trim();
-      
-      if (!tableNumber) {
-        alert('Veuillez entrer un numéro de table');
-        return;
-      }
-      
-      ordersRef.orderByChild('table').equalTo(tableNumber).once('value')
-        .then(snapshot => {
-          const orders = snapshot.val();
-          
-          if (!orders) {
-            document.getElementById('searchSection').style.display = 'block';
-            document.getElementById('orderSection').style.display = 'none';
-            document.getElementById('notFoundSection').style.display = 'block';
-            return;
-          }
-          
-          // Prendre la commande la plus récente pour cette table
-          const ordersArray = Object.entries(orders).map(([key, value]) => ({
-            id: key,
-            ...value
-          })).sort((a, b) => b.timestamp - a.timestamp);
-          
-          const latestOrder = ordersArray[0];
-          
-          // Afficher les détails de la commande
-          displayOrderDetails(latestOrder);
-          
-          document.getElementById('searchSection').style.display = 'none';
-          document.getElementById('orderSection').style.display = 'block';
-          document.getElementById('notFoundSection').style.display = 'none';
-        })
-        .catch(error => {
-          console.error('Erreur lors de la recherche:', error);
-          alert('Une erreur est survenue');
-        });
-    }
-
-    // Fonction pour actualiser la commande
-    function refreshOrder() {
-      const tableNumber = document.getElementById('tableNumber').value.trim();
-      if (tableNumber) {
-        searchOrder();
-      }
-    }
-
-    // Écouter les changements en temps réel (optionnel)
-    ordersRef.on('value', () => {
-      const tableNumber = document.getElementById('tableNumber').value.trim();
-      if (tableNumber && document.getElementById('orderSection').style.display === 'block') {
-        searchOrder();
-      }
-    });
-
-    // Événements
-    document.getElementById('searchBtn').addEventListener('click', searchOrder);
-    document.getElementById('refreshBtn').addEventListener('click', refreshOrder);
-    
-    // Permettre la recherche avec la touche Entrée
-    document.getElementById('tableNumber').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        searchOrder();
+        // إعادة تعيين النموذج
+        this.reset();
+      } catch (error) {
+        console.error("Erreur:", error);
+        alert("Erreur: " + error.message);
+      } finally {
+        showLoading(false);
       }
     });
   </script>

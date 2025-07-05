@@ -222,22 +222,22 @@
     <form id="commandeForm">
       <h2>Passer Commande</h2>
       
-      <label for="table">Numéro de table (obligatoire):</label>
+      <label for="table">Numéro de table:</label>
       <input type="number" id="table" min="1" required>
       
-      <label for="plat">Sélectionnez un plat:</label>
+      <label for="plat">Sélectionnez votre plat:</label>
       <select id="plat">
         <option value="">-- Choisissez un plat --</option>
-        <option value="Couscous Royal" data-price="85">Couscous Royal - 85 MAD</option>
-        <option value="Tajine de Poulet aux Olives" data-price="75">Tajine de Poulet aux Olives - 75 MAD</option>
-        <option value="Pastilla au Pigeon" data-price="90">Pastilla au Pigeon - 90 MAD</option>
-        <option value="Méchoui d'Agneau" data-price="120">Méchoui d'Agneau - 120 MAD</option>
-        <option value="Harira Traditionnelle" data-price="35">Harira Traditionnelle - 35 MAD</option>
-        <option value="Briouates au Fromage" data-price="45">Briouates au Fromage - 45 MAD</option>
-        <option value="Salade Marocaine" data-price="40">Salade Marocaine - 40 MAD</option>
-        <option value="Baklava" data-price="30">Baklava - 30 MAD</option>
-        <option value="M'hanncha" data-price="35">M'hanncha - 35 MAD</option>
-        <option value="Thé à la Menthe" data-price="20">Thé à la Menthe - 20 MAD</option>
+        <option value="Couscous Royal">Couscous Royal - 85 MAD</option>
+        <option value="Tajine de Poulet aux Olives">Tajine de Poulet aux Olives - 75 MAD</option>
+        <option value="Pastilla au Pigeon">Pastilla au Pigeon - 90 MAD</option>
+        <option value="Méchoui d'Agneau">Méchoui d'Agneau - 120 MAD</option>
+        <option value="Harira Traditionnelle">Harira Traditionnelle - 35 MAD</option>
+        <option value="Briouates au Fromage">Briouates au Fromage - 45 MAD</option>
+        <option value="Salade Marocaine">Salade Marocaine - 40 MAD</option>
+        <option value="Baklava">Baklava - 30 MAD</option>
+        <option value="M'hanncha">M'hanncha - 35 MAD</option>
+        <option value="Thé à la Menthe">Thé à la Menthe - 20 MAD</option>
       </select>
       
       <label for="quantite">Quantité:</label>
@@ -275,16 +275,28 @@
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
+    // Prix des plats
+    const prixPlats = {
+      "Couscous Royal": 85,
+      "Tajine de Poulet aux Olives": 75,
+      "Pastilla au Pigeon": 90,
+      "Méchoui d'Agneau": 120,
+      "Harira Traditionnelle": 35,
+      "Briouates au Fromage": 45,
+      "Salade Marocaine": 40,
+      "Baklava": 30,
+      "M'hanncha": 35,
+      "Thé à la Menthe": 20
+    };
+
     // Variables pour stocker les commandes
     let commandes = [];
     let total = 0;
 
     // Ajouter un plat à la commande
     document.getElementById('ajouterPlat').addEventListener('click', function() {
-      const platSelect = document.getElementById('plat');
-      const plat = platSelect.value;
+      const plat = document.getElementById('plat').value;
       const quantite = parseInt(document.getElementById('quantite').value);
-      const prix = platSelect.options[platSelect.selectedIndex].getAttribute('data-price');
       
       if (!plat || quantite < 1) {
         alert('Veuillez sélectionner un plat et une quantité valide.');
@@ -295,14 +307,14 @@
       commandes.push({
         plat: plat,
         quantite: quantite,
-        prix: prix
+        prix: prixPlats[plat]
       });
       
       // Mettre à jour l'affichage
       afficherCommandes();
       
       // Réinitialiser les champs
-      platSelect.value = '';
+      document.getElementById('plat').value = '';
       document.getElementById('quantite').value = '1';
     });
 

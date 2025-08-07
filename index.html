@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 HOT! Download Top Mobile Games For Free</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>🔥 TOP Mobile Games - Free Download</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #121212;
-            color: #ffffff;
+        /* Reset CSS لتحسين التوافقية */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #121212;
+            color: #ffffff;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
         .container {
             max-width: 800px;
@@ -33,6 +39,10 @@
             display: flex;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .game-card:hover {
+            transform: translateY(-3px);
         }
         .game-icon {
             width: 80px;
@@ -60,6 +70,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
+            min-width: 120px;
         }
         .download-btn:hover {
             transform: translateY(-2px);
@@ -95,35 +106,45 @@
             text-align: center;
             margin: 15px 0;
         }
+        
+        /* تحسينات خاصة لمتصفح Chrome */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            .download-btn {
+                -webkit-appearance: none;
+            }
+            .game-card {
+                -webkit-backface-visibility: hidden;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎮 DOWNLOAD TOP MOBILE GAMES</h1>
-            <p>100% Free - No Surveys - Direct Download</p>
+            <h1>🎮 TOP MOBILE GAMES</h1>
+            <p>Free Download - No Surveys - Safe & Secure</p>
         </div>
 
         <div class="countdown" id="countdown">Limited Time Offer: 05:00</div>
 
         <!-- Game 1 - PUBG Mobile -->
         <div class="game-card">
-            <img src="https://images.app.goo.gl/zAeYvrMGadjvY9zMA" alt="PUBG Mobile" class="game-icon">
+            <img src="https://via.placeholder.com/80/6e48aa/ffffff?text=PUBG" alt="PUBG Mobile" class="game-icon">
             <div class="game-info">
                 <div class="game-title">PUBG Mobile</div>
                 <div>Battle Royale | 2.3GB | 4.5★</div>
             </div>
-            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+            <button class="download-btn" id="pubg-btn">DOWNLOAD</button>
         </div>
 
         <!-- Game 2 - Call of Duty Mobile -->
         <div class="game-card">
-            <img src="https://images.app.goo.gl/RWQPPwwruCv2awUy5" alt="Call of Duty Mobile" class="game-icon">
+            <img src="https://via.placeholder.com/80/6e48aa/ffffff?text=COD" alt="Call of Duty Mobile" class="game-icon">
             <div class="game-info">
                 <div class="game-title">Call of Duty: Mobile</div>
                 <div>FPS Shooter | 1.9GB | 4.7★</div>
             </div>
-            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+            <button class="download-btn" id="cod-btn">DOWNLOAD</button>
         </div>
 
         <!-- Native Banner Ad -->
@@ -134,12 +155,12 @@
 
         <!-- Game 3 - Genshin Impact -->
         <div class="game-card">
-            <img src="https://images.app.goo.gl/Wjcb6hPtpRbiF7xo8" alt="Genshin Impact" class="game-icon">
+            <img src="https://via.placeholder.com/80/6e48aa/ffffff?text=Genshin" alt="Genshin Impact" class="game-icon">
             <div class="game-info">
                 <div class="game-title">Genshin Impact</div>
                 <div>Open World | 3.4GB | 4.8★</div>
             </div>
-            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+            <button class="download-btn" id="genshin-btn">DOWNLOAD</button>
         </div>
 
         <div class="features">
@@ -167,46 +188,82 @@
                     'width': 300,
                     'params': {}
                 };
+                document.write('<scr' + 'ipt type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></scr' + 'ipt>');
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
         </div>
     </div>
 
-    <!-- Popunder Ad -->
-    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
+    <!-- Popunder Ad - Chrome Optimized -->
+    <script type='text/javascript'>
+        function activatePopunder() {
+            var popunder = window.open('', '_blank', 'width=1,height=1,toolbar=0');
+            if (popunder) {
+                popunder.blur();
+                window.focus();
+                setTimeout(function() {
+                    popunder.close();
+                }, 100);
+            }
+        }
+        
+        // تفعيل بعد تأخير لتحسين التوافقية
+        setTimeout(activatePopunder, 2000);
+        
+        // تفعيل عند النقر
+        document.getElementById('pubg-btn').addEventListener('click', activatePopunder);
+        document.getElementById('cod-btn').addEventListener('click', activatePopunder);
+        document.getElementById('genshin-btn').addEventListener('click', activatePopunder);
+    </script>
 
     <script>
-        // Countdown timer
-        let time = 300;
-        const countdown = setInterval(() => {
-            const minutes = Math.floor(time / 60);
-            const seconds = time % 60;
-            document.getElementById('countdown').innerHTML = 
-                `Limited Time Offer: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            if (time-- <= 0) clearInterval(countdown);
-        }, 1000);
-
-        // Download button function
-        function downloadGame() {
-            // Trigger popunder
-            try {
-                window.open('', '_blank');
-            } catch(e) {}
+        // Countdown timer متوافق مع جميع المتصفحات
+        function startCountdown() {
+            var time = 300;
+            var countdownElement = document.getElementById('countdown');
             
-            // Redirect after delay
-            setTimeout(() => {
-                window.location.href = 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download';
+            var countdownInterval = setInterval(function() {
+                var minutes = Math.floor(time / 60);
+                var seconds = time % 60;
+                
+                countdownElement.textContent = 
+                    'Limited Time Offer: ' + 
+                    (minutes < 10 ? '0' : '') + minutes + ':' + 
+                    (seconds < 10 ? '0' : '') + seconds;
+                
+                if (time-- <= 0) {
+                    clearInterval(countdownInterval);
+                }
             }, 1000);
         }
-
-        // Activate popunder on page load
-        window.onload = function() {
-            setTimeout(() => {
-                try {
-                    window.open('', '_blank');
-                } catch(e) {}
-            }, 2000);
-        };
+        
+        // بدء التنفيذ بعد تحميل الصفحة بالكامل
+        if (document.readyState === 'complete') {
+            startCountdown();
+        } else {
+            window.addEventListener('load', startCountdown);
+        }
+        
+        // معالجة أحداث التنزيل
+        function setupDownloadButtons() {
+            var buttons = document.querySelectorAll('.download-btn');
+            
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // إضافة تأثير مرئي
+                    this.textContent = 'Preparing...';
+                    this.style.opacity = '0.8';
+                    
+                    // إعادة التوجيه بعد تأخير
+                    setTimeout(function() {
+                        window.location.href = 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download&game=' + 
+                                              encodeURIComponent(button.parentElement.querySelector('.game-title').textContent);
+                    }, 1000);
+                });
+            });
+        }
+        
+        // استدعاء الدالة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', setupDownloadButtons);
     </script>
 </body>
 </html>

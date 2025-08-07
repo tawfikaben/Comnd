@@ -94,6 +94,14 @@
             text-align: center;
             margin: 15px 0;
         }
+        .popunder-notice {
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -169,12 +177,39 @@
             </script>
             <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
         </div>
+        
+        <div class="popunder-notice" id="popunderNotice" style="display: none;">
+            Please allow pop-ups for this site to continue. <a href="#" onclick="retryPopunder()">Click here</a> to retry.
+        </div>
     </div>
 
-    <!-- Popunder Ad -->
-    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
-
+    <!-- Popunder Ad - Updated Implementation -->
     <script>
+        // Enhanced Popunder Function
+        function openPopunder() {
+            try {
+                // First try with network ad script
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+                document.body.appendChild(script);
+                
+                // Fallback method if the script doesn't work
+                setTimeout(function() {
+                    var popunder = window.open('', '_blank');
+                    if(popunder) {
+                        popunder.location.href = 'https://example.com/fallback-ad';
+                        window.focus();
+                    } else {
+                        document.getElementById('popunderNotice').style.display = 'block';
+                    }
+                }, 1000);
+            } catch(e) {
+                console.error('Popunder error:', e);
+                document.getElementById('popunderNotice').style.display = 'block';
+            }
+        }
+
         // Countdown timer
         let time = 300;
         const countdown = setInterval(() => {
@@ -187,10 +222,7 @@
 
         // Download button function
         function downloadGame() {
-            // Trigger popunder
-            try {
-                window.open('', '_blank');
-            } catch(e) {}
+            openPopunder();
             
             // Redirect after delay
             setTimeout(() => {
@@ -198,13 +230,16 @@
             }, 1000);
         }
 
-        // Activate popunder on page load
+        // Retry popunder function
+        function retryPopunder() {
+            document.getElementById('popunderNotice').style.display = 'none';
+            openPopunder();
+            return false;
+        }
+
+        // Activate popunder on page load with delay
         window.onload = function() {
-            setTimeout(() => {
-                try {
-                    window.open('', '_blank');
-                } catch(e) {}
-            }, 2000);
+            setTimeout(openPopunder, 2500);
         };
     </script>
 </body>

@@ -2,112 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 TOP Mobile Games - Free Download</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎮 Download Top Mobile Games - Free</title>
     <style>
-        /* CSS الأساسي */
-        body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background: #121212;
-            color: #ffffff;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
-        
-        /* منطقة الإعلانات ذات الأولوية */
-        .priority-ad {
-            position: relative;
-            width: 100%;
-            min-height: 100px;
-            background: #2a2a2a;
-            margin: 10px 0;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f0f;
+            color: white;
+            line-height: 1.6;
+            padding: 15px;
+            touch-action: manipulation;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .game-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .game-card:active {
+            transform: scale(0.98);
+        }
+        .game-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid #6e48aa;
+        }
+        .game-info {
+            flex: 1;
+        }
+        .game-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #8E54E9;
+            margin-bottom: 5px;
+        }
+        .game-meta {
+            font-size: 14px;
+            color: #aaa;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            color: white;
+            border: none;
+            padding: 10px 20px;
             border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            min-width: 100px;
+        }
+        .ad-container {
+            margin: 20px 0;
+            border-radius: 10px;
             overflow: hidden;
         }
         
-        /* باقي الأنماط... */
+        /* تحسينات للهواتف */
+        @media (max-width: 480px) {
+            .game-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .game-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 80px;
+                height: 80px;
+            }
+        }
     </style>
     
-    <!-- تحميل إعلانات Popunder أولاً -->
+    <!-- Popunder Priority Load -->
     <script>
-        // تقنية تحميل متقدمة للإعلانات
-        function loadAdsImmediately() {
-            // 1. تحميل Popunder أولاً (أهم إعلان)
-            var popunderScript = document.createElement('script');
-            popunderScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            popunderScript.async = false; // تحميل متزامن (أولوية قصوى)
-            document.head.appendChild(popunderScript);
-            
-            // 2. تحميل Native Banner
-            var nativeScript = document.createElement('script');
-            nativeScript.src = '//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js';
-            nativeScript.setAttribute('data-cfasync', 'false');
-            document.head.appendChild(nativeScript);
-            
-            // 3. تحميل Iframe Ad
-            var iframeScript = document.createElement('script');
-            iframeScript.innerHTML = `
-                atOptions = {
-                    'key': '3043529ca5c93c815dd6d1dd6665778c',
-                    'format': 'iframe',
-                    'height': 250,
-                    'width': 300,
-                    'params': {}
-                };
-                document.write('<scr' + 'ipt type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></scr' + 'ipt>');
-            `;
-            document.head.appendChild(iframeScript);
+        function loadPopunder() {
+            var script = document.createElement('script');
+            script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+            script.onload = function() {
+                setTimeout(function() {
+                    try {
+                        var pw = window.open('', '_blank', 'width=1,height=1');
+                        if (pw) {
+                            pw.blur();
+                            window.focus();
+                            setTimeout(() => pw.close(), 50);
+                        }
+                    } catch(e) {}
+                }, 1500);
+            };
+            document.head.appendChild(script);
         }
-        
-        // تشغيل فور تحميل <head>
-        loadAdsImmediately();
+        window.addEventListener('load', loadPopunder);
     </script>
 </head>
 <body>
-    <!-- منطقة الإعلان ذات الأولوية في أعلى الصفحة -->
-    <div class="priority-ad">
+    <div class="header">
+        <h1>📲 Top Mobile Games</h1>
+        <p>Free Download - Optimized for Mobile</p>
+    </div>
+
+    <!-- PUBG Mobile -->
+    <div class="game-card" onclick="trackDownload('pubg')">
+        <img src="https://img.utdstc.com/icon/fe0/190/fe0190230a9b481f8dd46d3b738b09070adb7a5d5a4d0a7d2865b7f8d8d1d3ab:200" 
+             alt="PUBG Mobile" 
+             class="game-icon"
+             onerror="this.src='https://via.placeholder.com/80/6e48aa/ffffff?text=PUBG'">
+        <div class="game-info">
+            <div class="game-title">PUBG Mobile</div>
+            <div class="game-meta">Battle Royale | 2.3GB | 4.5★</div>
+        </div>
+        <button class="download-btn">Install</button>
+    </div>
+
+    <!-- Call of Duty Mobile -->
+    <div class="game-card" onclick="trackDownload('cod')">
+        <img src="https://img.utdstc.com/icon/7b9/e6b/7b9e6b0f8b0f8e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5:200" 
+             alt="COD Mobile" 
+             class="game-icon"
+             onerror="this.src='https://via.placeholder.com/80/6e48aa/ffffff?text=COD'">
+        <div class="game-info">
+            <div class="game-title">Call of Duty: Mobile</div>
+            <div class="game-meta">FPS Shooter | 1.9GB | 4.7★</div>
+        </div>
+        <button class="download-btn">Install</button>
+    </div>
+
+    <!-- Native Ad -->
+    <div class="ad-container">
+        <script async src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
         <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
     </div>
 
-    <div class="container">
-        <!-- محتوى الصفحة... -->
+    <!-- Genshin Impact -->
+    <div class="game-card" onclick="trackDownload('genshin')">
+        <img src="https://img.utdstc.com/icon/5b4/9e6/5b49e6b0f8b0f8e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5:200" 
+             alt="Genshin Impact" 
+             class="game-icon"
+             onerror="this.src='https://via.placeholder.com/80/6e48aa/ffffff?text=Genshin'">
+        <div class="game-info">
+            <div class="game-title">Genshin Impact</div>
+            <div class="game-meta">Open World | 3.4GB | 4.8★</div>
+        </div>
+        <button class="download-btn">Install</button>
     </div>
 
-    <!-- تفعيل Popunder بذكاء -->
+    <!-- Iframe Ad -->
+    <div class="ad-container">
+        <script>
+            atOptions = { 
+                key: '3043529ca5c93c815dd6d1dd6665778c', 
+                format: 'iframe', 
+                height: 250, 
+                width: 300,
+                params: {}
+            };
+            document.write('<scr'+'ipt src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></scr'+'ipt>');
+        </script>
+    </div>
+
     <script>
-        // تقنية متقدمة لتفعيل Popunder
-        function activatePopunder() {
+        // روابط التحميل الفعلية
+        const gameLinks = {
+            pubg: 'https://example.com/download/pubg',
+            cod: 'https://example.com/download/cod',
+            genshin: 'https://example.com/download/genshin'
+        };
+        
+        // تتبع التنزيلات
+        function trackDownload(game) {
+            // تفعيل Popunder عند النقر
             try {
-                // محاولة فتح نافذة جديدة
-                var newWindow = window.open('', '_blank', 'width=1,height=1');
-                
-                if (newWindow) {
-                    // إخفاء النافذة فوراً
-                    newWindow.blur();
-                    window.focus();
-                    
-                    // إغلاق بعد ثانية (لضمان التنفيذ)
-                    setTimeout(function() {
-                        newWindow.close();
-                    }, 1000);
-                    
-                    // تسجيل الحدث بنجاح
-                    console.log('Popunder activated successfully');
-                }
-            } catch(e) {
-                // خيار بديل إذا فشلت التقنية الأولى
-                setTimeout(function() {
-                    window.open('', '_blank').close();
-                }, 500);
-            }
+                window.open('', '_blank').close();
+            } catch(e) {}
+            
+            // إحصاءات وتوجيه للتنزيل
+            setTimeout(() => {
+                window.location.href = gameLinks[game] + 
+                    '?utm_source=gamepage&utm_medium=mobile&utm_campaign=' + game;
+            }, 300);
         }
         
-        // تفعيل بعد 3 ثواني (لضمان ظهور الصفحة أولاً)
-        setTimeout(activatePopunder, 3000);
-        
-        // تفعيل عند أي تفاعل مع المستخدم
-        document.addEventListener('click', function() {
-            setTimeout(activatePopunder, 500);
+        // تحميل الصور بشكل متدرج
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.game-icon');
+            images.forEach(img => {
+                img.src = img.getAttribute('src');
+            });
         });
     </script>
 </body>

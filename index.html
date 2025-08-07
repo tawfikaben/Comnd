@@ -1,46 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🎮 Download Top Mobile Games - Free</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 تحميل ألعاب موبايل مجانية - أربح مع أدستيرا</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Tajawal', Arial, sans-serif;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f0f0f;
-            color: white;
+            background-color: #0f0f0f;
+            color: #ffffff;
             line-height: 1.6;
             padding: 15px;
-            touch-action: manipulation;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
         }
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            border-radius: 12px;
         }
         .game-card {
             background: #1a1a1a;
             border-radius: 12px;
             padding: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
+            transition: transform 0.3s;
         }
-        .game-card:active {
-            transform: scale(0.98);
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+        .game-icon-container {
+            width: 80px;
+            height: 80px;
+            margin-left: 15px;
+            position: relative;
+            flex-shrink: 0;
         }
         .game-icon {
-            width: 70px;
-            height: 70px;
+            width: 100%;
+            height: 100%;
             border-radius: 12px;
-            margin-right: 15px;
             object-fit: cover;
             border: 2px solid #6e48aa;
         }
@@ -48,14 +58,13 @@
             flex: 1;
         }
         .game-title {
-            font-size: 18px;
-            font-weight: 600;
             color: #8E54E9;
+            font-size: 18px;
             margin-bottom: 5px;
         }
         .game-meta {
-            font-size: 14px;
             color: #aaa;
+            font-size: 14px;
         }
         .download-btn {
             background: linear-gradient(135deg, #6e48aa, #9d50bb);
@@ -63,147 +72,196 @@
             border: none;
             padding: 10px 20px;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 14px;
-            min-width: 100px;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(142, 84, 233, 0.4);
         }
         .ad-container {
-            margin: 20px 0;
+            margin: 25px 0;
+            background: #2a2a2a;
             border-radius: 10px;
-            overflow: hidden;
+            padding: 10px;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
         }
         
-        /* تحسينات للهواتف */
         @media (max-width: 480px) {
             .game-card {
                 flex-direction: column;
                 text-align: center;
             }
-            .game-icon {
-                margin-right: 0;
-                margin-bottom: 10px;
-                width: 80px;
-                height: 80px;
+            .game-icon-container {
+                margin: 0 0 15px 0;
             }
         }
     </style>
     
-    <!-- Popunder Priority Load -->
+    <!-- تحميل أدستيرا أولاً بأولوية عالية -->
     <script>
-        function loadPopunder() {
-            var script = document.createElement('script');
-            script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            script.onload = function() {
-                setTimeout(function() {
-                    try {
-                        var pw = window.open('', '_blank', 'width=1,height=1');
-                        if (pw) {
-                            pw.blur();
-                            window.focus();
-                            setTimeout(() => pw.close(), 50);
-                        }
-                    } catch(e) {}
-                }, 1500);
-            };
-            document.head.appendChild(script);
+        // تحميل أدستيرا قبل أي شيء
+        function loadAdsterra() {
+            return new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = 'https://www.adsterra.com/adsterra.js';
+                script.onload = resolve;
+                document.head.appendChild(script);
+            });
         }
-        window.addEventListener('load', loadPopunder);
+        
+        // تفعيل البوب أندر بذكاء
+        function activatePopunder() {
+            setTimeout(() => {
+                try {
+                    const pw = window.open('', '_blank', 'width=1,height=1');
+                    if (pw) {
+                        pw.blur();
+                        window.focus();
+                        setTimeout(() => pw.close(), 100);
+                    }
+                } catch(e) {
+                    console.log("Popunder activated silently");
+                }
+            }, 2000);
+        }
+        
+        // بدء تحميل الأدات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdsterra().then(() => {
+                Adsterra.initialize({
+                    id: YOUR_PUBLISHER_ID, // استبدل بمعرف الناشر الخاص بك
+                    onLoad: activatePopunder
+                });
+            });
+        });
     </script>
 </head>
 <body>
-    <div class="header">
-        <h1>📲 Top Mobile Games</h1>
-        <p>Free Download - Optimized for Mobile</p>
-    </div>
-
-    <!-- PUBG Mobile -->
-    <div class="game-card" onclick="trackDownload('pubg')">
-        <img src="https://img.utdstc.com/icon/fe0/190/fe0190230a9b481f8dd46d3b738b09070adb7a5d5a4d0a7d2865b7f8d8d1d3ab:200" 
-             alt="PUBG Mobile" 
-             class="game-icon"
-             onerror="this.src='https://via.placeholder.com/80/6e48aa/ffffff?text=PUBG'">
-        <div class="game-info">
-            <div class="game-title">PUBG Mobile</div>
-            <div class="game-meta">Battle Royale | 2.3GB | 4.5★</div>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 ألعاب موبايل مجانية</h1>
+            <p>حمل واستمتع وأربح مع أدستيرا</p>
         </div>
-        <button class="download-btn">Install</button>
-    </div>
-
-    <!-- Call of Duty Mobile -->
-    <div class="game-card" onclick="trackDownload('cod')">
-        <img src="https://img.utdstc.com/icon/7b9/e6b/7b9e6b0f8b0f8e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5:200" 
-             alt="COD Mobile" 
-             class="game-icon"
-             onerror="this.src='https://via.placeholder.com/80/6e48aa/ffffff?text=COD'">
-        <div class="game-info">
-            <div class="game-title">Call of Duty: Mobile</div>
-            <div class="game-meta">FPS Shooter | 1.9GB | 4.7★</div>
+        
+        <!-- لعبة PUBG Mobile -->
+        <div class="game-card" onclick="trackDownload('pubg')">
+            <div class="game-icon-container">
+                <img src="https://i.ibb.co/0jZ4Q4F/pubg.png" 
+                     alt="PUBG Mobile" 
+                     class="game-icon"
+                     onerror="showFallback(this, 'PUBG')">
+            </div>
+            <div class="game-info">
+                <h3 class="game-title">PUBG Mobile</h3>
+                <p class="game-meta">معركة ملكية | 2.3 جيجا | تقييم 4.5★</p>
+            </div>
+            <button class="download-btn">تحميل</button>
         </div>
-        <button class="download-btn">Install</button>
-    </div>
-
-    <!-- Native Ad -->
-    <div class="ad-container">
-        <script async src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-        <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
-    </div>
-
-    <!-- Genshin Impact -->
-    <div class="game-card" onclick="trackDownload('genshin')">
-        <img src="https://img.utdstc.com/icon/5b4/9e6/5b49e6b0f8b0f8e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5:200" 
-             alt="Genshin Impact" 
-             class="game-icon"
-             onerror="this.src='https://via.placeholder.com/80/6e48aa/ffffff?text=Genshin'">
-        <div class="game-info">
-            <div class="game-title">Genshin Impact</div>
-            <div class="game-meta">Open World | 3.4GB | 4.8★</div>
+        
+        <!-- إعلان أدستيرا -->
+        <div class="ad-container">
+            <div id="container-adsterra-banner"></div>
         </div>
-        <button class="download-btn">Install</button>
-    </div>
-
-    <!-- Iframe Ad -->
-    <div class="ad-container">
-        <script>
-            atOptions = { 
-                key: '3043529ca5c93c815dd6d1dd6665778c', 
-                format: 'iframe', 
-                height: 250, 
-                width: 300,
-                params: {}
-            };
-            document.write('<scr'+'ipt src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></scr'+'ipt>');
-        </script>
+        
+        <!-- لعبة Call of Duty Mobile -->
+        <div class="game-card" onclick="trackDownload('cod')">
+            <div class="game-icon-container">
+                <img src="https://i.ibb.co/7YfLzJX/cod.png" 
+                     alt="COD Mobile" 
+                     class="game-icon"
+                     onerror="showFallback(this, 'COD')">
+            </div>
+            <div class="game-info">
+                <h3 class="game-title">Call of Duty Mobile</h3>
+                <p class="game-meta">أكشن | 1.9 جيجا | تقييم 4.7★</p>
+            </div>
+            <button class="download-btn">تحميل</button>
+        </div>
+        
+        <!-- لعبة Genshin Impact -->
+        <div class="game-card" onclick="trackDownload('genshin')">
+            <div class="game-icon-container">
+                <img src="https://i.ibb.co/0mY7WzY/genshin.png" 
+                     alt="Genshin Impact" 
+                     class="game-icon"
+                     onerror="showFallback(this, 'Genshin')">
+            </div>
+            <div class="game-info">
+                <h3 class="game-title">Genshin Impact</h3>
+                <p class="game-meta">عالم مفتوح | 3.4 جيجا | تقييم 4.8★</p>
+            </div>
+            <button class="download-btn">تحميل</button>
+        </div>
+        
+        <div class="footer">
+            <p>جميع الحقوق محفوظة © 2023 | أربح مع أدستيرا</p>
+        </div>
     </div>
 
     <script>
-        // روابط التحميل الفعلية
-        const gameLinks = {
-            pubg: 'https://example.com/download/pubg',
-            cod: 'https://example.com/download/cod',
-            genshin: 'https://example.com/download/genshin'
+        // روابط التحميل
+        const downloadLinks = {
+            pubg: 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&game=pubg',
+            cod: 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&game=cod',
+            genshin: 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&game=genshin'
         };
         
         // تتبع التنزيلات
         function trackDownload(game) {
-            // تفعيل Popunder عند النقر
+            // تفعيل البوب أندر
             try {
                 window.open('', '_blank').close();
             } catch(e) {}
             
-            // إحصاءات وتوجيه للتنزيل
+            // توجيه للتنزيل بعد تأخير قصير
             setTimeout(() => {
-                window.location.href = gameLinks[game] + 
-                    '?utm_source=gamepage&utm_medium=mobile&utm_campaign=' + game;
+                window.location.href = downloadLinks[game];
             }, 300);
         }
         
-        // تحميل الصور بشكل متدرج
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.game-icon');
-            images.forEach(img => {
-                img.src = img.getAttribute('src');
-            });
+        // حل بديل للصور إذا لم تعمل
+        function showFallback(imgElement, gameName) {
+            imgElement.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.style.background = 'linear-gradient(135deg, #6e48aa, #9d50bb)';
+            fallback.style.width = '100%';
+            fallback.style.height = '100%';
+            fallback.style.borderRadius = '12px';
+            fallback.style.display = 'flex';
+            fallback.style.alignItems = 'center';
+            fallback.style.justifyContent = 'center';
+            fallback.style.color = 'white';
+            fallback.style.fontWeight = 'bold';
+            fallback.textContent = gameName;
+            imgElement.parentNode.appendChild(fallback);
+        }
+        
+        // تحميل أدستيرا للإعلانات الإضافية
+        window.addEventListener('load', function() {
+            if (typeof Adsterra !== 'undefined') {
+                // إعلان بانر
+                Adsterra.display('container-adsterra-banner', {
+                    format: 'banner',
+                    width: 300,
+                    height: 250
+                });
+                
+                // إعلان نيتيف (اختياري)
+                Adsterra.display('container-adsterra-native', {
+                    format: 'native',
+                    width: 300,
+                    height: 250
+                });
+            }
         });
     </script>
 </body>

@@ -3,184 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>🔥 TOP Mobile Games - Free Download</title>
     <style>
-        /* Reset CSS لتحسين التوافقية */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* CSS الأساسي */
         body {
-            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             background: #121212;
             color: #ffffff;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .game-card {
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-        .game-card:hover {
-            transform: translateY(-3px);
-        }
-        .game-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
-            margin-right: 15px;
-            object-fit: cover;
-            border: 2px solid #6e48aa;
-        }
-        .game-info {
-            flex: 1;
-        }
-        .game-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #6e48aa;
-        }
-        .download-btn {
-            background: linear-gradient(to right, #4776E6, #8E54E9);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 120px;
-        }
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(142, 84, 233, 0.4);
-        }
-        .ad-container {
-            margin: 25px 0;
-            padding: 10px;
-            background: #2a2a2a;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .features {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        .feature {
-            flex-basis: 30%;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .feature-icon {
-            font-size: 24px;
-            color: #8E54E9;
-            margin-bottom: 10px;
-        }
-        .countdown {
-            color: #ff4757;
-            font-weight: bold;
-            font-size: 18px;
-            text-align: center;
-            margin: 15px 0;
+            margin: 0;
+            padding: 0;
         }
         
-        /* تحسينات خاصة لمتصفح Chrome */
-        @media screen and (-webkit-min-device-pixel-ratio:0) {
-            .download-btn {
-                -webkit-appearance: none;
-            }
-            .game-card {
-                -webkit-backface-visibility: hidden;
-            }
+        /* منطقة الإعلانات ذات الأولوية */
+        .priority-ad {
+            position: relative;
+            width: 100%;
+            min-height: 100px;
+            background: #2a2a2a;
+            margin: 10px 0;
+            border-radius: 8px;
+            overflow: hidden;
         }
+        
+        /* باقي الأنماط... */
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🎮 TOP MOBILE GAMES</h1>
-            <p>Free Download - No Surveys - Safe & Secure</p>
-        </div>
-
-        <div class="countdown" id="countdown">Limited Time Offer: 05:00</div>
-
-        <!-- Game 1 - PUBG Mobile -->
-        <div class="game-card">
-            <img src="https://via.placeholder.com/80/6e48aa/ffffff?text=PUBG" alt="PUBG Mobile" class="game-icon">
-            <div class="game-info">
-                <div class="game-title">PUBG Mobile</div>
-                <div>Battle Royale | 2.3GB | 4.5★</div>
-            </div>
-            <button class="download-btn" id="pubg-btn">DOWNLOAD</button>
-        </div>
-
-        <!-- Game 2 - Call of Duty Mobile -->
-        <div class="game-card">
-            <img src="https://via.placeholder.com/80/6e48aa/ffffff?text=COD" alt="Call of Duty Mobile" class="game-icon">
-            <div class="game-info">
-                <div class="game-title">Call of Duty: Mobile</div>
-                <div>FPS Shooter | 1.9GB | 4.7★</div>
-            </div>
-            <button class="download-btn" id="cod-btn">DOWNLOAD</button>
-        </div>
-
-        <!-- Native Banner Ad -->
-        <div class="ad-container">
-            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
-        </div>
-
-        <!-- Game 3 - Genshin Impact -->
-        <div class="game-card">
-            <img src="https://via.placeholder.com/80/6e48aa/ffffff?text=Genshin" alt="Genshin Impact" class="game-icon">
-            <div class="game-info">
-                <div class="game-title">Genshin Impact</div>
-                <div>Open World | 3.4GB | 4.8★</div>
-            </div>
-            <button class="download-btn" id="genshin-btn">DOWNLOAD</button>
-        </div>
-
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <div>Fast Downloads</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🛡️</div>
-                <div>Virus Free</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🎁</div>
-                <div>Free Mods</div>
-            </div>
-        </div>
-
-        <!-- Iframe Ad -->
-        <div class="ad-container">
-            <script type="text/javascript">
+    
+    <!-- تحميل إعلانات Popunder أولاً -->
+    <script>
+        // تقنية تحميل متقدمة للإعلانات
+        function loadAdsImmediately() {
+            // 1. تحميل Popunder أولاً (أهم إعلان)
+            var popunderScript = document.createElement('script');
+            popunderScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+            popunderScript.async = false; // تحميل متزامن (أولوية قصوى)
+            document.head.appendChild(popunderScript);
+            
+            // 2. تحميل Native Banner
+            var nativeScript = document.createElement('script');
+            nativeScript.src = '//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js';
+            nativeScript.setAttribute('data-cfasync', 'false');
+            document.head.appendChild(nativeScript);
+            
+            // 3. تحميل Iframe Ad
+            var iframeScript = document.createElement('script');
+            iframeScript.innerHTML = `
                 atOptions = {
                     'key': '3043529ca5c93c815dd6d1dd6665778c',
                     'format': 'iframe',
@@ -189,81 +55,60 @@
                     'params': {}
                 };
                 document.write('<scr' + 'ipt type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></scr' + 'ipt>');
-            </script>
-        </div>
+            `;
+            document.head.appendChild(iframeScript);
+        }
+        
+        // تشغيل فور تحميل <head>
+        loadAdsImmediately();
+    </script>
+</head>
+<body>
+    <!-- منطقة الإعلان ذات الأولوية في أعلى الصفحة -->
+    <div class="priority-ad">
+        <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
     </div>
 
-    <!-- Popunder Ad - Chrome Optimized -->
-    <script type='text/javascript'>
+    <div class="container">
+        <!-- محتوى الصفحة... -->
+    </div>
+
+    <!-- تفعيل Popunder بذكاء -->
+    <script>
+        // تقنية متقدمة لتفعيل Popunder
         function activatePopunder() {
-            var popunder = window.open('', '_blank', 'width=1,height=1,toolbar=0');
-            if (popunder) {
-                popunder.blur();
-                window.focus();
+            try {
+                // محاولة فتح نافذة جديدة
+                var newWindow = window.open('', '_blank', 'width=1,height=1');
+                
+                if (newWindow) {
+                    // إخفاء النافذة فوراً
+                    newWindow.blur();
+                    window.focus();
+                    
+                    // إغلاق بعد ثانية (لضمان التنفيذ)
+                    setTimeout(function() {
+                        newWindow.close();
+                    }, 1000);
+                    
+                    // تسجيل الحدث بنجاح
+                    console.log('Popunder activated successfully');
+                }
+            } catch(e) {
+                // خيار بديل إذا فشلت التقنية الأولى
                 setTimeout(function() {
-                    popunder.close();
-                }, 100);
+                    window.open('', '_blank').close();
+                }, 500);
             }
         }
         
-        // تفعيل بعد تأخير لتحسين التوافقية
-        setTimeout(activatePopunder, 2000);
+        // تفعيل بعد 3 ثواني (لضمان ظهور الصفحة أولاً)
+        setTimeout(activatePopunder, 3000);
         
-        // تفعيل عند النقر
-        document.getElementById('pubg-btn').addEventListener('click', activatePopunder);
-        document.getElementById('cod-btn').addEventListener('click', activatePopunder);
-        document.getElementById('genshin-btn').addEventListener('click', activatePopunder);
-    </script>
-
-    <script>
-        // Countdown timer متوافق مع جميع المتصفحات
-        function startCountdown() {
-            var time = 300;
-            var countdownElement = document.getElementById('countdown');
-            
-            var countdownInterval = setInterval(function() {
-                var minutes = Math.floor(time / 60);
-                var seconds = time % 60;
-                
-                countdownElement.textContent = 
-                    'Limited Time Offer: ' + 
-                    (minutes < 10 ? '0' : '') + minutes + ':' + 
-                    (seconds < 10 ? '0' : '') + seconds;
-                
-                if (time-- <= 0) {
-                    clearInterval(countdownInterval);
-                }
-            }, 1000);
-        }
-        
-        // بدء التنفيذ بعد تحميل الصفحة بالكامل
-        if (document.readyState === 'complete') {
-            startCountdown();
-        } else {
-            window.addEventListener('load', startCountdown);
-        }
-        
-        // معالجة أحداث التنزيل
-        function setupDownloadButtons() {
-            var buttons = document.querySelectorAll('.download-btn');
-            
-            buttons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    // إضافة تأثير مرئي
-                    this.textContent = 'Preparing...';
-                    this.style.opacity = '0.8';
-                    
-                    // إعادة التوجيه بعد تأخير
-                    setTimeout(function() {
-                        window.location.href = 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download&game=' + 
-                                              encodeURIComponent(button.parentElement.querySelector('.game-title').textContent);
-                    }, 1000);
-                });
-            });
-        }
-        
-        // استدعاء الدالة عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', setupDownloadButtons);
+        // تفعيل عند أي تفاعل مع المستخدم
+        document.addEventListener('click', function() {
+            setTimeout(activatePopunder, 500);
+        });
     </script>
 </body>
 </html>

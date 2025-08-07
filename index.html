@@ -1,135 +1,204 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فوز فوري! اكسب جائزتك اليوم</title>
+    <title>🔥 HOT! Download Top Mobile Games For Free</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: #f0f8ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212;
+            color: #ffffff;
             margin: 0;
             padding: 0;
-            text-align: center;
-            color: #333;
+            line-height: 1.6;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
-        .prize-box {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
-        .btn {
-            background: #4CAF50;
+        .game-card {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .game-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        .game-info {
+            flex: 1;
+        }
+        .game-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #6e48aa;
+        }
+        .download-btn {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 10px 20px;
             border-radius: 50px;
+            font-weight: bold;
             cursor: pointer;
-            margin: 20px 0;
             transition: all 0.3s;
-            display: inline-block;
         }
-        .btn:hover {
-            background: #45a049;
-            transform: scale(1.05);
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(142, 84, 233, 0.4);
+        }
+        .ad-container {
+            margin: 25px 0;
+            padding: 10px;
+            background: #2a2a2a;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .feature {
+            flex-basis: 30%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .feature-icon {
+            font-size: 24px;
+            color: #8E54E9;
+            margin-bottom: 10px;
         }
         .countdown {
-            font-size: 24px;
+            color: #ff4757;
             font-weight: bold;
-            color: #ffeb3b;
+            font-size: 18px;
+            text-align: center;
             margin: 15px 0;
-        }
-        .testimonials {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
-            text-align: right;
-        }
-        /* إعلان Native Banner */
-        .ad-container {
-            margin: 30px auto;
-            padding: 10px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            max-width: 300px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎊 مبروك! لقد فزت بجائزة خاصة</h1>
-        
-        <div class="prize-box">
-            <h2>جائزتك: 500$ هدية نقدية!</h2>
-            <p>اكمل الخطوة البسيطة التالية لاستلام جائزتك:</p>
-            
-            <div class="countdown" id="countdown">05:00</div>
-            
-            <button class="btn" id="claimBtn">
-                اضغط هنا لاستلام جائزتك الآن
-            </button>
-            
-            <p>✔️ 127 شخصًا استلموا الجائزة اليوم</p>
+        <div class="header">
+            <h1>🎮 DOWNLOAD TOP MOBILE GAMES</h1>
+            <p>100% Free - No Surveys - Direct Download</p>
         </div>
-        
-        <!-- إعلان Native Banner -->
+
+        <div class="countdown" id="countdown">Limited Time Offer: 05:00</div>
+
+        <!-- Game 1 -->
+        <div class="game-card">
+            <img src="https://via.placeholder.com/80" alt="Game Icon" class="game-icon">
+            <div class="game-info">
+                <div class="game-title">PUBG Mobile</div>
+                <div>Battle Royale | 2.3GB | 4.5★</div>
+            </div>
+            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="game-card">
+            <img src="https://via.placeholder.com/80" alt="Game Icon" class="game-icon">
+            <div class="game-info">
+                <div class="game-title">Call of Duty: Mobile</div>
+                <div>FPS Shooter | 1.9GB | 4.7★</div>
+            </div>
+            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+        </div>
+
+        <!-- Native Banner Ad -->
         <div class="ad-container">
             <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
             <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
-        
-        <div class="testimonials">
-            <h3>✍️ آراء الفائزين</h3>
-            <p>"لم أصدق أنني فزت بهذه السهولة!" - أحمد من مصر</p>
-            <p>"استلمت 500$ خلال دقائق!" - نور من العراق</p>
+
+        <!-- Game 3 -->
+        <div class="game-card">
+            <img src="https://via.placeholder.com/80" alt="Game Icon" class="game-icon">
+            <div class="game-info">
+                <div class="game-title">Genshin Impact</div>
+                <div>Open World | 3.4GB | 4.8★</div>
+            </div>
+            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div>Fast Downloads</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <div>Virus Free</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎁</div>
+                <div>Free Mods</div>
+            </div>
+        </div>
+
+        <!-- Iframe Ad -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '3043529ca5c93c815dd6d1dd6665778c',
+                    'format': 'iframe',
+                    'height': 250,
+                    'width': 300,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
         </div>
     </div>
 
-    <!-- كود Popunder -->
+    <!-- Popunder Ad -->
     <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
-    
-    <!-- كود Iframe -->
-    <script type="text/javascript">
-        atOptions = {
-            'key': '3043529ca5c93c815dd6d1dd6665778c',
-            'format': 'iframe',
-            'height': 250,
-            'width': 300,
-            'params': {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-    
+
     <script>
-        // عد تنازلي لجعل العرض محدودًا
+        // Countdown timer
         let time = 300;
         const countdown = setInterval(() => {
             const minutes = Math.floor(time / 60);
             const seconds = time % 60;
             document.getElementById('countdown').innerHTML = 
-                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                `Limited Time Offer: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             if (time-- <= 0) clearInterval(countdown);
         }, 1000);
-        
-        // زيادة التفاعل مع الزر
-        document.getElementById('claimBtn').addEventListener('click', function() {
-            this.textContent = 'جاري التحميل...';
+
+        // Download button function
+        function downloadGame() {
+            // Trigger popunder
+            try {
+                window.open('', '_blank');
+            } catch(e) {}
+            
+            // Redirect after delay
             setTimeout(() => {
-                window.location.href = 'YOUR_AFFILIATE_LINK?utm_source=popunder&utm_medium=prize';
-            }, 1500);
-        });
-        
-        // تفعيل Popunder عند الدخول
+                window.location.href = 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download';
+            }, 1000);
+        }
+
+        // Activate popunder on page load
         window.onload = function() {
             setTimeout(() => {
                 try {

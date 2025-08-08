@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 HOT! Download Top Mobile Games For Free</title>
+    <meta name="description" content="Download GTA 5 Mobile, Sunderfolk and Dune games for free. No surveys, direct APK downloads with all DLCs unlocked.">
+    <title>🔥 GTA 5, Sunderfolk & Dune - Free Mobile Game Downloads</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #121212;
             color: #ffffff;
             margin: 0;
-            padding: 0;
+            padding: 0 0 60px 0; /* Space for floating banner */
             line-height: 1.6;
         }
         .container {
@@ -40,6 +41,7 @@
             border-radius: 15px;
             margin-right: 15px;
             object-fit: cover;
+            border: 2px solid #6e48aa;
         }
         .game-info {
             flex: 1;
@@ -60,9 +62,13 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        .download-btn:hover {
+        .download-btn:hover, .download-btn.expired {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(142, 84, 233, 0.4);
+        }
+        .download-btn.expired {
+            background: linear-gradient(to right, #ff4757, #ff6b81);
+            animation: pulse 1.5s infinite;
         }
         .ad-container {
             margin: 25px 0;
@@ -94,43 +100,80 @@
             text-align: center;
             margin: 15px 0;
         }
-        .popunder-notice {
-            background: #333;
+        .highlight {
+            background: #6e48aa;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .trending-badge {
+            background: #ff4757;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .exclusive-badge {
+            background: #f39c12;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .floating-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #2a2a2a;
             padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
             text-align: center;
-            font-size: 14px;
+            z-index: 1000;
+            display: none;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 600px) {
+            .floating-banner {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎮 DOWNLOAD TOP MOBILE GAMES</h1>
-            <p>100% Free - No Surveys - Direct Download</p>
+            <h1>🎮 GTA 5, SUNDERFOLK & DUNE MOBILE</h1>
+            <p>Premium Games - 100% Free - No Surveys</p>
         </div>
 
         <div class="countdown" id="countdown">Limited Time Offer: 05:00</div>
 
-        <!-- Game 1 -->
+        <!-- GTA 5 Mobile -->
         <div class="game-card">
-            <img src="https://via.placeholder.com/80" alt="Game Icon" class="game-icon">
+            <img src="https://via.placeholder.com/80x80?text=GTA5" alt="GTA 5 Mobile" class="game-icon" loading="lazy">
             <div class="game-info">
-                <div class="game-title">PUBG Mobile</div>
-                <div>Battle Royale | 2.3GB | 4.5★</div>
+                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
+                <div>Open World | 3.2GB | 4.9★</div>
+                <div>Includes all DLCs & Exclusive Mods</div>
             </div>
-            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+            <button class="download-btn" onclick="downloadGame('gta5')">DOWNLOAD</button>
         </div>
 
-        <!-- Game 2 -->
-        <div class="game-card">
-            <img src="https://via.placeholder.com/80" alt="Game Icon" class="game-icon">
-            <div class="game-info">
-                <div class="game-title">Call of Duty: Mobile</div>
-                <div>FPS Shooter | 1.9GB | 4.7★</div>
-            </div>
-            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+        <!-- Iframe Ad (Moved up after first game) -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': '3043529ca5c93c815dd6d1dd6665778c',
+                    'format': 'iframe',
+                    'height': 250,
+                    'width': 300,
+                    'params': {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
         </div>
 
         <!-- Native Banner Ad -->
@@ -139,14 +182,26 @@
             <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
 
-        <!-- Game 3 -->
+        <!-- Sunderfolk -->
         <div class="game-card">
-            <img src="https://via.placeholder.com/80" alt="Game Icon" class="game-icon">
+            <img src="https://via.placeholder.com/80x80?text=Sunderfolk" alt="Sunderfolk" class="game-icon" loading="lazy">
             <div class="game-info">
-                <div class="game-title">Genshin Impact</div>
-                <div>Open World | 3.4GB | 4.8★</div>
+                <div class="game-title">Sunderfolk <span class="exclusive-badge">EXCLUSIVE</span></div>
+                <div>Adventure RPG | 2.1GB | 4.7★</div>
+                <div>Full Version Unlocked</div>
             </div>
-            <button class="download-btn" onclick="downloadGame()">DOWNLOAD</button>
+            <button class="download-btn" onclick="downloadGame('sunderfolk')">DOWNLOAD</button>
+        </div>
+
+        <!-- Dune Game -->
+        <div class="game-card">
+            <img src="https://via.placeholder.com/80x80?text=Dune" alt="Dune Game" class="game-icon" loading="lazy">
+            <div class="game-info">
+                <div class="game-title">Dune: Spice Wars <span class="highlight">HOT</span></div>
+                <div>Strategy | 2.8GB | 4.8★</div>
+                <div>All Characters Unlocked</div>
+            </div>
+            <button class="download-btn" onclick="downloadGame('dune')">DOWNLOAD</button>
         </div>
 
         <div class="features">
@@ -164,52 +219,31 @@
             </div>
         </div>
 
-        <!-- Iframe Ad -->
+        <!-- Second Native Banner Ad (Bottom) -->
         <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key': '3043529ca5c93c815dd6d1dd6665778c',
-                    'format': 'iframe',
-                    'height': 250,
-                    'width': 300,
-                    'params': {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-        </div>
-        
-        <div class="popunder-notice" id="popunderNotice" style="display: none;">
-            Please allow pop-ups for this site to continue. <a href="#" onclick="retryPopunder()">Click here</a> to retry.
+            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
     </div>
 
-    <!-- Popunder Ad - Updated Implementation -->
-    <script>
-        // Enhanced Popunder Function
-        function openPopunder() {
-            try {
-                // First try with network ad script
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-                document.body.appendChild(script);
-                
-                // Fallback method if the script doesn't work
-                setTimeout(function() {
-                    var popunder = window.open('', '_blank');
-                    if(popunder) {
-                        popunder.location.href = 'https://example.com/fallback-ad';
-                        window.focus();
-                    } else {
-                        document.getElementById('popunderNotice').style.display = 'block';
-                    }
-                }, 1000);
-            } catch(e) {
-                console.error('Popunder error:', e);
-                document.getElementById('popunderNotice').style.display = 'block';
-            }
-        }
+    <!-- Floating Mobile Banner -->
+    <div class="floating-banner">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '3043529ca5c93c815dd6d1dd6665778c',
+                'format': 'iframe',
+                'height': 50,
+                'width': 320,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+    </div>
 
+    <!-- Popunder Ad -->
+    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
+
+    <script>
         // Countdown timer
         let time = 300;
         const countdown = setInterval(() => {
@@ -217,29 +251,44 @@
             const seconds = time % 60;
             document.getElementById('countdown').innerHTML = 
                 `Limited Time Offer: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            if (time-- <= 0) clearInterval(countdown);
+            
+            if (time <= 0) {
+                clearInterval(countdown);
+                // Change button style when time expires
+                document.querySelectorAll('.download-btn').forEach(btn => {
+                    btn.classList.add('expired');
+                    btn.textContent = 'OFFER EXPIRED - CLICK NOW!';
+                });
+            }
+            time--;
         }, 1000);
 
-        // Download button function
-        function downloadGame() {
-            openPopunder();
+        // Download button function with enhanced tracking
+        function downloadGame(gameName) {
+            // Open new window for popunder effect
+            const newWindow = window.open('', '_blank');
             
-            // Redirect after delay
+            // Track the click
+            console.log(`Download initiated for ${gameName}`);
+            
+            // Redirect after delay with UTM parameters
             setTimeout(() => {
-                window.location.href = 'YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download';
-            }, 1000);
+                window.location.href = `YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download&utm_campaign=${gameName}_${new Date().getDay()}`;
+                
+                // Close the popunder window
+                try {
+                    newWindow.close();
+                } catch(e) {}
+            }, 1500);
         }
 
-        // Retry popunder function
-        function retryPopunder() {
-            document.getElementById('popunderNotice').style.display = 'none';
-            openPopunder();
-            return false;
-        }
-
-        // Activate popunder on page load with delay
+        // Activate popunder on page load
         window.onload = function() {
-            setTimeout(openPopunder, 2500);
+            setTimeout(() => {
+                try {
+                    window.open('', '_blank');
+                } catch(e) {}
+            }, 2000);
         };
     </script>
 </body>

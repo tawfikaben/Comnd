@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download free mobile games: GTA 5, Sunderfolk and Dune. No surveys, direct APK downloads with all DLCs unlocked.">
-    <title>🔥 Download GTA 5, Sunderfolk & Dune - Free Mobile Games</title>
+    <title>🔥 Download Premium Mobile Games - GTA 5, Sunderfolk, Dune</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -67,11 +66,29 @@
             transition: all 0.3s;
             min-width: 120px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         .download-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(142, 84, 233, 0.4);
             background: linear-gradient(to right, #8E54E9, #4776E6);
+        }
+        .download-btn.loading {
+            pointer-events: none;
+        }
+        .download-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            100% { left: 100%; }
         }
         .ad-container {
             margin: 25px 0;
@@ -114,87 +131,56 @@
             padding: 10px;
             background: rgba(255, 71, 87, 0.1);
             border-radius: 8px;
-        }
-        .highlight {
-            background: #6e48aa;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-        }
-        .trending-badge {
-            background: #ff4757;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        .exclusive-badge {
-            background: #f39c12;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            margin-left: 5px;
+            animation: pulse 1.5s infinite;
         }
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        .pulse {
-            animation: pulse 1.5s infinite;
-        }
         .social-bar {
             position: fixed;
-            right: 0;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity 0.5s, transform 0.3s;
         }
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            margin: 5px;
-            transition: all 0.3s;
-        }
-        .social-icon:hover {
-            transform: scale(1.2);
+        .social-bar.visible {
+            opacity: 1;
         }
     </style>
+
+    <!-- Preload Ad Scripts for Faster Loading -->
+    <link rel="preload" href="//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js" as="script">
+    <link rel="preload" href="//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js" as="script">
+    <link rel="preload" href="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js" as="script">
 </head>
 <body>
-    <!-- Social Bar -->
-    <div class="social-bar">
-        <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
+    <!-- Top Banner Ad (Loaded First) -->
+    <div class="top-ad">
+        <script type="text/javascript">
+            atOptions = {
+                'key': '3043529ca5c93c815dd6d1dd6665778c',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
     </div>
 
-    <!-- Popunder Script (Added as requested) -->
-    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
-
     <div class="container">
-        <!-- Top Ad (Premium Position) -->
-        <div class="top-ad">
-            <script type="text/javascript">
-                atOptions = {
-                    'key': '3043529ca5c93c815dd6d1dd6665778c',
-                    'format': 'iframe',
-                    'height': 90,
-                    'width': 728,
-                    'params': {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-        </div>
-
         <div class="header">
             <h1>🎮 DOWNLOAD PREMIUM MOBILE GAMES</h1>
             <p>100% Free - No Surveys - Direct APK</p>
         </div>
 
-        <div class="countdown pulse" id="countdown">⏰ LIMITED TIME: <span id="time">05:00</span></div>
+        <div class="countdown">⏰ LIMITED TIME: <span id="time">05:00</span></div>
 
         <!-- GTA 5 Mobile -->
         <div class="game-card">
@@ -254,6 +240,14 @@
         </div>
     </div>
 
+    <!-- Social Bar -->
+    <div class="social-bar">
+        <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
+    </div>
+    
+    <!-- Popunder Script -->
+    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
+
     <script>
         // Enhanced Countdown Timer
         let time = 300;
@@ -272,29 +266,50 @@
             time--;
         }, 1000);
 
-        // Enhanced Download Function
+        // Enhanced Download Function with Priority Ad Triggers
         function initiateDownload(gameName) {
-            // Track the click
-            console.log(`Download started for ${gameName}`);
+            // Visual feedback
+            const btn = event.target;
+            btn.classList.add('loading');
+            btn.innerHTML = 'PREPARING DOWNLOAD...';
             
-            // Show loading state
-            const buttons = document.querySelectorAll('.download-btn');
-            buttons.forEach(btn => {
-                btn.disabled = true;
-                btn.innerHTML = 'PREPARING...';
-            });
+            // Priority 1: Trigger Popunder (Most Valuable)
+            try {
+                const popunder = window.open('', '_blank');
+                setTimeout(() => {
+                    if(popunder) popunder.close();
+                }, 3000);
+            } catch(e) {
+                console.log('Popunder blocked');
+            }
             
-            // Redirect after delay with UTM parameters
+            // Priority 2: Activate Social Bar
+            const socialBar = document.querySelector('.social-bar');
+            socialBar.classList.add('visible');
+            socialBar.style.transform = 'translateY(-50%) scale(1.1)';
+            setTimeout(() => {
+                socialBar.style.transform = 'translateY(-50%)';
+            }, 300);
+            
+            // Priority 3: Track Conversion
+            console.log(`Conversion: ${gameName}_download_start_${Date.now()}`);
+            
+            // Redirect after strategic delay (allows ads to load)
             setTimeout(() => {
                 window.location.href = `YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download&utm_campaign=${gameName}_${new Date().getDay()}`;
-            }, 1500);
+            }, 1800); // Slightly longer delay for better ad rendering
         }
 
-        // Activate social bar after page loads
+        // Load Social Bar after 1.5s (after main content)
+        setTimeout(() => {
+            document.querySelector('.social-bar').classList.add('visible');
+        }, 1500);
+
+        // Pre-warm ad connections
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelector('.social-bar').style.opacity = '1';
-            }, 1000);
+            // Warm up ad networks
+            fetch('//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js', { mode: 'no-cors' });
+            fetch('//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js', { mode: 'no-cors' });
         });
     </script>
 </body>

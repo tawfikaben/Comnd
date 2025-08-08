@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download GTA 5 Mobile, Sunderfolk and Dune games for free. No surveys, direct APK downloads with all DLCs unlocked.">
-    <title>🔥 GTA 5, Sunderfolk & Dune - Free Mobile Game Downloads</title>
+    <meta name="description" content="Download free mobile games: GTA 5, Sunderfolk and Dune. No surveys, direct APK downloads with all DLCs unlocked.">
+    <title>🔥 Download GTA 5, Sunderfolk & Dune - Free Mobile Games</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #121212;
             color: #ffffff;
             margin: 0;
-            padding: 0 0 60px 0; /* Space for floating banner */
+            padding: 0;
             line-height: 1.6;
         }
         .container {
@@ -34,6 +34,10 @@
             display: flex;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
         }
         .game-icon {
             width: 80px;
@@ -56,19 +60,18 @@
             background: linear-gradient(to right, #4776E6, #8E54E9);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 50px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
+            min-width: 120px;
+            text-align: center;
         }
-        .download-btn:hover, .download-btn.expired {
+        .download-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(142, 84, 233, 0.4);
-        }
-        .download-btn.expired {
-            background: linear-gradient(to right, #ff4757, #ff6b81);
-            animation: pulse 1.5s infinite;
+            background: linear-gradient(to right, #8E54E9, #4776E6);
         }
         .ad-container {
             margin: 25px 0;
@@ -76,6 +79,12 @@
             background: #2a2a2a;
             border-radius: 8px;
             text-align: center;
+        }
+        .top-ad {
+            margin: 0 auto 30px auto;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
         }
         .features {
             display: flex;
@@ -87,6 +96,9 @@
             flex-basis: 30%;
             text-align: center;
             margin-bottom: 15px;
+            padding: 10px;
+            background: #252525;
+            border-radius: 8px;
         }
         .feature-icon {
             font-size: 24px;
@@ -99,11 +111,15 @@
             font-size: 18px;
             text-align: center;
             margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 71, 87, 0.1);
+            border-radius: 8px;
         }
         .highlight {
             background: #6e48aa;
-            padding: 2px 5px;
-            border-radius: 3px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
         }
         .trending-badge {
             background: #ff4757;
@@ -119,61 +135,48 @@
             font-size: 12px;
             margin-left: 5px;
         }
-        .floating-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #2a2a2a;
-            padding: 10px;
-            text-align: center;
-            z-index: 1000;
-            display: none;
-        }
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-        @media (max-width: 600px) {
-            .floating-banner {
-                display: block;
-            }
+        .pulse {
+            animation: pulse 1.5s infinite;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🎮 GTA 5, SUNDERFOLK & DUNE MOBILE</h1>
-            <p>Premium Games - 100% Free - No Surveys</p>
-        </div>
-
-        <div class="countdown" id="countdown">Limited Time Offer: 05:00</div>
-
-        <!-- GTA 5 Mobile -->
-        <div class="game-card">
-            <img src="https://via.placeholder.com/80x80?text=GTA5" alt="GTA 5 Mobile" class="game-icon" loading="lazy">
-            <div class="game-info">
-                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
-                <div>Open World | 3.2GB | 4.9★</div>
-                <div>Includes all DLCs & Exclusive Mods</div>
-            </div>
-            <button class="download-btn" onclick="downloadGame('gta5')">DOWNLOAD</button>
-        </div>
-
-        <!-- Iframe Ad (Moved up after first game) -->
-        <div class="ad-container">
+        <!-- Top Ad (Premium Position) -->
+        <div class="top-ad">
             <script type="text/javascript">
                 atOptions = {
                     'key': '3043529ca5c93c815dd6d1dd6665778c',
                     'format': 'iframe',
-                    'height': 250,
-                    'width': 300,
+                    'height': 90,
+                    'width': 728,
                     'params': {}
                 };
             </script>
             <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+        </div>
+
+        <div class="header">
+            <h1>🎮 DOWNLOAD PREMIUM MOBILE GAMES</h1>
+            <p>100% Free - No Surveys - Direct APK</p>
+        </div>
+
+        <div class="countdown pulse" id="countdown">⏰ LIMITED TIME: <span id="time">05:00</span></div>
+
+        <!-- GTA 5 Mobile -->
+        <div class="game-card">
+            <img src="https://via.placeholder.com/80x80.png/6e48aa/ffffff?text=GTA5" alt="GTA 5 Mobile" class="game-icon" loading="lazy">
+            <div class="game-info">
+                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
+                <div>Open World | 3.2GB | 4.9★</div>
+                <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
+            </div>
+            <button class="download-btn" onclick="initiateDownload('gta5')">DOWNLOAD NOW</button>
         </div>
 
         <!-- Native Banner Ad -->
@@ -184,112 +187,85 @@
 
         <!-- Sunderfolk -->
         <div class="game-card">
-            <img src="https://via.placeholder.com/80x80?text=Sunderfolk" alt="Sunderfolk" class="game-icon" loading="lazy">
+            <img src="https://via.placeholder.com/80x80.png/f39c12/ffffff?text=SUNDER" alt="Sunderfolk" class="game-icon" loading="lazy">
             <div class="game-info">
                 <div class="game-title">Sunderfolk <span class="exclusive-badge">EXCLUSIVE</span></div>
                 <div>Adventure RPG | 2.1GB | 4.7★</div>
-                <div>Full Version Unlocked</div>
+                <div>✅ Full Version | 🎮 Controller Support</div>
             </div>
-            <button class="download-btn" onclick="downloadGame('sunderfolk')">DOWNLOAD</button>
+            <button class="download-btn" onclick="initiateDownload('sunderfolk')">DOWNLOAD NOW</button>
         </div>
 
         <!-- Dune Game -->
         <div class="game-card">
-            <img src="https://via.placeholder.com/80x80?text=Dune" alt="Dune Game" class="game-icon" loading="lazy">
+            <img src="https://via.placeholder.com/80x80.png/4776E6/ffffff?text=DUNE" alt="Dune Game" class="game-icon" loading="lazy">
             <div class="game-info">
                 <div class="game-title">Dune: Spice Wars <span class="highlight">HOT</span></div>
                 <div>Strategy | 2.8GB | 4.8★</div>
-                <div>All Characters Unlocked</div>
+                <div>✅ All Characters | 🏆 Online Multiplayer</div>
             </div>
-            <button class="download-btn" onclick="downloadGame('dune')">DOWNLOAD</button>
+            <button class="download-btn" onclick="initiateDownload('dune')">DOWNLOAD NOW</button>
         </div>
 
         <div class="features">
             <div class="feature">
                 <div class="feature-icon">⚡</div>
-                <div>Fast Downloads</div>
+                <h3>Fast Downloads</h3>
+                <p>High-speed servers for quick installation</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🛡️</div>
-                <div>Virus Free</div>
+                <h3>Virus Free</h3>
+                <p>All files scanned for your safety</p>
             </div>
             <div class="feature">
                 <div class="feature-icon">🎁</div>
-                <div>Free Mods</div>
+                <h3>Free Mods</h3>
+                <p>Unlocked features & premium content</p>
             </div>
         </div>
-
-        <!-- Second Native Banner Ad (Bottom) -->
-        <div class="ad-container">
-            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
-        </div>
     </div>
 
-    <!-- Floating Mobile Banner -->
-    <div class="floating-banner">
-        <script type="text/javascript">
-            atOptions = {
-                'key': '3043529ca5c93c815dd6d1dd6665778c',
-                'format': 'iframe',
-                'height': 50,
-                'width': 320,
-                'params': {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-    </div>
-
-    <!-- Popunder Ad -->
+    <!-- Popunder Ad (Without auto popup) -->
     <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
 
     <script>
-        // Countdown timer
+        // Enhanced Countdown Timer
         let time = 300;
         const countdown = setInterval(() => {
             const minutes = Math.floor(time / 60);
             const seconds = time % 60;
-            document.getElementById('countdown').innerHTML = 
-                `Limited Time Offer: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('time').innerHTML = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
             if (time <= 0) {
                 clearInterval(countdown);
-                // Change button style when time expires
-                document.querySelectorAll('.download-btn').forEach(btn => {
-                    btn.classList.add('expired');
-                    btn.textContent = 'OFFER EXPIRED - CLICK NOW!';
-                });
+                document.getElementById('countdown').innerHTML = 
+                    "⏰ OFFER EXPIRED - DOWNLOAD NOW!";
+                document.getElementById('countdown').style.background = "#ff4757";
             }
             time--;
         }, 1000);
 
-        // Download button function with enhanced tracking
-        function downloadGame(gameName) {
-            // Open new window for popunder effect
-            const newWindow = window.open('', '_blank');
-            
+        // Enhanced Download Function
+        function initiateDownload(gameName) {
             // Track the click
-            console.log(`Download initiated for ${gameName}`);
+            console.log(`Download started for ${gameName}`);
+            
+            // Show loading state
+            const buttons = document.querySelectorAll('.download-btn');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.innerHTML = 'PREPARING...';
+            });
             
             // Redirect after delay with UTM parameters
             setTimeout(() => {
                 window.location.href = `YOUR_DOWNLOAD_LINK?utm_source=gamepage&utm_medium=download&utm_campaign=${gameName}_${new Date().getDay()}`;
-                
-                // Close the popunder window
-                try {
-                    newWindow.close();
-                } catch(e) {}
             }, 1500);
         }
 
-        // Activate popunder on page load
-        window.onload = function() {
-            setTimeout(() => {
-                try {
-                    window.open('', '_blank');
-                } catch(e) {}
-            }, 2000);
-        };
+        // No auto popup window
     </script>
 </body>
 </html>

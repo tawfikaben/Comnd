@@ -67,6 +67,24 @@
             min-width: 120px;
             text-align: center;
         }
+        .highlight {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .trending-badge {
+            background: #e74c3c;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        .exclusive-badge {
+            background: #9b59b6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
         .ad-container {
             margin: 25px 0;
             padding: 10px;
@@ -117,7 +135,7 @@
                  class="game-icon" 
                  loading="lazy">
             <div class="game-info">
-                <div class="game-title">GTA 5 Mobile <span style="color:#f39c12;">NEW</span></div>
+                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
                 <div>Open World | 3.2GB | 4.9★ Rating</div>
                 <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
             </div>
@@ -131,7 +149,40 @@
             <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
 
-        <!-- More game cards can be added here -->
+        <!-- New Game 1: Call of Duty Mobile -->
+        <div class="game-card">
+            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                 alt="Call of Duty Mobile" 
+                 class="game-icon" 
+                 loading="lazy">
+            <div class="game-info">
+                <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
+                <div>FPS | 2.4GB | 4.8★ Rating</div>
+                <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
+            </div>
+            <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
+        </div>
+
+        <!-- New Game 2: Minecraft Legends -->
+        <div class="game-card">
+            <img src="https://images.unsplash.com/photo-1587573089734-599851b0c8b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                 alt="Minecraft Legends" 
+                 class="game-icon" 
+                 loading="lazy">
+            <div class="game-info">
+                <div class="game-title">Minecraft Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
+                <div>Adventure | 1.8GB | 4.7★ Rating</div>
+                <div>✅ Premium Unlocked | 🏰 All Skins Available</div>
+            </div>
+            <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
+        </div>
+
+        <!-- Second Native Ad -->
+        <div class="native-ad-container">
+            <div class="ad-label">Sponsored</div>
+            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
+        </div>
     </div>
 
     <!-- Adsterra Popunder Script -->

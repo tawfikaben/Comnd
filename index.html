@@ -4,81 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎮 Premium Games Download</title>
-    <!-- Your existing CSS styles here -->
     <style>
-        /* Your existing styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .game-card {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+        .game-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid #6e48aa;
+        }
+        .game-info {
+            flex: 1;
+        }
+        .game-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #6e48aa;
+        }
+        .download-btn {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 120px;
+            text-align: center;
+        }
+        .ad-container {
+            margin: 20px 0;
+            text-align: center;
+            background: #252525;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .ad-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
-    <!-- Your existing HTML content -->
-    <div class="container">
-        <!-- All your game cards and content -->
+    <!-- Top Banner Ad -->
+    <div class="ad-container">
+        <div class="ad-label">ADVERTISEMENT</div>
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
     </div>
 
-    <!-- Enhanced Ad Script Implementation -->
-    <script>
-        // Function to load popunder with better control
-        function loadPopunder() {
-            try {
-                // First check if ad blockers are present
-                if(typeof window.ads === 'undefined') {
-                    // Fallback method if main script fails
-                    window.open('https://example.com', '_blank').blur();
-                    window.focus();
-                    return true;
-                }
-                
-                // Load the popunder script dynamically
-                var script = document.createElement('script');
-                script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-                script.type = 'text/javascript';
-                script.onerror = function() {
-                    // Fallback if script fails to load
-                    window.open('https://example.com', '_blank').blur();
-                    window.focus();
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Premium Games Download</h1>
+            <p>100% Free - No Surveys - Direct Download</p>
+        </div>
+
+        <!-- GTA 5 Mobile -->
+        <div class="game-card">
+            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                 alt="GTA 5 Mobile" 
+                 class="game-icon" 
+                 loading="lazy">
+            <div class="game-info">
+                <div class="game-title">GTA 5 Mobile <span style="color:#f39c12;">NEW</span></div>
+                <div>Open World | 3.2GB | 4.9★ Rating</div>
+                <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
+            </div>
+            <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
+        </div>
+
+        <!-- Native Ad -->
+        <div class="ad-container">
+            <div class="ad-label">ADVERTISEMENT</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
                 };
-                document.body.appendChild(script);
-                return true;
-            } catch(e) {
-                console.error('Ad loading error:', e);
-                return false;
-            }
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+        </div>
+
+        <!-- More game cards can be added here -->
+    </div>
+
+    <!-- Adsterra Popunder Script -->
+    <script>
+        function triggerDownload() {
+            // Show loading state
+            event.target.innerHTML = 'PREPARING DOWNLOAD...';
+            
+            // Trigger popunder after delay
+            setTimeout(function() {
+                // Main popunder script
+                var ppuScript = document.createElement('script');
+                ppuScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+                document.body.appendChild(ppuScript);
+                
+                // Complete the download process
+                setTimeout(function() {
+                    window.location.href = "#download"; // Replace with actual download link
+                }, 1000);
+            }, 1500);
         }
-
-        // Attach to download buttons with delay
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Show loading state
-                this.innerHTML = 'PREPARING DOWNLOAD...';
-                this.classList.add('loading');
-                
-                // Trigger popunder after short delay
-                setTimeout(() => {
-                    var success = loadPopunder();
-                    
-                    // Complete the download process
-                    setTimeout(() => {
-                        if(success) {
-                            window.location.href = this.dataset.downloadUrl || '#';
-                        } else {
-                            this.innerHTML = 'DOWNLOAD NOW';
-                            this.classList.remove('loading');
-                            alert('Download ready! Please disable ad blocker if you see this message.');
-                        }
-                    }, 1000);
-                }, 1500);
-            });
-        });
-
-        // Preload the script for better performance
+        
+        // Preload ad scripts for better performance
         window.addEventListener('load', function() {
-            var link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'script';
-            link.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            document.head.appendChild(link);
+            var preloadScript = document.createElement('link');
+            preloadScript.rel = 'preload';
+            preloadScript.as = 'script';
+            preloadScript.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+            document.head.appendChild(preloadScript);
         });
     </script>
 </body>

@@ -149,7 +149,7 @@
             <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
 
-        <!-- New Game 1: Call of Duty Mobile -->
+        <!-- Call of Duty Mobile -->
         <div class="game-card">
             <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
                  alt="Call of Duty Mobile" 
@@ -163,40 +163,39 @@
             <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
         </div>
 
-        <!-- New Game 2: Minecraft Legends -->
+        <!-- Asphalt 9: Legends (Replaced Minecraft) -->
         <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1587573089734-599851b0c8b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Minecraft Legends" 
+            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                 alt="Asphalt 9: Legends" 
                  class="game-icon" 
                  loading="lazy">
             <div class="game-info">
-                <div class="game-title">Minecraft Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
-                <div>Adventure | 1.8GB | 4.7★ Rating</div>
-                <div>✅ Premium Unlocked | 🏰 All Skins Available</div>
+                <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
+                <div>Racing | 2.1GB | 4.7★ Rating</div>
+                <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
             </div>
             <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
         </div>
-
-        <!-- Second Native Ad -->
-        <div class="native-ad-container">
-            <div class="ad-label">Sponsored</div>
-            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
-        </div>
     </div>
 
-    <!-- Adsterra Popunder Script -->
+    <!-- Single Popunder Script - Loaded only once per page -->
     <script>
+        // Track if popunder has been shown
+        let popunderShown = false;
+        
         function triggerDownload() {
             // Show loading state
             event.target.innerHTML = 'PREPARING DOWNLOAD...';
             
-            // Trigger popunder after delay
+            // Trigger popunder after delay (only if not shown before)
             setTimeout(function() {
-                // Main popunder script
-                var ppuScript = document.createElement('script');
-                ppuScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-                document.body.appendChild(ppuScript);
+                if(!popunderShown) {
+                    // Load popunder script
+                    var ppuScript = document.createElement('script');
+                    ppuScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+                    document.body.appendChild(ppuScript);
+                    popunderShown = true;
+                }
                 
                 // Complete the download process
                 setTimeout(function() {

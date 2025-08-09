@@ -1,195 +1,141 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع الألعاب المميزة</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            cursor: pointer;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .game-card {
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-        
-        .game-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .game-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
-            margin-right: 15px;
-            object-fit: cover;
-            border: 2px solid #6e48aa;
-        }
-        
-        .download-btn {
-            background: linear-gradient(to right, #4776E6, #8E54E9);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .ad-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            display: none;
-            z-index: 1000;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🔥 Download Premium Mobile Games</title>
+  <meta name="description" content="Direct APK downloads. Keep tab open for best experience.">
+  <style>
+    body{font-family:Segoe UI,Roboto,Arial;background:#121212;color:#fff;margin:0;padding:20px}
+    .container{max-width:900px;margin:0 auto}
+    .box{background:#1e1e1e;border-radius:10px;padding:18px;margin-bottom:18px}
+    .download-btn{background:linear-gradient(90deg,#4776E6,#8E54E9);color:#fff;border:none;padding:12px 20px;border-radius:50px;cursor:pointer}
+    .download-btn.loading{pointer-events:none;opacity:.7}
+    .social-bar{position:fixed;right:10px;top:50%;transform:translateY(-50%);z-index:1000;opacity:0;transition:opacity .3s}
+    .social-bar.visible{opacity:1}
+    .countdown{color:#ff4757;padding:8px;border-radius:8px;background:rgba(255,71,87,0.08);display:inline-block;margin-bottom:12px}
+    .top-ad{margin-bottom:16px}
+  </style>
+
+  <!-- Preloads -->
+  <link rel="preload" href="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js" as="script">
+  <link rel="preload" href="//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js" as="script">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🎮 ألعاب مميزة للتحميل المجاني</h1>
-            <p>أحدث الألعاب بنسخ كاملة مع جميع المميزات</p>
-        </div>
-        
-        <div class="game-card">
-            <img src="https://via.placeholder.com/80" alt="لعبة" class="game-icon">
-            <div style="flex:1">
-                <h3>GTA 6 Mobile</h3>
-                <p>نسخة كاملة مع جميع المميزات</p>
-            </div>
-            <button class="download-btn">تحميل الآن</button>
-        </div>
-        
-        <div class="game-card">
-            <img src="https://via.placeholder.com/80" alt="لعبة" class="game-icon">
-            <div style="flex:1">
-                <h3>FIFA 24 Mobile</h3>
-                <p>أحدث نسخة مع جميع الفرق</p>
-            </div>
-            <button class="download-btn">تحميل الآن</button>
-        </div>
-    </div>
-    
-    <div class="ad-notification" id="adNotification">
-        جارٍ تحميل المحتوى المطلوب...
+  <div class="container">
+    <div class="top-ad box">
+      <!-- Top banner (loads early) -->
+      <script type="text/javascript">
+        atOptions = {'key':'3043529ca5c93c815dd6d1dd6665778c','format':'iframe','height':90,'width':728,'params':{}};
+      </script>
+      <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
     </div>
 
-    <script>
-        // إعدادات التحكم
-        const adSettings = {
-            delay: 500,         // تأخير قبل التنفيذ (ملي ثانية)
-            timeout: 30000,     // وقت الانتظار قبل التنشيط التلقائي
-            showNotification: true, // إظهار إشعار للمستخدم
-            excludeElements: ['A', 'BUTTON', 'INPUT', 'SELECT', 'TEXTAREA']
-        };
-        
-        let adTriggered = false;
-        let clickCount = 0;
-        const minClicks = 2;    // عدد النقرات المطلوبة قبل التنشيط
-        
-        function showNotification() {
-            if (!adSettings.showNotification) return;
-            
-            const notif = document.getElementById('adNotification');
-            notif.style.display = 'block';
-            setTimeout(() => {
-                notif.style.display = 'none';
-            }, 3000);
+    <div class="box">
+      <h1>🎮 DOWNLOAD PREMIUM MOBILE GAMES</h1>
+      <p class="countdown">⏰ LIMITED TIME: <span id="time">05:00</span></p>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <img src="https://via.placeholder.com/80" alt="GTA5" width="80" height="80" style="border-radius:12px">
+        <div style="flex:1">
+          <strong>GTA 5 Mobile — NEW</strong><br>
+          <small>Open World • 3.2GB • 4.9★</small>
+        </div>
+        <button class="download-btn" id="dl-gta5" data-game="gta5">DOWNLOAD NOW</button>
+      </div>
+    </div>
+
+    <div class="box ad-container">
+      <!-- Native banner (async) -->
+      <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+      <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
+    </div>
+  </div>
+
+  <!-- Social Bar placeholder (script loaded later if wanted) -->
+  <div class="social-bar" id="socialBar"></div>
+
+  <script>
+    // countdown
+    let time = 300;
+    const timeEl = document.getElementById('time');
+    const ct = setInterval(()=> {
+      const m = Math.floor(time/60), s = time%60;
+      timeEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      if(time-- <= 0) clearInterval(ct);
+    },1000);
+
+    // helper: dynamically load script
+    function loadScript(src, attrs = {}) {
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.async = true;
+        Object.keys(attrs).forEach(k => s.setAttribute(k, attrs[k]));
+        s.onload = () => resolve(s);
+        s.onerror = (e) => reject(e);
+        document.body.appendChild(s);
+      });
+    }
+
+    // load social bar script after short delay (non-blocking)
+    setTimeout(()=> {
+      loadScript('//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js')
+        .then(()=> {
+          const sb = document.getElementById('socialBar');
+          sb.classList.add('visible');
+        }).catch(()=>{/* ignore */});
+    },1500);
+
+    // IMPORTANT: load popunder only after user interaction (click)
+    async function triggerPopunderOnce() {
+      if(window._popunderTriggered) return;
+      window._popunderTriggered = true;
+      try {
+        // Try opening a blank tab first (user gesture) to increase chance of popunder success
+        const newWin = window.open('about:blank', '_blank');
+        // Dynamically load the popunder provider script on the main page
+        await loadScript('//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js');
+        // Some popunder scripts will open their own windows; keep the opened tab for redirect to download
+        if(newWin) {
+          // delay a bit to allow popunder to open, then redirect the opened tab to the download
+          setTimeout(()=> {
+            try { newWin.location.href = window._downloadURL || 'about:blank'; } catch(e){/* ignore cross-origin */ }
+          }, 800);
         }
-        
-        function activateAd() {
-            if (adTriggered) return;
-            adTriggered = true;
-            showNotification();
-            
-            // استراتيجية متعددة للفتح
-            try {
-                // الطريقة 1: نافذة منبثقة تقليدية
-                const popup = window.open('', '_blank', 'width=1,height=1,left=-1000,top=-1000');
-                
-                if (popup) {
-                    setTimeout(() => {
-                        popup.close();
-                    }, 100);
-                } else {
-                    // الطريقة 2: تحميل السكريبت الديناميكي
-                    loadAdScript();
-                }
-            } catch (e) {
-                // الطريقة 3: إذا فشل كل شيء
-                loadAdScript();
-            }
-            
-            window.focus();
-        }
-        
-        function loadAdScript() {
-            const script = document.createElement('script');
-            script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            document.body.appendChild(script);
-        }
-        
-        // متابعة النقرات على الصفحة
-        document.addEventListener('click', function(e) {
-            if (adSettings.excludeElements.includes(e.target.tagName)) {
-                return;
-            }
-            
-            clickCount++;
-            
-            if (clickCount >= minClicks) {
-                setTimeout(activateAd, adSettings.delay);
-            }
-        });
-        
-        // نسخة احتياطية بعد فترة زمنية
-        const backupTimer = setTimeout(function() {
-            if (!adTriggered) {
-                activateAd();
-            }
-        }, adSettings.timeout);
-        
-        // تحسين الأداء: تحميل مسبق للسكريبت
-        window.addEventListener('load', function() {
-            const preloadLink = document.createElement('link');
-            preloadLink.rel = 'preload';
-            preloadLink.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            preloadLink.as = 'script';
-            document.head.appendChild(preloadLink);
-        });
-    </script>
+      } catch(e) {
+        console.warn('Popunder load failed', e);
+      }
+    }
+
+    // download button behavior
+    function onDownloadClick(e) {
+      const btn = e.currentTarget;
+      const game = btn.dataset.game || 'game';
+      btn.classList.add('loading');
+      btn.textContent = 'PREPARING...';
+
+      // set the final download URL (change this to real link)
+      const downloadUrl = `https://example.com/download?game=${game}`;
+      window._downloadURL = downloadUrl;
+
+      // 1) trigger popunder (script loads only after click)
+      triggerPopunderOnce();
+
+      // 2) show social bar (already loaded, but ensure visible)
+      document.getElementById('socialBar').classList.add('visible');
+
+      // 3) track in console (replace with real analytics)
+      console.log('conversion_start:', game, Date.now());
+
+      // 4) after short delay redirect user to download
+      setTimeout(()=> {
+        window.location.href = downloadUrl;
+      }, 1600);
+    }
+
+    // bind buttons
+    document.querySelectorAll('.download-btn').forEach(b => b.addEventListener('click', onDownloadClick));
+  </script>
 </body>
 </html>

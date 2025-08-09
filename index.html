@@ -68,23 +68,30 @@
             text-align: center;
         }
         .ad-container {
-            margin: 20px 0;
-            text-align: center;
-            background: #252525;
+            margin: 25px 0;
             padding: 10px;
+            background: #252525;
             border-radius: 8px;
+            text-align: center;
         }
         .ad-label {
             font-size: 12px;
             color: #888;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .native-ad-container {
+            margin: 30px 0;
+            padding: 15px;
+            background: #252525;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
     <!-- Top Banner Ad -->
     <div class="ad-container">
-        <div class="ad-label">ADVERTISEMENT</div>
+        <div class="ad-label">Advertisement</div>
         <script type="text/javascript">
             atOptions = {
                 'key' : '3043529ca5c93c815dd6d1dd6665778c',
@@ -118,18 +125,10 @@
         </div>
 
         <!-- Native Ad -->
-        <div class="ad-container">
-            <div class="ad-label">ADVERTISEMENT</div>
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+        <div class="native-ad-container">
+            <div class="ad-label">Recommended</div>
+            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
 
         <!-- More game cards can be added here -->
@@ -157,11 +156,19 @@
         
         // Preload ad scripts for better performance
         window.addEventListener('load', function() {
-            var preloadScript = document.createElement('link');
-            preloadScript.rel = 'preload';
-            preloadScript.as = 'script';
-            preloadScript.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            document.head.appendChild(preloadScript);
+            // Preload popunder
+            var preloadScript1 = document.createElement('link');
+            preloadScript1.rel = 'preload';
+            preloadScript1.as = 'script';
+            preloadScript1.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+            document.head.appendChild(preloadScript1);
+            
+            // Preload native ad
+            var preloadScript2 = document.createElement('link');
+            preloadScript2.rel = 'preload';
+            preloadScript2.as = 'script';
+            preloadScript2.href = '//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js';
+            document.head.appendChild(preloadScript2);
         });
     </script>
 </body>

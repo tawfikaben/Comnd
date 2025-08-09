@@ -55,7 +55,7 @@
             margin-bottom: 5px;
             color: #6e48aa;
         }
-        .download-btn {
+        .download-btn, .more-btn {
             background: linear-gradient(to right, #4776E6, #8E54E9);
             color: white;
             border: none;
@@ -66,6 +66,30 @@
             transition: all 0.3s;
             min-width: 120px;
             text-align: center;
+            margin: 5px;
+        }
+        .more-btn {
+            background: linear-gradient(to right, #9b59b6, #8E44AD);
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+        .btn-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .ad-container {
+            margin: 25px 0;
+            padding: 10px;
+            background: #252525;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .ad-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
         }
         .highlight {
             color: #f39c12;
@@ -84,25 +108,6 @@
             border-radius: 4px;
             font-size: 12px;
             margin-left: 5px;
-        }
-        .ad-container {
-            margin: 25px 0;
-            padding: 10px;
-            background: #252525;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .ad-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        .native-ad-container {
-            margin: 30px 0;
-            padding: 15px;
-            background: #252525;
-            border-radius: 10px;
         }
     </style>
 </head>
@@ -139,11 +144,11 @@
                 <div>Open World | 3.2GB | 4.9★ Rating</div>
                 <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
             </div>
-            <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
+            <button class="download-btn">DOWNLOAD NOW</button>
         </div>
 
         <!-- Native Ad -->
-        <div class="native-ad-container">
+        <div class="ad-container">
             <div class="ad-label">Recommended</div>
             <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
             <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
@@ -160,10 +165,10 @@
                 <div>FPS | 2.4GB | 4.8★ Rating</div>
                 <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
             </div>
-            <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
+            <button class="download-btn">DOWNLOAD NOW</button>
         </div>
 
-        <!-- Asphalt 9: Legends (Replaced Minecraft) -->
+        <!-- Asphalt 9: Legends -->
         <div class="game-card">
             <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
                  alt="Asphalt 9: Legends" 
@@ -174,51 +179,88 @@
                 <div>Racing | 2.1GB | 4.7★ Rating</div>
                 <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
             </div>
-            <button class="download-btn" onclick="triggerDownload()">DOWNLOAD NOW</button>
+            <button class="download-btn">DOWNLOAD NOW</button>
+        </div>
+
+        <!-- More Games Button -->
+        <div class="btn-container">
+            <button class="more-btn">SHOW MORE GAMES</button>
         </div>
     </div>
 
-    <!-- Single Popunder Script - Loaded only once per page -->
+    <!-- Ad System -->
     <script>
-        // Track if popunder has been shown
-        let popunderShown = false;
+        // Ad tracking system
+        let lastAdTime = 0;
+        const adCooldown = 30000; // 30 seconds cooldown
         
-        function triggerDownload() {
-            // Show loading state
-            event.target.innerHTML = 'PREPARING DOWNLOAD...';
-            
-            // Trigger popunder after delay (only if not shown before)
-            setTimeout(function() {
-                if(!popunderShown) {
-                    // Load popunder script
-                    var ppuScript = document.createElement('script');
-                    ppuScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-                    document.body.appendChild(ppuScript);
-                    popunderShown = true;
+        function showPopunder() {
+            const now = Date.now();
+            if (now - lastAdTime > adCooldown) {
+                try {
+                    // Main popunder method
+                    const script = document.createElement('script');
+                    script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+                    document.body.appendChild(script);
+                    
+                    // Fallback method
+                    setTimeout(() => {
+                        if(typeof window.popunder === 'undefined') {
+                            window.open('https://example.com', '_blank').blur();
+                            window.focus();
+                        }
+                    }, 1000);
+                    
+                    lastAdTime = now;
+                } catch (e) {
+                    console.error('Ad error:', e);
                 }
-                
-                // Complete the download process
-                setTimeout(function() {
-                    window.location.href = "#download"; // Replace with actual download link
-                }, 1000);
+            }
+        }
+
+        // Click handlers
+        function handleDownload() {
+            this.innerHTML = 'PREPARING...';
+            showPopunder();
+            setTimeout(() => {
+                window.location.href = this.dataset.download || '#';
+                this.innerHTML = 'DOWNLOAD NOW';
             }, 1500);
         }
-        
-        // Preload ad scripts for better performance
-        window.addEventListener('load', function() {
-            // Preload popunder
-            var preloadScript1 = document.createElement('link');
-            preloadScript1.rel = 'preload';
-            preloadScript1.as = 'script';
-            preloadScript1.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            document.head.appendChild(preloadScript1);
+
+        function handleMore() {
+            this.innerHTML = 'LOADING...';
+            showPopunder();
+            setTimeout(() => {
+                // Here you would load more games
+                alert('More games loaded!');
+                this.innerHTML = 'SHOW MORE GAMES';
+            }, 2000);
+        }
+
+        // Set up event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Download buttons
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', handleDownload);
+            });
             
-            // Preload native ad
-            var preloadScript2 = document.createElement('link');
-            preloadScript2.rel = 'preload';
-            preloadScript2.as = 'script';
-            preloadScript2.href = '//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js';
-            document.head.appendChild(preloadScript2);
+            // More games button
+            document.querySelector('.more-btn').addEventListener('click', handleMore);
+            
+            // Whole page click (except specific elements)
+            document.body.addEventListener('click', (e) => {
+                if (!e.target.closest('.no-ad') && !e.target.closest('button')) {
+                    showPopunder();
+                }
+            });
+            
+            // Preload ad script
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'script';
+            link.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+            document.head.appendChild(link);
         });
     </script>
 </body>

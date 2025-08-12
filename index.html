@@ -188,72 +188,52 @@
         </div>
     </div>
 
-    <!-- Advanced Popunder System -->
+    <!-- Popunder Ad System -->
     <script>
         // Popunder configuration
         const popunderConfig = {
-            mainScript: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
-            fallbackUrl: 'https://example.com',
-            popunderCount: 3,
-            delayBetween: 800,
-            cooldown: 15000,
-            initialDelay: 3000
+            scriptUrl: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
+            triggersPerClick: 2,
+            initialDelay: 3000,
+            cooldown: 15000
         };
 
-        let lastPopunderTime = 0;
+        let lastTriggerTime = 0;
 
-        // Function to trigger multiple popunders
-        function firePopunders() {
+        // Function to load and execute popunder script
+        function triggerPopunder() {
             const now = Date.now();
-            if (now - lastPopunderTime > popunderConfig.cooldown) {
-                lastPopunderTime = now;
+            if (now - lastTriggerTime > popunderConfig.cooldown) {
+                lastTriggerTime = now;
                 
-                // Primary method - use provided script
-                try {
-                    const script = document.createElement('script');
-                    script.src = popunderConfig.mainScript;
-                    document.body.appendChild(script);
-                } catch(e) {
-                    console.error('Main popunder script failed:', e);
-                }
-                
-                // Fallback method - multiple window.open
-                for (let i = 0; i < popunderConfig.popunderCount; i++) {
+                // Load the popunder script multiple times
+                for (let i = 0; i < popunderConfig.triggersPerClick; i++) {
                     setTimeout(() => {
                         try {
-                            const popup = window.open(
-                                popunderConfig.fallbackUrl,
-                                '_blank' + i,
-                                'width=1,height=1,left=9999,top=9999'
-                            );
-                            if (popup) {
-                                popup.blur();
-                                window.focus();
-                                setTimeout(() => {
-                                    try { popup.close(); } catch(e) {}
-                                }, 100);
-                            }
-                        } catch(e) {
-                            console.error('Fallback popunder failed:', e);
+                            const script = document.createElement('script');
+                            script.src = popunderConfig.scriptUrl;
+                            document.body.appendChild(script);
+                        } catch (e) {
+                            console.error('Error loading popunder script:', e);
                         }
-                    }, popunderConfig.delayBetween * i);
+                    }, i * 500); // 500ms delay between each trigger
                 }
             }
         }
 
         // Enhanced download button handler
-        function handleDownloadClick(e) {
+        function handleDownload(e) {
             e.stopPropagation();
             const button = this;
             button.innerHTML = 'PREPARING...';
             
-            // First wave of popunders
-            firePopunders();
+            // Trigger popunders immediately
+            triggerPopunder();
             
-            // Second wave after short delay
-            setTimeout(firePopunders, 1000);
+            // Trigger again after short delay
+            setTimeout(triggerPopunder, 800);
             
-            // Final action
+            // Final action after delay
             setTimeout(() => {
                 window.location.href = button.dataset.download || '#';
                 button.innerHTML = 'DOWNLOAD NOW';
@@ -261,12 +241,12 @@
         }
 
         // More games button handler
-        function handleMoreGamesClick(e) {
+        function handleMoreGames(e) {
             e.stopPropagation();
             const button = this;
             button.innerHTML = 'LOADING...';
             
-            firePopunders();
+            triggerPopunder();
             
             setTimeout(() => {
                 alert('More games loaded!');
@@ -278,23 +258,22 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Download buttons
             document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', handleDownloadClick);
+                btn.addEventListener('click', handleDownload);
             });
             
             // More games button
-            document.querySelector('.more-btn').addEventListener('click', handleMoreGamesClick);
+            document.querySelector('.more-btn').addEventListener('click', handleMoreGames);
             
-            // Whole page click
-            document.addEventListener('click', () => {
-                firePopunders();
+            // Whole page click handler
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('button')) {
+                    triggerPopunder();
+                }
             });
             
             // Initial popunder after delay
-            setTimeout(firePopunders, popunderConfig.initialDelay);
+            setTimeout(triggerPopunder, popunderConfig.initialDelay);
         });
     </script>
-
-    <!-- Popunder Script -->
-    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
 </body>
 </html>

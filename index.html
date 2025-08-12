@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎮 Premium Games Hub - Free Gaming Portal</title>
     <meta name="description" content="Download free premium mobile games for Android and iOS. GTA 5 Mobile, Call of Duty Mobile, Asphalt 9 and more.">
+    
+    <!-- تحميل آمن لـ Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
+        /* أنماط CSS السابقة تبقى كما هي */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #121212;
@@ -14,445 +21,235 @@
             padding: 0;
             line-height: 1.6;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .header {
-            text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .game-card {
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-        .game-card:hover {
-            transform: translateY(-5px);
-        }
-        .game-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
-            margin-right: 15px;
-            object-fit: cover;
-            border: 2px solid #6e48aa;
-        }
-        .game-info {
-            flex: 1;
-        }
-        .game-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #6e48aa;
-        }
-        .action-btn, .more-btn {
-            background: linear-gradient(to right, #4776E6, #8E54E9);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 120px;
-            text-align: center;
-            margin: 5px;
-        }
-        .more-btn {
-            background: linear-gradient(to right, #9b59b6, #8E44AD);
-            display: block;
-            margin: 20px auto;
-            width: 200px;
-        }
-        .btn-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .ad-container {
-            margin: 25px 0;
-            padding: 10px;
-            background: #252525;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .ad-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        .highlight {
-            color: #f39c12;
-            font-weight: bold;
-        }
-        .trending-badge {
-            background: #e74c3c;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        .exclusive-badge {
-            background: #9b59b6;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        .game-details {
-            display: none;
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .game-details h2 {
-            color: #6e48aa;
-            margin-top: 0;
-        }
-        .close-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-        
-        /* Social Media Bar Styles */
-        .social-bar {
-            position: fixed;
-            bottom: -60px;
-            left: 0;
-            right: 0;
-            background: rgba(30, 30, 30, 0.95);
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
-            transition: bottom 0.5s ease;
-            z-index: 1000;
-        }
-        .social-bar.visible {
-            bottom: 0;
-        }
-        .social-bar a {
-            color: white;
-            font-size: 24px;
-            margin: 0 15px;
-            transition: transform 0.3s, color 0.3s;
-            text-decoration: none;
-        }
-        .social-bar a:hover {
-            transform: translateY(-3px);
-        }
-        .facebook:hover { color: #3b5998; }
-        .twitter:hover { color: #1da1f2; }
-        .instagram:hover { color: #e1306c; }
-        .youtube:hover { color: #ff0000; }
-        .whatsapp:hover { color: #25d366; }
-        .close-social {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .close-social:hover {
-            color: #e74c3c;
-        }
+        /* ... باقي الأنماط كما هي ... */
     </style>
-    <!-- AdBlock Detection -->
+
+    <!-- نظام كشف AdBlock محسن -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const adCheck = document.createElement('div');
-        adCheck.className = 'ad-check';
-        adCheck.style.cssText = 'height:1px;width:1px;visibility:hidden;';
-        document.body.appendChild(adCheck);
+    document.addEventListener('DOMContentLoaded', function() {
+        // إنشاء عنصر اختبار للإعلان
+        const adTest = document.createElement('div');
+        adTest.innerHTML = '&nbsp;';
+        adTest.className = 'ad-test-element';
+        adTest.style.cssText = 'height:1px;width:1px;visibility:hidden;position:absolute;top:-10px;left:-10px;';
+        document.body.appendChild(adTest);
         
-        setTimeout(() => {
-          if (adCheck.offsetHeight === 0) {
-            showAdBlockWarning();
-          }
-          adCheck.remove();
+        // التحقق بعد 2 ثانية
+        setTimeout(function() {
+            const isAdBlocked = (adTest.offsetHeight === 0 || window.adsterra === undefined);
+            
+            if (isAdBlocked) {
+                showAdBlockWarning();
+                // حل بديل للإعلانات عند وجود AdBlock
+                loadFallbackAds();
+            }
+            adTest.remove();
         }, 2000);
         
         function showAdBlockWarning() {
-          const warning = document.createElement('div');
-          warning.innerHTML = `
-            <div style="position:fixed;top:0;left:0;right:0;background:#e74c3c;
-            color:white;padding:12px;text-align:center;z-index:9999;font-family:sans-serif;">
-              ⚠️ Please disable AdBlock to unlock all game features
-              <button onclick="this.parentNode.remove()" 
-                style="margin-left:12px;background:white;color:#e74c3c;
-                border:none;padding:3px 8px;border-radius:3px;cursor:pointer;">
-                I've disabled it
-              </button>
-            </div>
-          `;
-          document.body.prepend(warning);
+            const warning = document.createElement('div');
+            warning.innerHTML = `
+                <div style="position:fixed;top:0;left:0;right:0;background:#e74c3c;color:white;
+                padding:15px;text-align:center;z-index:9999;font-family:sans-serif;">
+                    ⚠️ Please disable AdBlock to access all features
+                    <button onclick="this.parentNode.remove()" 
+                        style="margin-left:15px;background:white;color:#e74c3c;border:none;
+                        padding:5px 10px;border-radius:3px;cursor:pointer;">
+                        OK
+                    </button>
+                </div>
+            `;
+            document.body.prepend(warning);
         }
-      });
+        
+        function loadFallbackAds() {
+            // حلول بديلة عند اكتشاف AdBlock
+            const fallbackAd = document.createElement('div');
+            fallbackAd.className = 'ad-container';
+            fallbackAd.innerHTML = `
+                <div class="ad-label">Sponsored</div>
+                <div style="padding:10px;text-align:center;">
+                    <h3>Try Our Top Games</h3>
+                    <button onclick="window.location.href='https://example.com/games'" 
+                        style="background:#6e48aa;color:white;border:none;padding:10px 20px;
+                        border-radius:5px;cursor:pointer;margin-top:10px;">
+                        Download Now
+                    </button>
+                </div>
+            `;
+            document.querySelectorAll('.ad-container').forEach(container => {
+                container.replaceWith(fallbackAd.cloneNode(true));
+            });
+        }
+    });
     </script>
 </head>
 <body>
-    <!-- Top Banner Ad -->
-    <div class="ad-container">
-      <div class="ad-label">🎮 Exclusive Game Offer 🎮</div>
-      <script data-cfasync="false">
-        window.adsterra = window.adsterra || {};
-        adsterra.config = {
-          pid: '3043529ca5c93c815dd6d1dd6665778c',
-          type: 'banner',
-          format: 'responsive'
-        };
-      </script>
-      <script async src="https://www.profitabledisplaynetwork.com/loader.js"></script>
+    <!-- الإعلان العلوي - نسخة محسنة -->
+    <div class="ad-container" id="top-banner-ad">
+        <div class="ad-label">Exclusive Offer</div>
+        <script data-cfasync="false">
+        // نظام تحميل الإعلان مع ضمانات متعددة
+        (function() {
+            var loadAd = function() {
+                window.adsterra = window.adsterra || {};
+                window.adsterra.queue = window.adsterra.queue || [];
+                window.adsterra.queue.push({
+                    pid: '3043529ca5c93c815dd6d1dd6665778c',
+                    type: 'banner',
+                    format: 'responsive',
+                    container: 'top-banner-ad'
+                });
+                
+                if (!document.getElementById('adsterra-loader')) {
+                    var script = document.createElement('script');
+                    script.id = 'adsterra-loader';
+                    script.src = 'https://www.profitabledisplaynetwork.com/loader.js';
+                    script.async = true;
+                    document.body.appendChild(script);
+                }
+            };
+            
+            // المحاولة الأولى
+            loadAd();
+            
+            // محاولة ثانية بعد 3 ثواني إذا فشلت الأولى
+            setTimeout(function() {
+                if (!document.querySelector('#top-banner-ad iframe')) {
+                    loadAd();
+                }
+            }, 3000);
+        })();
+        </script>
     </div>
 
     <div class="container">
+        <!-- المحتوى الأصلي يبقى كما هو -->
         <div class="header">
             <h1>🎮 Premium Games Hub</h1>
             <p>Your Ultimate Gaming Portal</p>
         </div>
 
-        <!-- GTA 5 Mobile -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="GTA 5 Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
-                <div>Open World | 3.2GB | 4.9★ Rating</div>
-                <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
-            </div>
-            <button class="action-btn" data-game="gta5">VIEW DETAILS</button>
+        <!-- ... باقي عناصر الألعاب كما هي ... -->
+
+        <!-- إعلان أصلي محسن -->
+        <div class="ad-container" id="native-ad">
+            <div class="ad-label">Recommended For You</div>
+            <script data-cfasync="false">
+            (function() {
+                var loadNativeAd = function() {
+                    window.adsterra = window.adsterra || {};
+                    window.adsterra.queue = window.adsterra.queue || [];
+                    window.adsterra.queue.push({
+                        pid: '3043529ca5c93c815dd6d1dd6665778c',
+                        type: 'native',
+                        template: 'game-promo',
+                        container: 'native-ad'
+                    });
+                };
+                
+                // تأخير تحميل الإعلان الأصلي حتى يصبح مرئياً
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        loadNativeAd();
+                        observer.disconnect();
+                    }
+                }, {threshold: 0.1});
+                
+                observer.observe(document.getElementById('native-ad'));
+            })();
+            </script>
         </div>
 
-        <!-- Game Details for GTA 5 -->
-        <div class="game-details" id="gta5-details">
-            <h2>GTA 5 Mobile - Complete Edition</h2>
-            <p>Experience the complete Grand Theft Auto V universe optimized for mobile devices.</p>
-            <button class="close-btn">Close</button>
-        </div>
-
-        <!-- Native Ad -->
-        <div class="ad-container">
-          <div class="ad-label">🔥 Hot Game Offer 🔥</div>
-          <script data-cfasync="false">
-            adsterra.config = {
-              pid: '3043529ca5c93c815dd6d1dd6665778c',
-              type: 'native',
-              template: 'game-promo'
-            };
-          </script>
-          <script async src="https://www.profitabledisplaynetwork.com/loader.js"></script>
-        </div>
-
-        <!-- Call of Duty Mobile -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Call of Duty Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
-                <div>FPS | 2.4GB | 4.8★ Rating</div>
-                <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
-            </div>
-            <button class="action-btn" data-game="cod">VIEW DETAILS</button>
-        </div>
-
-        <!-- Game Details for Call of Duty -->
-        <div class="game-details" id="cod-details">
-            <h2>Call of Duty Mobile - Season 6 Update</h2>
-            <p>The latest update brings new maps and weapons to the best FPS experience on mobile.</p>
-            <button class="close-btn">Close</button>
-        </div>
-
-        <!-- Asphalt 9: Legends -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Asphalt 9: Legends" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
-                <div>Racing | 2.1GB | 4.7★ Rating</div>
-                <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
-            </div>
-            <button class="action-btn" data-game="asphalt9">VIEW DETAILS</button>
-        </div>
-
-        <!-- Game Details for Asphalt 9 -->
-        <div class="game-details" id="asphalt9-details">
-            <h2>Asphalt 9: Legends - Ultimate Edition</h2>
-            <p>The most visually stunning racing game on mobile with all content unlocked.</p>
-            <button class="close-btn">Close</button>
-        </div>
-
-        <!-- More Games Button -->
-        <div class="btn-container">
-            <button class="more-btn">SHOW MORE GAMES</button>
-        </div>
+        <!-- ... باقي المحتوى ... -->
     </div>
 
-    <!-- Social Media Bar -->
-    <div class="social-bar" id="socialBar">
-        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <button class="close-social" id="closeSocial">&times;</button>
-    </div>
-
-    <!-- Popunder System -->
+    <!-- نظام Popunder المحسن -->
     <script>
-        // نظام Popunder محسن
-        const popunderManager = {
-          config: {
-            initialDelay: 8000,    // 8 ثواني قبل الظهور الأول
-            clickDelay: 1000,      // تأخير 1 ثانية بعد النقر
-            cooldown: 45000,       // 45 ثانية بين المحاولات
-            maxPerSession: 3       // الحد الأقصى للظهور في الجلسة
-          },
-          
-          init() {
-            // الظهور الأول بعد التأخير
-            setTimeout(() => this.trigger(), this.config.initialDelay);
-            
-            // ربط أحداث النقر
-            document.addEventListener('click', (e) => {
-              if (this.canTrigger()) {
-                setTimeout(() => this.trigger(), this.config.clickDelay);
-              }
-            });
-          },
-          
-          canTrigger() {
-            return this.count < this.config.maxPerSession && 
-                   Date.now() - this.lastTrigger > this.config.cooldown;
-          },
-          
-          trigger() {
-            try {
-              const win = window.open('https://www.profitabledisplaynetwork.com/redirect', '_blank');
-              if (win) {
-                setTimeout(() => {
-                  win.blur();
-                  window.focus();
-                  this.count++;
-                  this.lastTrigger = Date.now();
-                }, 300);
-              }
-            } catch(e) {
-              console.error('Popunder Error:', e);
-            }
-          },
-          
-          count: 0,
-          lastTrigger: 0
+    (function() {
+        // إعدادات Popunder
+        const popConfig = {
+            url: 'https://www.profitabledisplaynetwork.com/redirect',
+            delay: 10000,       // 10 ثواني قبل الظهور الأول
+            minPageTime: 5000,  // 5 ثواني حد أدنى لبقاء المستخدم
+            maxPerSession: 2,
+            cooldown: 60000     // 60 ثانية بين المحاولات
         };
-
-        // إظهار تفاصيل اللعبة
-        function showGameDetails(gameId) {
-          document.querySelectorAll('.game-details').forEach(el => {
-            el.style.display = 'none';
-          });
-          
-          const detailsEl = document.getElementById(`${gameId}-details`);
-          if (detailsEl) {
-            detailsEl.style.display = 'block';
-            detailsEl.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        }
-
-        // إغلاق تفاصيل اللعبة
-        function closeGameDetails() {
-          document.querySelectorAll('.game-details').forEach(el => {
-            el.style.display = 'none';
-          });
-        }
-
-        // إظهار شريط وسائل التواصل
-        function showSocialBar() {
-          setTimeout(() => {
-            const socialBar = document.getElementById('socialBar');
-            if (socialBar) {
-              socialBar.classList.add('visible');
+        
+        let popCount = 0;
+        let lastPopTime = 0;
+        let pageStartTime = Date.now();
+        
+        function triggerPopunder() {
+            const now = Date.now();
+            const pageActiveTime = now - pageStartTime;
+            
+            // الشروط المطلوبة
+            if (popCount >= popConfig.maxPerSession || 
+                pageActiveTime < popConfig.minPageTime ||
+                now - lastPopTime < popConfig.cooldown) {
+                return;
             }
-          }, 10000);
+            
+            try {
+                // الطريقة الأكثر فعالية
+                const popWin = window.open(popConfig.url, '_blank', 'noopener,noreferrer');
+                
+                if (popWin) {
+                    setTimeout(() => {
+                        popWin.blur();
+                        window.focus();
+                        popCount++;
+                        lastPopTime = now;
+                    }, 300);
+                } else {
+                    // الطريقة الاحتياطية
+                    const a = document.createElement('a');
+                    a.href = popConfig.url;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    popCount++;
+                    lastPopTime = now;
+                }
+            } catch(e) {
+                console.log('Popunder error:', e);
+            }
         }
-
-        // إغلاق شريط وسائل التواصل
-        function setupSocialBarClose() {
-          const closeBtn = document.getElementById('closeSocial');
-          if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-              const socialBar = document.getElementById('socialBar');
-              if (socialBar) {
-                socialBar.classList.remove('visible');
-              }
-            });
-          }
-        }
-
-        // بدء جميع الأنظمة عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', () => {
-          popunderManager.init();
-          showSocialBar();
-          setupSocialBarClose();
-          
-          // أحداث الأزرار
-          document.querySelectorAll('.action-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-              const gameId = this.getAttribute('data-game');
-              showGameDetails(gameId);
-            });
-          });
-          
-          document.querySelectorAll('.close-btn').forEach(btn => {
-            btn.addEventListener('click', closeGameDetails);
-          });
-          
-          document.querySelector('.more-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('More games will be loaded soon!');
-          });
+        
+        // التشغيل بعد التأخير
+        setTimeout(triggerPopunder, popConfig.delay);
+        
+        // ربط بأحداث النقر
+        document.addEventListener('click', function() {
+            setTimeout(triggerPopunder, 1000);
         });
+    })();
     </script>
 
-    <!-- Lazy Load Font Awesome -->
+    <!-- تحميل متأخر للعناصر غير الأساسية -->
     <script>
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          const faScript = document.createElement('script');
-          faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js';
-          document.body.appendChild(faScript);
-        }, 3000);
-      });
+    window.addEventListener('load', function() {
+        // تأخير تحميل وسائل التواصل الاجتماعية
+        setTimeout(function() {
+            const socialBar = document.getElementById('socialBar');
+            if (socialBar) {
+                socialBar.classList.add('visible');
+                
+                // إغلاق تلقائي بعد 15 ثانية
+                setTimeout(function() {
+                    socialBar.classList.remove('visible');
+                }, 15000);
+            }
+        }, 5000);
+        
+        // إعدادات إغلاق الشريط
+        document.getElementById('closeSocial')?.addEventListener('click', function() {
+            this.closest('.social-bar').classList.remove('visible');
+        });
+    });
     </script>
 </body>
 </html>

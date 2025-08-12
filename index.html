@@ -190,177 +190,200 @@
 
     <!-- Advanced Popunder System -->
     <script>
-        // Enhanced configuration
+        // Popunder Configuration
         const popunderConfig = {
             scriptUrl: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
-            behavior: {
+            settings: {
                 onLoad: {
                     enabled: true,
-                    delay: 5000,       // 5 seconds after page load
-                    count: 1           // Number of popunders
+                    delay: 8000,       // 8 seconds after page load
+                    count: 1
                 },
                 onClick: {
                     enabled: true,
-                    delay: 1000,       // 1s delay after click
-                    count: 1,           // Number of popunders per click
-                    cooldown: 30000     // 30 seconds between click triggers
+                    delay: 1000,
+                    count: 1,
+                    cooldown: 30000     // 30 seconds cooldown
                 },
                 onDownload: {
                     enabled: true,
-                    preDelay: 0,        // Immediate popunder before download
-                    postDelay: 1500,    // 1.5s delay popunder after download starts
-                    count: 1            // Number of popunders per trigger
+                    preDelay: 0,
+                    postDelay: 1500,
+                    count: 1
                 }
+            },
+            state: {
+                lastTrigger: 0,
+                scriptLoaded: false,
+                isTriggering: false
             }
         };
 
-        let lastClickTime = 0;
-        let scriptLoaded = false;
-        let popunderTriggered = false;
-
-        // Load popunder script
+        // Load Popunder Script
         function loadPopunderScript(callback) {
-            if (scriptLoaded) {
+            if (popunderConfig.state.scriptLoaded) {
                 if (callback) callback();
                 return;
             }
             
             const script = document.createElement('script');
             script.src = popunderConfig.scriptUrl;
+            script.async = true;
+            
             script.onload = function() {
-                scriptLoaded = true;
+                popunderConfig.state.scriptLoaded = true;
                 if (callback) callback();
             };
+            
             script.onerror = function() {
-                console.error('Failed to load popunder script');
+                console.error('Popunder script failed to load');
             };
+            
             document.body.appendChild(script);
         }
 
-        // Trigger popunder with count and delay
+        // Safe Popunder Trigger
         function triggerPopunder(count = 1, delayBetween = 500) {
-            if (popunderTriggered) return;
-            popunderTriggered = true;
+            const now = Date.now();
+            
+            // Prevent multiple triggers
+            if (popunderConfig.state.isTriggering || 
+                now - popunderConfig.state.lastTrigger < popunderConfig.settings.onClick.cooldown) {
+                return;
+            }
+            
+            popunderConfig.state.isTriggering = true;
+            popunderConfig.state.lastTrigger = now;
             
             loadPopunderScript(function() {
                 for (let i = 0; i < count; i++) {
                     setTimeout(function() {
-                        if (typeof window.popunder !== 'undefined') {
-                            window.popunder();
-                        } else {
-                            // Fallback method
-                            const win = window.open('about:blank', '_blank');
-                            if (win) {
-                                win.blur();
-                                window.focus();
-                                setTimeout(() => win.close(), 100);
+                        try {
+                            if (typeof window.popunder === 'function') {
+                                window.popunder();
+                            } else {
+                                // Fallback method
+                                const win = window.open('about:blank', '_blank');
+                                if (win) {
+                                    win.blur();
+                                    window.focus();
+                                    setTimeout(() => win.close(), 100);
+                                }
                             }
+                        } catch (e) {
+                            console.error('Popunder error:', e);
                         }
                     }, i * delayBetween);
                 }
                 
-                // Reset trigger flag after all popunders
+                // Reset triggering state
                 setTimeout(() => {
-                    popunderTriggered = false;
+                    popunderConfig.state.isTriggering = false;
                 }, count * delayBetween + 1000);
             });
         }
 
-        // Handle download buttons
+        // Handle Download Buttons
         function handleDownload(e) {
             e.preventDefault();
             e.stopPropagation();
             
             const button = this;
             const originalText = button.innerHTML;
-            button.innerHTML = 'PREPARING DOWNLOAD...';
+            const downloadUrl = button.dataset.download || '#';
+            
+            // Update button state
+            button.innerHTML = 'PREPARING...';
             button.disabled = true;
             
             // Pre-download popunder
-            if (popunderConfig.behavior.onDownload.enabled) {
+            if (popunderConfig.settings.onDownload.enabled) {
                 triggerPopunder(
-                    popunderConfig.behavior.onDownload.count,
+                    popunderConfig.settings.onDownload.count,
                     300
                 );
             }
             
-            // Post-download popunder
+            // Process download after delay
             setTimeout(() => {
-                if (popunderConfig.behavior.onDownload.enabled) {
+                // Post-download popunder
+                if (popunderConfig.settings.onDownload.enabled) {
                     triggerPopunder(
-                        popunderConfig.behavior.onDownload.count,
+                        popunderConfig.settings.onDownload.count,
                         300
                     );
                 }
                 
                 // Start download
-                const downloadUrl = button.dataset.download || '#';
                 if (downloadUrl !== '#') {
                     window.location.href = downloadUrl;
                 }
                 
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }, popunderConfig.behavior.onDownload.postDelay);
+                // Restore button
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 2000);
+                
+            }, popunderConfig.settings.onDownload.postDelay);
         }
 
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            // On load trigger
-            if (popunderConfig.behavior.onLoad.enabled) {
+        // Initialize Popunder System
+        function initPopunderSystem() {
+            // On Load Trigger
+            if (popunderConfig.settings.onLoad.enabled) {
                 setTimeout(() => {
                     triggerPopunder(
-                        popunderConfig.behavior.onLoad.count,
+                        popunderConfig.settings.onLoad.count,
                         500
                     );
-                }, popunderConfig.behavior.onLoad.delay);
+                }, popunderConfig.settings.onLoad.delay);
             }
-
-            // Click trigger
-            if (popunderConfig.behavior.onClick.enabled) {
+            
+            // Click Trigger
+            if (popunderConfig.settings.onClick.enabled) {
                 document.addEventListener('click', function(e) {
-                    // Ignore clicks on download buttons (handled separately)
-                    if (e.target.closest('.download-btn') || e.target.closest('.more-btn')) {
-                        return;
-                    }
+                    // Skip if clicked on buttons (handled separately)
+                    if (e.target.closest('button')) return;
                     
-                    const now = Date.now();
-                    if (now - lastClickTime > popunderConfig.behavior.onClick.cooldown) {
-                        lastClickTime = now;
-                        
-                        setTimeout(() => {
-                            triggerPopunder(
-                                popunderConfig.behavior.onClick.count,
-                                popunderConfig.behavior.onClick.delay
-                            );
-                        }, 200);
-                    }
+                    setTimeout(() => {
+                        triggerPopunder(
+                            popunderConfig.settings.onClick.count,
+                            popunderConfig.settings.onClick.delay
+                        );
+                    }, 200);
                 });
             }
-
-            // Download buttons
+            
+            // Download Buttons
             document.querySelectorAll('.download-btn').forEach(btn => {
                 btn.addEventListener('click', handleDownload);
             });
-
-            // More games button
+            
+            // More Games Button
             document.querySelector('.more-btn').addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                const originalText = this.innerHTML;
-                this.innerHTML = 'LOADING...';
-                this.disabled = true;
+                const button = this;
+                const originalText = button.innerHTML;
+                
+                button.innerHTML = 'LOADING...';
+                button.disabled = true;
                 
                 triggerPopunder(1, 500);
                 
                 setTimeout(() => {
+                    // Simulate content loading
                     alert('More games loaded!');
-                    this.innerHTML = originalText;
-                    this.disabled = false;
+                    button.innerHTML = originalText;
+                    button.disabled = false;
                 }, 1500);
             });
-        });
+        }
+
+        // Start the system when DOM is ready
+        document.addEventListener('DOMContentLoaded', initPopunderSystem);
     </script>
 </body>
 </html>

@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Premium Games Hub - Free Downloads</title>
+    <title>🎮 Premium Games Download</title>
     <style>
-        /* Basic styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #121212;
@@ -110,66 +109,9 @@
             font-size: 12px;
             margin-left: 5px;
         }
-        #adBlockerWarning {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #e74c3c;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            z-index: 9999;
-        }
-        #exitIntentOverlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 9998;
-            justify-content: center;
-            align-items: center;
-        }
-        .exit-ad {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            color: black;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
-    <!-- Ad Blocker Warning -->
-    <div id="adBlockerWarning">
-        <strong>WARNING:</strong> We've detected you're using an ad blocker. Please disable it to access our free content.
-        <button onclick="document.getElementById('adBlockerWarning').style.display='none'">X</button>
-    </div>
-
-    <!-- Exit Intent Overlay -->
-    <div id="exitIntentOverlay">
-        <div class="exit-ad">
-            <h3>Wait! Before you go...</h3>
-            <p>Check out these exclusive offers just for you!</p>
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-            <button onclick="document.getElementById('exitIntentOverlay').style.display='none'">Close</button>
-        </div>
-    </div>
-
     <!-- Top Banner Ad -->
     <div class="ad-container">
         <div class="ad-label">Advertisement</div>
@@ -246,194 +188,202 @@
         </div>
     </div>
 
-    <!-- Aggressive Ad Monetization System -->
+    <!-- Advanced Popunder System -->
     <script>
-        // Ad Blocker Detection
-        function detectAdBlock() {
-            return new Promise((resolve) => {
-                const testAd = document.createElement('div');
-                testAd.innerHTML = '&nbsp;';
-                testAd.className = 'adsbox';
-                document.body.appendChild(testAd);
-                
-                setTimeout(() => {
-                    if (testAd.offsetHeight === 0) {
-                        document.getElementById('adBlockerWarning').style.display = 'block';
-                        resolve(true);
-                    } else {
-                        resolve(false);
-                    }
-                    document.body.removeChild(testAd);
-                }, 100);
-            });
-        }
-
-        // Advanced Popunder System
-        const adSystem = {
-            config: {
-                popunderScript: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
-                popunderFrequency: 15000, // 15 seconds between popunders
-                maxPopunders: 3,
-                exitIntentEnabled: true,
-                scrollDepthTriggers: [30, 60, 90] // percentages
-            },
-            state: {
-                popunderCount: 0,
-                lastPopunderTime: 0,
-                scriptLoaded: false,
-                mousePosition: { y: 0 }
-            },
-            
-            // Initialize the system
-            init: function() {
-                this.loadPopunderScript();
-                this.setupEventListeners();
-                this.startPopunderInterval();
-                this.setupExitIntent();
-                this.setupScrollTriggers();
-                
-                // Initial popunder after 5 seconds
-                setTimeout(() => this.triggerPopunder(), 5000);
-                
-                // Check for ad blocker
-                detectAdBlock().then((isBlocked) => {
-                    if (isBlocked) {
-                        this.increaseAdFrequency();
-                    }
-                });
-            },
-            
-            // Load the popunder script
-            loadPopunderScript: function() {
-                const script = document.createElement('script');
-                script.src = this.config.popunderScript;
-                script.async = true;
-                script.onload = () => this.state.scriptLoaded = true;
-                script.onerror = () => console.error('Popunder script failed to load');
-                document.body.appendChild(script);
-            },
-            
-            // Setup event listeners
-            setupEventListeners: function() {
-                // Click events
-                document.addEventListener('click', (e) => {
-                    if (!e.target.closest('button')) {
-                        setTimeout(() => this.triggerPopunder(), 500);
-                    }
-                });
-                
-                // Download buttons
-                document.querySelectorAll('.download-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        this.handleDownload(btn);
-                    });
-                });
-                
-                // More games button
-                document.querySelector('.more-btn').addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.triggerPopunder(2);
-                    setTimeout(() => alert('More games loaded!'), 1000);
-                });
-                
-                // Mouse movement for exit intent
-                document.addEventListener('mousemove', (e) => {
-                    this.state.mousePosition.y = e.clientY;
-                });
-            },
-            
-            // Setup exit intent detection
-            setupExitIntent: function() {
-                if (!this.config.exitIntentEnabled) return;
-                
-                document.addEventListener('mouseout', (e) => {
-                    if (!e.relatedTarget && e.clientY < 50) {
-                        document.getElementById('exitIntentOverlay').style.display = 'flex';
-                        this.triggerPopunder(2);
-                    }
-                });
-            },
-            
-            // Setup scroll depth triggers
-            setupScrollTriggers: function() {
-                window.addEventListener('scroll', () => {
-                    const scrollDepth = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-                    this.config.scrollDepthTriggers.forEach(threshold => {
-                        if (scrollDepth > threshold) {
-                            this.triggerPopunder();
-                        }
-                    });
-                });
-            },
-            
-            // Start periodic popunder interval
-            startPopunderInterval: function() {
-                setInterval(() => {
-                    if (this.state.popunderCount < this.config.maxPopunders) {
-                        this.triggerPopunder();
-                    }
-                }, this.config.popunderFrequency);
-            },
-            
-            // Trigger popunder with safety checks
-            triggerPopunder: function(count = 1) {
-                const now = Date.now();
-                if (now - this.state.lastPopunderTime < 5000) return; // 5 second cooldown
-                
-                this.state.lastPopunderTime = now;
-                this.state.popunderCount += count;
-                
-                if (this.state.scriptLoaded && typeof window.popunder === 'function') {
-                    for (let i = 0; i < count; i++) {
-                        setTimeout(() => window.popunder(), i * 500);
-                    }
-                } else {
-                    // Fallback method
-                    for (let i = 0; i < count; i++) {
-                        setTimeout(() => {
-                            const win = window.open('about:blank', '_blank');
-                            if (win) {
-                                win.blur();
-                                window.focus();
-                                setTimeout(() => win.close(), 100);
-                            }
-                        }, i * 500);
-                    }
+        // Popunder Configuration
+        const popunderConfig = {
+            scriptUrl: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
+            settings: {
+                onLoad: {
+                    enabled: true,
+                    delay: 8000,       // 8 seconds after page load
+                    count: 1
+                },
+                onClick: {
+                    enabled: true,
+                    delay: 1000,
+                    count: 1,
+                    cooldown: 30000     // 30 seconds cooldown
+                },
+                onDownload: {
+                    enabled: true,
+                    preDelay: 0,
+                    postDelay: 1500,
+                    count: 1
                 }
             },
-            
-            // Handle download button clicks
-            handleDownload: function(button) {
-                const originalText = button.innerHTML;
-                button.innerHTML = 'PREPARING DOWNLOAD...';
-                button.disabled = true;
-                
-                // Trigger popunders around download
-                this.triggerPopunder(2);
-                
-                setTimeout(() => {
-                    const downloadUrl = button.dataset.download || '#';
-                    if (downloadUrl !== '#') {
-                        window.location.href = downloadUrl;
-                    }
-                    
-                    setTimeout(() => {
-                        button.innerHTML = originalText;
-                        button.disabled = false;
-                    }, 2000);
-                }, 1500);
-            },
-            
-            // Increase ad frequency if ad blocker detected
-            increaseAdFrequency: function() {
-                this.config.popunderFrequency = 8000; // Reduce to 8 seconds
-                this.config.maxPopunders = 5; // Increase max popunders
+            state: {
+                lastTrigger: 0,
+                scriptLoaded: false,
+                isTriggering: false
             }
         };
 
-        // Initialize the ad system when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => adSystem.init());
+        // Load Popunder Script
+        function loadPopunderScript(callback) {
+            if (popunderConfig.state.scriptLoaded) {
+                if (callback) callback();
+                return;
+            }
+            
+            const script = document.createElement('script');
+            script.src = popunderConfig.scriptUrl;
+            script.async = true;
+            
+            script.onload = function() {
+                popunderConfig.state.scriptLoaded = true;
+                if (callback) callback();
+            };
+            
+            script.onerror = function() {
+                console.error('Popunder script failed to load');
+            };
+            
+            document.body.appendChild(script);
+        }
+
+        // Safe Popunder Trigger
+        function triggerPopunder(count = 1, delayBetween = 500) {
+            const now = Date.now();
+            
+            // Prevent multiple triggers
+            if (popunderConfig.state.isTriggering || 
+                now - popunderConfig.state.lastTrigger < popunderConfig.settings.onClick.cooldown) {
+                return;
+            }
+            
+            popunderConfig.state.isTriggering = true;
+            popunderConfig.state.lastTrigger = now;
+            
+            loadPopunderScript(function() {
+                for (let i = 0; i < count; i++) {
+                    setTimeout(function() {
+                        try {
+                            if (typeof window.popunder === 'function') {
+                                window.popunder();
+                            } else {
+                                // Fallback method
+                                const win = window.open('about:blank', '_blank');
+                                if (win) {
+                                    win.blur();
+                                    window.focus();
+                                    setTimeout(() => win.close(), 100);
+                                }
+                            }
+                        } catch (e) {
+                            console.error('Popunder error:', e);
+                        }
+                    }, i * delayBetween);
+                }
+                
+                // Reset triggering state
+                setTimeout(() => {
+                    popunderConfig.state.isTriggering = false;
+                }, count * delayBetween + 1000);
+            });
+        }
+
+        // Handle Download Buttons
+        function handleDownload(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const button = this;
+            const originalText = button.innerHTML;
+            const downloadUrl = button.dataset.download || '#';
+            
+            // Update button state
+            button.innerHTML = 'PREPARING...';
+            button.disabled = true;
+            
+            // Pre-download popunder
+            if (popunderConfig.settings.onDownload.enabled) {
+                triggerPopunder(
+                    popunderConfig.settings.onDownload.count,
+                    300
+                );
+            }
+            
+            // Process download after delay
+            setTimeout(() => {
+                // Post-download popunder
+                if (popunderConfig.settings.onDownload.enabled) {
+                    triggerPopunder(
+                        popunderConfig.settings.onDownload.count,
+                        300
+                    );
+                }
+                
+                // Start download
+                if (downloadUrl !== '#') {
+                    window.location.href = downloadUrl;
+                }
+                
+                // Restore button
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 2000);
+                
+            }, popunderConfig.settings.onDownload.postDelay);
+        }
+
+        // Initialize Popunder System
+        function initPopunderSystem() {
+            // On Load Trigger
+            if (popunderConfig.settings.onLoad.enabled) {
+                setTimeout(() => {
+                    triggerPopunder(
+                        popunderConfig.settings.onLoad.count,
+                        500
+                    );
+                }, popunderConfig.settings.onLoad.delay);
+            }
+            
+            // Click Trigger
+            if (popunderConfig.settings.onClick.enabled) {
+                document.addEventListener('click', function(e) {
+                    // Skip if clicked on buttons (handled separately)
+                    if (e.target.closest('button')) return;
+                    
+                    setTimeout(() => {
+                        triggerPopunder(
+                            popunderConfig.settings.onClick.count,
+                            popunderConfig.settings.onClick.delay
+                        );
+                    }, 200);
+                });
+            }
+            
+            // Download Buttons
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', handleDownload);
+            });
+            
+            // More Games Button
+            document.querySelector('.more-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const button = this;
+                const originalText = button.innerHTML;
+                
+                button.innerHTML = 'LOADING...';
+                button.disabled = true;
+                
+                triggerPopunder(1, 500);
+                
+                setTimeout(() => {
+                    // Simulate content loading
+                    alert('More games loaded!');
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                }, 1500);
+            });
+        }
+
+        // Start the system when DOM is ready
+        document.addEventListener('DOMContentLoaded', initPopunderSystem);
     </script>
 </body>
 </html>

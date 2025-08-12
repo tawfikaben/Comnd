@@ -110,9 +110,6 @@
             margin-left: 5px;
         }
     </style>
-    
-    <!-- Preload popunder script for better performance -->
-    <link rel="preload" href="//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js" as="script">
 </head>
 <body>
     <!-- Top Banner Ad -->
@@ -147,7 +144,7 @@
                 <div>Open World | 3.2GB | 4.9★ Rating</div>
                 <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
             </div>
-            <button class="download-btn">DOWNLOAD NOW</button>
+            <button class="download-btn" data-download="https://example.com/download/gta5">DOWNLOAD NOW</button>
         </div>
 
         <!-- Native Ad -->
@@ -168,7 +165,7 @@
                 <div>FPS | 2.4GB | 4.8★ Rating</div>
                 <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
             </div>
-            <button class="download-btn">DOWNLOAD NOW</button>
+            <button class="download-btn" data-download="https://example.com/download/cod">DOWNLOAD NOW</button>
         </div>
 
         <!-- Asphalt 9: Legends -->
@@ -182,7 +179,7 @@
                 <div>Racing | 2.1GB | 4.7★ Rating</div>
                 <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
             </div>
-            <button class="download-btn">DOWNLOAD NOW</button>
+            <button class="download-btn" data-download="https://example.com/download/asphalt9">DOWNLOAD NOW</button>
         </div>
 
         <!-- More Games Button -->
@@ -199,30 +196,31 @@
             behavior: {
                 onLoad: {
                     enabled: true,
-                    delay: 3000,       // 3 seconds after page load
+                    delay: 5000,       // 5 seconds after page load
                     count: 1           // Number of popunders
                 },
                 onClick: {
                     enabled: true,
-                    delay: 500,        // 0.5s delay after click
-                    count: 2,          // Number of popunders per click
-                    cooldown: 10000    // 10 seconds between click triggers
+                    delay: 1000,       // 1s delay after click
+                    count: 1,           // Number of popunders per click
+                    cooldown: 30000     // 30 seconds between click triggers
                 },
                 onDownload: {
                     enabled: true,
-                    preDelay: 0,       // Immediate popunder before download
-                    postDelay: 800,    // 0.8s delay popunder after download starts
-                    count: 2          // Number of popunders per trigger
+                    preDelay: 0,        // Immediate popunder before download
+                    postDelay: 1500,    // 1.5s delay popunder after download starts
+                    count: 1            // Number of popunders per trigger
                 }
             }
         };
 
         let lastClickTime = 0;
         let scriptLoaded = false;
+        let popunderTriggered = false;
 
         // Load popunder script
         function loadPopunderScript(callback) {
-            if (scriptLoaded && typeof window.popunder !== 'undefined') {
+            if (scriptLoaded) {
                 if (callback) callback();
                 return;
             }
@@ -233,11 +231,17 @@
                 scriptLoaded = true;
                 if (callback) callback();
             };
+            script.onerror = function() {
+                console.error('Failed to load popunder script');
+            };
             document.body.appendChild(script);
         }
 
         // Trigger popunder with count and delay
         function triggerPopunder(count = 1, delayBetween = 500) {
+            if (popunderTriggered) return;
+            popunderTriggered = true;
+            
             loadPopunderScript(function() {
                 for (let i = 0; i < count; i++) {
                     setTimeout(function() {
@@ -254,6 +258,11 @@
                         }
                     }, i * delayBetween);
                 }
+                
+                // Reset trigger flag after all popunders
+                setTimeout(() => {
+                    popunderTriggered = false;
+                }, count * delayBetween + 1000);
             });
         }
 
@@ -263,7 +272,9 @@
             e.stopPropagation();
             
             const button = this;
+            const originalText = button.innerHTML;
             button.innerHTML = 'PREPARING DOWNLOAD...';
+            button.disabled = true;
             
             // Pre-download popunder
             if (popunderConfig.behavior.onDownload.enabled) {
@@ -283,8 +294,13 @@
                 }
                 
                 // Start download
-                window.location.href = button.dataset.download || '#';
-                button.innerHTML = 'DOWNLOAD NOW';
+                const downloadUrl = button.dataset.download || '#';
+                if (downloadUrl !== '#') {
+                    window.location.href = downloadUrl;
+                }
+                
+                button.innerHTML = originalText;
+                button.disabled = false;
             }, popunderConfig.behavior.onDownload.postDelay);
         }
 
@@ -303,18 +319,21 @@
             // Click trigger
             if (popunderConfig.behavior.onClick.enabled) {
                 document.addEventListener('click', function(e) {
+                    // Ignore clicks on download buttons (handled separately)
+                    if (e.target.closest('.download-btn') || e.target.closest('.more-btn')) {
+                        return;
+                    }
+                    
                     const now = Date.now();
                     if (now - lastClickTime > popunderConfig.behavior.onClick.cooldown) {
                         lastClickTime = now;
                         
-                        if (!e.target.closest('button')) {
-                            setTimeout(() => {
-                                triggerPopunder(
-                                    popunderConfig.behavior.onClick.count,
-                                    popunderConfig.behavior.onClick.delay
-                                );
-                            }, 200);
-                        }
+                        setTimeout(() => {
+                            triggerPopunder(
+                                popunderConfig.behavior.onClick.count,
+                                popunderConfig.behavior.onClick.delay
+                            );
+                        }, 200);
                     }
                 });
             }
@@ -329,12 +348,16 @@
                 e.preventDefault();
                 e.stopPropagation();
                 
+                const originalText = this.innerHTML;
                 this.innerHTML = 'LOADING...';
-                triggerPopunder(2, 500);
+                this.disabled = true;
+                
+                triggerPopunder(1, 500);
                 
                 setTimeout(() => {
                     alert('More games loaded!');
-                    this.innerHTML = 'SHOW MORE GAMES';
+                    this.innerHTML = originalText;
+                    this.disabled = false;
                 }, 1500);
             });
         });

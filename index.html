@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎮 Premium Games Hub - Free Downloads</title>
     <style>
-        /* Basic styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #121212;
@@ -14,144 +13,55 @@
             padding: 0;
             line-height: 1.6;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
         .header {
-            text-align: center;
-            padding: 20px 0;
+            text-align: center; padding: 20px 0;
             background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            border-radius: 10px;
-            margin-bottom: 20px;
+            border-radius: 10px; margin-bottom: 20px;
         }
         .game-card {
-            background: #1e1e1e;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
+            background: #1e1e1e; border-radius: 10px; padding: 15px; margin-bottom: 20px;
+            display: flex; align-items: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             transition: transform 0.3s;
         }
-        .game-card:hover {
-            transform: translateY(-5px);
-        }
+        .game-card:hover { transform: translateY(-5px); }
         .game-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
-            margin-right: 15px;
-            object-fit: cover;
-            border: 2px solid #6e48aa;
+            width: 80px; height: 80px; border-radius: 15px; margin-right: 15px;
+            object-fit: cover; border: 2px solid #6e48aa;
         }
-        .game-info {
-            flex: 1;
-        }
-        .game-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #6e48aa;
-        }
+        .game-info { flex: 1; }
+        .game-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; color: #6e48aa; }
         .download-btn, .more-btn {
             background: linear-gradient(to right, #4776E6, #8E54E9);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 120px;
-            text-align: center;
-            margin: 5px;
+            color: white; border: none; padding: 12px 25px;
+            border-radius: 50px; font-weight: bold; cursor: pointer;
+            transition: all 0.3s; min-width: 120px; text-align: center; margin: 5px;
         }
-        .more-btn {
-            background: linear-gradient(to right, #9b59b6, #8E44AD);
-            display: block;
-            margin: 20px auto;
-            width: 200px;
-        }
-        .btn-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .ad-container {
-            margin: 25px 0;
-            padding: 10px;
-            background: #252525;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .ad-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        .highlight {
-            color: #f39c12;
-            font-weight: bold;
-        }
-        .trending-badge {
-            background: #e74c3c;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-        .exclusive-badge {
-            background: #9b59b6;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
+        .more-btn { background: linear-gradient(to right, #9b59b6, #8E44AD); display: block; margin: 20px auto; width: 200px; }
+        .btn-container { text-align: center; margin: 30px 0; }
+        .ad-container { margin: 25px 0; padding: 10px; background: #252525; border-radius: 8px; text-align: center; }
+        .ad-label { font-size: 12px; color: #888; margin-bottom: 8px; text-transform: uppercase; }
+        .highlight { color: #f39c12; font-weight: bold; }
+        .trending-badge { background: #e74c3c; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
+        .exclusive-badge { background: #9b59b6; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
         #adBlockerWarning {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #e74c3c;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            z-index: 9999;
+            display: none; position: fixed; top: 0; left: 0; width: 100%;
+            background: #e74c3c; color: white; padding: 15px; text-align: center; z-index: 9999;
         }
         #exitIntentOverlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 9998;
-            justify-content: center;
-            align-items: center;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 9998; justify-content: center; align-items: center;
         }
-        .exit-ad {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            color: black;
-            text-align: center;
-        }
+        .exit-ad { background: white; padding: 20px; border-radius: 10px; max-width: 500px; color: black; text-align: center; }
     </style>
 </head>
 <body>
-    <!-- Ad Blocker Warning -->
     <div id="adBlockerWarning">
         <strong>WARNING:</strong> We've detected you're using an ad blocker. Please disable it to access our free content.
         <button onclick="document.getElementById('adBlockerWarning').style.display='none'">X</button>
     </div>
 
-    <!-- Exit Intent Overlay -->
     <div id="exitIntentOverlay">
         <div class="exit-ad">
             <h3>Wait! Before you go...</h3>
@@ -170,7 +80,6 @@
         </div>
     </div>
 
-    <!-- Top Banner Ad -->
     <div class="ad-container">
         <div class="ad-label">Advertisement</div>
         <script type="text/javascript">
@@ -191,249 +100,119 @@
             <p>100% Free - No Surveys - Direct Download</p>
         </div>
 
-        <!-- GTA 5 Mobile -->
         <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="GTA 5 Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
+            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=80&h=80&q=80" class="game-icon">
             <div class="game-info">
                 <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
                 <div>Open World | 3.2GB | 4.9★ Rating</div>
-                <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
             </div>
             <button class="download-btn" data-download="https://example.com/download/gta5">DOWNLOAD NOW</button>
         </div>
 
-        <!-- Native Ad -->
         <div class="ad-container">
             <div class="ad-label">Recommended</div>
-            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+            <script async src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
             <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
 
-        <!-- Call of Duty Mobile -->
         <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Call of Duty Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
+            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?auto=format&fit=crop&w=80&h=80&q=80" class="game-icon">
             <div class="game-info">
                 <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
                 <div>FPS | 2.4GB | 4.8★ Rating</div>
-                <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
             </div>
             <button class="download-btn" data-download="https://example.com/download/cod">DOWNLOAD NOW</button>
         </div>
 
-        <!-- Asphalt 9: Legends -->
         <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Asphalt 9: Legends" 
-                 class="game-icon" 
-                 loading="lazy">
+            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=80&h=80&q=80" class="game-icon">
             <div class="game-info">
                 <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
                 <div>Racing | 2.1GB | 4.7★ Rating</div>
-                <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
             </div>
             <button class="download-btn" data-download="https://example.com/download/asphalt9">DOWNLOAD NOW</button>
         </div>
 
-        <!-- More Games Button -->
         <div class="btn-container">
             <button class="more-btn">SHOW MORE GAMES</button>
         </div>
     </div>
 
-    <!-- Aggressive Ad Monetization System -->
     <script>
-        // Ad Blocker Detection
-        function detectAdBlock() {
-            return new Promise((resolve) => {
-                const testAd = document.createElement('div');
-                testAd.innerHTML = '&nbsp;';
-                testAd.className = 'adsbox';
-                document.body.appendChild(testAd);
-                
-                setTimeout(() => {
-                    if (testAd.offsetHeight === 0) {
-                        document.getElementById('adBlockerWarning').style.display = 'block';
-                        resolve(true);
-                    } else {
-                        resolve(false);
-                    }
-                    document.body.removeChild(testAd);
-                }, 100);
-            });
-        }
+    function detectAdBlock() {
+        return new Promise((resolve) => {
+            const testAd = document.createElement('div');
+            testAd.innerHTML = '&nbsp;';
+            testAd.className = 'adsbox';
+            document.body.appendChild(testAd);
+            setTimeout(() => {
+                if (testAd.offsetHeight === 0) {
+                    document.getElementById('adBlockerWarning').style.display = 'block';
+                    resolve(true);
+                } else resolve(false);
+                document.body.removeChild(testAd);
+            }, 100);
+        });
+    }
 
-        // Advanced Popunder System
-        const adSystem = {
-            config: {
-                popunderScript: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
-                popunderFrequency: 15000, // 15 seconds between popunders
-                maxPopunders: 3,
-                exitIntentEnabled: true,
-                scrollDepthTriggers: [30, 60, 90] // percentages
-            },
-            state: {
-                popunderCount: 0,
-                lastPopunderTime: 0,
-                scriptLoaded: false,
-                mousePosition: { y: 0 }
-            },
-            
-            // Initialize the system
-            init: function() {
-                this.loadPopunderScript();
-                this.setupEventListeners();
-                this.startPopunderInterval();
-                this.setupExitIntent();
-                this.setupScrollTriggers();
-                
-                // Initial popunder after 5 seconds
-                setTimeout(() => this.triggerPopunder(), 5000);
-                
-                // Check for ad blocker
-                detectAdBlock().then((isBlocked) => {
-                    if (isBlocked) {
-                        this.increaseAdFrequency();
-                    }
-                });
-            },
-            
-            // Load the popunder script
-            loadPopunderScript: function() {
-                const script = document.createElement('script');
-                script.src = this.config.popunderScript;
-                script.async = true;
-                script.onload = () => this.state.scriptLoaded = true;
-                script.onerror = () => console.error('Popunder script failed to load');
-                document.body.appendChild(script);
-            },
-            
-            // Setup event listeners
-            setupEventListeners: function() {
-                // Click events
-                document.addEventListener('click', (e) => {
-                    if (!e.target.closest('button')) {
-                        setTimeout(() => this.triggerPopunder(), 500);
-                    }
-                });
-                
-                // Download buttons
-                document.querySelectorAll('.download-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        this.handleDownload(btn);
-                    });
-                });
-                
-                // More games button
-                document.querySelector('.more-btn').addEventListener('click', (e) => {
+    const adSystem = {
+        config: {
+            popunderUrl: 'https://pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912',
+            popunderFrequency: 15000,
+            maxPopunders: 3,
+            exitIntentEnabled: true
+        },
+        state: { popunderCount: 0, lastPopunderTime: 0 },
+
+        triggerPopunder: function() {
+            const now = Date.now();
+            if (now - this.state.lastPopunderTime < 5000) return;
+            if (this.state.popunderCount >= this.config.maxPopunders) return;
+
+            this.state.lastPopunderTime = now;
+            this.state.popunderCount++;
+
+            const win = window.open(this.config.popunderUrl, '_blank');
+            if (win) { win.blur(); window.focus(); }
+        },
+
+        init: function() {
+            document.addEventListener('click', () => this.triggerPopunder(), { once: true });
+
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    this.triggerPopunder(2);
-                    setTimeout(() => alert('More games loaded!'), 1000);
+                    this.triggerPopunder();
+                    setTimeout(() => { window.location.href = btn.dataset.download; }, 1000);
                 });
-                
-                // Mouse movement for exit intent
-                document.addEventListener('mousemove', (e) => {
-                    this.state.mousePosition.y = e.clientY;
-                });
-            },
-            
-            // Setup exit intent detection
-            setupExitIntent: function() {
-                if (!this.config.exitIntentEnabled) return;
-                
+            });
+
+            document.querySelector('.more-btn').addEventListener('click', () => {
+                this.triggerPopunder();
+                alert('More games loaded!');
+            });
+
+            if (this.config.exitIntentEnabled) {
                 document.addEventListener('mouseout', (e) => {
                     if (!e.relatedTarget && e.clientY < 50) {
                         document.getElementById('exitIntentOverlay').style.display = 'flex';
-                        this.triggerPopunder(2);
-                    }
-                });
-            },
-            
-            // Setup scroll depth triggers
-            setupScrollTriggers: function() {
-                window.addEventListener('scroll', () => {
-                    const scrollDepth = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-                    this.config.scrollDepthTriggers.forEach(threshold => {
-                        if (scrollDepth > threshold) {
-                            this.triggerPopunder();
-                        }
-                    });
-                });
-            },
-            
-            // Start periodic popunder interval
-            startPopunderInterval: function() {
-                setInterval(() => {
-                    if (this.state.popunderCount < this.config.maxPopunders) {
                         this.triggerPopunder();
                     }
-                }, this.config.popunderFrequency);
-            },
-            
-            // Trigger popunder with safety checks
-            triggerPopunder: function(count = 1) {
-                const now = Date.now();
-                if (now - this.state.lastPopunderTime < 5000) return; // 5 second cooldown
-                
-                this.state.lastPopunderTime = now;
-                this.state.popunderCount += count;
-                
-                if (this.state.scriptLoaded && typeof window.popunder === 'function') {
-                    for (let i = 0; i < count; i++) {
-                        setTimeout(() => window.popunder(), i * 500);
-                    }
-                } else {
-                    // Fallback method
-                    for (let i = 0; i < count; i++) {
-                        setTimeout(() => {
-                            const win = window.open('about:blank', '_blank');
-                            if (win) {
-                                win.blur();
-                                window.focus();
-                                setTimeout(() => win.close(), 100);
-                            }
-                        }, i * 500);
-                    }
-                }
-            },
-            
-            // Handle download button clicks
-            handleDownload: function(button) {
-                const originalText = button.innerHTML;
-                button.innerHTML = 'PREPARING DOWNLOAD...';
-                button.disabled = true;
-                
-                // Trigger popunders around download
-                this.triggerPopunder(2);
-                
-                setTimeout(() => {
-                    const downloadUrl = button.dataset.download || '#';
-                    if (downloadUrl !== '#') {
-                        window.location.href = downloadUrl;
-                    }
-                    
-                    setTimeout(() => {
-                        button.innerHTML = originalText;
-                        button.disabled = false;
-                    }, 2000);
-                }, 1500);
-            },
-            
-            // Increase ad frequency if ad blocker detected
-            increaseAdFrequency: function() {
-                this.config.popunderFrequency = 8000; // Reduce to 8 seconds
-                this.config.maxPopunders = 5; // Increase max popunders
+                });
             }
-        };
 
-        // Initialize the ad system when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => adSystem.init());
+            setInterval(() => this.triggerPopunder(), this.config.popunderFrequency);
+
+            detectAdBlock().then(isBlocked => {
+                if (isBlocked) {
+                    this.config.popunderFrequency = 8000;
+                    this.config.maxPopunders = 5;
+                }
+            });
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => adSystem.init());
     </script>
 </body>
 </html>

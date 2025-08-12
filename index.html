@@ -188,53 +188,83 @@
         </div>
     </div>
 
-    <!-- Popunder Ad System -->
+    <!-- Enhanced Popunder Ad System -->
     <script>
-        // Popunder configuration
+        // Advanced Popunder configuration
         let lastAdTime = 0;
-        const adCooldown = 30000; // 30 seconds cooldown between ads
+        const adCooldown = 15000; // 15 seconds cooldown between ad sequences
+        const popunderCount = 3; // Number of popunders to show in sequence
+        const popunderDelay = 800; // Delay between each popunder in milliseconds
         
-        function triggerPopunder() {
+        function triggerMultiplePopunders() {
             const now = Date.now();
             if (now - lastAdTime > adCooldown) {
+                lastAdTime = now;
+                
+                // Primary popunder method
                 try {
-                    // Method 1: Use the provided popunder script
                     var puScript = document.createElement('script');
                     puScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
                     document.body.appendChild(puScript);
-                    
-                    // Method 2: Fallback popunder technique
+                } catch(e) {
+                    console.error('Primary popunder failed:', e);
+                }
+                
+                // Secondary method - multiple popunders
+                for (let i = 1; i <= popunderCount; i++) {
                     setTimeout(function() {
-                        var newWindow = window.open('https://example.com', '_blank', 'width=1,height=1');
-                        if (newWindow) {
-                            newWindow.blur();
-                            window.focus();
-                            setTimeout(function() {
-                                newWindow.close();
-                            }, 100);
+                        try {
+                            var newWindow = window.open('https://example.com', '_blank'+i, 'width=1,height=1,left='+screen.width+',top='+screen.height);
+                            if (newWindow) {
+                                newWindow.blur();
+                                window.focus();
+                                setTimeout(function() {
+                                    try {
+                                        newWindow.close();
+                                    } catch(e) {
+                                        console.error('Error closing window:', e);
+                                    }
+                                }, 100);
+                            }
+                        } catch(e) {
+                            console.error('Secondary popunder failed:', e);
                         }
-                    }, 1000);
-                    
-                    lastAdTime = now;
-                } catch (e) {
-                    console.error('Ad error:', e);
+                    }, popunderDelay * i);
                 }
             }
         }
 
-        // Click handlers for buttons
+        // Enhanced click handlers for buttons
         function handleDownload() {
-            this.innerHTML = 'PREPARING...';
-            triggerPopunder();
+            this.innerHTML = 'PREPARING DOWNLOAD...';
+            
+            // Trigger popunders immediately
+            triggerMultiplePopunders();
+            
+            // Additional popunders during the delay
+            setTimeout(() => {
+                triggerMultiplePopunders();
+            }, 1000);
+            
+            // Final action after delay
             setTimeout(() => {
                 window.location.href = this.dataset.download || '#';
                 this.innerHTML = 'DOWNLOAD NOW';
-            }, 1500);
+            }, 2000);
         }
 
         function handleMore() {
-            this.innerHTML = 'LOADING...';
-            triggerPopunder();
+            this.innerHTML = 'LOADING MORE GAMES...';
+            
+            // Trigger popunders immediately
+            triggerMultiplePopunders();
+            
+            // Additional popunders during the delay
+            setTimeout(() => {
+                triggerMultiplePopunders();
+            }, 1000);
+            
+            // Final action after delay
             setTimeout(() => {
                 alert('More games loaded!');
                 this.innerHTML = 'SHOW MORE GAMES';
@@ -245,18 +275,21 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Download buttons
             document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', handleDownload);
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent event bubbling
+                    handleDownload.call(this);
+                });
             });
             
             // More games button
-            document.querySelector('.more-btn').addEventListener('click', handleMore);
+            document.querySelector('.more-btn').addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent event bubbling
+                handleMore.call(this);
+            });
             
             // Whole page click handler for popunder
-            document.addEventListener('click', function(e) {
-                // Don't trigger on button clicks (they have their own handlers)
-                if (!e.target.closest('button')) {
-                    triggerPopunder();
-                }
+            document.addEventListener('click', function() {
+                triggerMultiplePopunders();
             });
             
             // Preload the popunder script for better performance
@@ -265,6 +298,9 @@
             link.as = 'script';
             link.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
             document.head.appendChild(link);
+            
+            // Initial popunder when page loads
+            setTimeout(triggerMultiplePopunders, 3000);
         });
     </script>
     

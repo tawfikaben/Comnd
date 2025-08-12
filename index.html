@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Premium Games Hub - Free Downloads</title>
+    <title>🎮 My Games - Free Downloads</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -11,208 +11,81 @@
             color: #ffffff;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
         .header {
-            text-align: center; padding: 20px 0;
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            border-radius: 10px; margin-bottom: 20px;
+            text-align: center;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
         .game-card {
-            background: #1e1e1e; border-radius: 10px; padding: 15px; margin-bottom: 20px;
-            display: flex; align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            background: #1e1e1e;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
         }
-        .game-card:hover { transform: translateY(-5px); }
-        .game-icon {
-            width: 80px; height: 80px; border-radius: 15px; margin-right: 15px;
-            object-fit: cover; border: 2px solid #6e48aa;
+        .game-card img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 15px;
         }
-        .game-info { flex: 1; }
-        .game-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; color: #6e48aa; }
-        .download-btn, .more-btn {
-            background: linear-gradient(to right, #4776E6, #8E54E9);
-            color: white; border: none; padding: 12px 25px;
-            border-radius: 50px; font-weight: bold; cursor: pointer;
-            transition: all 0.3s; min-width: 120px; text-align: center; margin: 5px;
+        .game-card button {
+            background: #9d50bb;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
         }
-        .more-btn { background: linear-gradient(to right, #9b59b6, #8E44AD); display: block; margin: 20px auto; width: 200px; }
-        .btn-container { text-align: center; margin: 30px 0; }
-        .ad-container { margin: 25px 0; padding: 10px; background: #252525; border-radius: 8px; text-align: center; }
-        .ad-label { font-size: 12px; color: #888; margin-bottom: 8px; text-transform: uppercase; }
-        .highlight { color: #f39c12; font-weight: bold; }
-        .trending-badge { background: #e74c3c; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
-        .exclusive-badge { background: #9b59b6; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
-        #adBlockerWarning {
-            display: none; position: fixed; top: 0; left: 0; width: 100%;
-            background: #e74c3c; color: white; padding: 15px; text-align: center; z-index: 9999;
+        .game-card button:hover {
+            background: #6e48aa;
         }
-        #exitIntentOverlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); z-index: 9998; justify-content: center; align-items: center;
-        }
-        .exit-ad { background: white; padding: 20px; border-radius: 10px; max-width: 500px; color: black; text-align: center; }
     </style>
+
+    <!-- Your popunder script -->
+    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
 </head>
 <body>
-    <div id="adBlockerWarning">
-        <strong>WARNING:</strong> We've detected you're using an ad blocker. Please disable it to access our free content.
-        <button onclick="document.getElementById('adBlockerWarning').style.display='none'">X</button>
-    </div>
-
-    <div id="exitIntentOverlay">
-        <div class="exit-ad">
-            <h3>Wait! Before you go...</h3>
-            <p>Check out these exclusive offers just for you!</p>
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-            <button onclick="document.getElementById('exitIntentOverlay').style.display='none'">Close</button>
-        </div>
-    </div>
-
-    <div class="ad-container">
-        <div class="ad-label">Advertisement</div>
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-    </div>
-
     <div class="container">
         <div class="header">
-            <h1>🎮 Premium Games Download</h1>
-            <p>100% Free - No Surveys - Direct Download</p>
+            <h1>My Games</h1>
+            <p>Free games to play and download</p>
         </div>
 
         <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=80&h=80&q=80" class="game-icon">
-            <div class="game-info">
-                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
-                <div>Open World | 3.2GB | 4.9★ Rating</div>
+            <img src="game1.jpg" alt="Game 1">
+            <div>
+                <h3>Game Title 1</h3>
+                <p>Short description of the game.</p>
+                <button onclick="downloadGame('game1.zip')">Download</button>
             </div>
-            <button class="download-btn" data-download="https://example.com/download/gta5">DOWNLOAD NOW</button>
-        </div>
-
-        <div class="ad-container">
-            <div class="ad-label">Recommended</div>
-            <script async src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
         </div>
 
         <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?auto=format&fit=crop&w=80&h=80&q=80" class="game-icon">
-            <div class="game-info">
-                <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
-                <div>FPS | 2.4GB | 4.8★ Rating</div>
+            <img src="game2.jpg" alt="Game 2">
+            <div>
+                <h3>Game Title 2</h3>
+                <p>Short description of the game.</p>
+                <button onclick="downloadGame('game2.zip')">Download</button>
             </div>
-            <button class="download-btn" data-download="https://example.com/download/cod">DOWNLOAD NOW</button>
         </div>
 
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=80&h=80&q=80" class="game-icon">
-            <div class="game-info">
-                <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
-                <div>Racing | 2.1GB | 4.7★ Rating</div>
-            </div>
-            <button class="download-btn" data-download="https://example.com/download/asphalt9">DOWNLOAD NOW</button>
-        </div>
-
-        <div class="btn-container">
-            <button class="more-btn">SHOW MORE GAMES</button>
-        </div>
     </div>
 
     <script>
-    function detectAdBlock() {
-        return new Promise((resolve) => {
-            const testAd = document.createElement('div');
-            testAd.innerHTML = '&nbsp;';
-            testAd.className = 'adsbox';
-            document.body.appendChild(testAd);
-            setTimeout(() => {
-                if (testAd.offsetHeight === 0) {
-                    document.getElementById('adBlockerWarning').style.display = 'block';
-                    resolve(true);
-                } else resolve(false);
-                document.body.removeChild(testAd);
-            }, 100);
-        });
-    }
-
-    const adSystem = {
-        config: {
-            popunderUrl: 'https://pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912',
-            popunderFrequency: 15000,
-            maxPopunders: 3,
-            exitIntentEnabled: true
-        },
-        state: { popunderCount: 0, lastPopunderTime: 0 },
-
-        triggerPopunder: function() {
-            const now = Date.now();
-            if (now - this.state.lastPopunderTime < 5000) return;
-            if (this.state.popunderCount >= this.config.maxPopunders) return;
-
-            this.state.lastPopunderTime = now;
-            this.state.popunderCount++;
-
-            const win = window.open(this.config.popunderUrl, '_blank');
-            if (win) { win.blur(); window.focus(); }
-        },
-
-        init: function() {
-            document.addEventListener('click', () => this.triggerPopunder(), { once: true });
-
-            document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    this.triggerPopunder();
-                    setTimeout(() => { window.location.href = btn.dataset.download; }, 1000);
-                });
-            });
-
-            document.querySelector('.more-btn').addEventListener('click', () => {
-                this.triggerPopunder();
-                alert('More games loaded!');
-            });
-
-            if (this.config.exitIntentEnabled) {
-                document.addEventListener('mouseout', (e) => {
-                    if (!e.relatedTarget && e.clientY < 50) {
-                        document.getElementById('exitIntentOverlay').style.display = 'flex';
-                        this.triggerPopunder();
-                    }
-                });
-            }
-
-            setInterval(() => this.triggerPopunder(), this.config.popunderFrequency);
-
-            detectAdBlock().then(isBlocked => {
-                if (isBlocked) {
-                    this.config.popunderFrequency = 8000;
-                    this.config.maxPopunders = 5;
-                }
-            });
+        function downloadGame(file) {
+            window.open(file, '_blank');
         }
-    };
-
-    document.addEventListener('DOMContentLoaded', () => adSystem.init());
     </script>
 </body>
 </html>

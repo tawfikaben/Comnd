@@ -188,122 +188,112 @@
         </div>
     </div>
 
-    <!-- Enhanced Popunder Ad System -->
+    <!-- Advanced Popunder System -->
     <script>
-        // Advanced Popunder configuration
-        let lastAdTime = 0;
-        const adCooldown = 15000; // 15 seconds cooldown between ad sequences
-        const popunderCount = 3; // Number of popunders to show in sequence
-        const popunderDelay = 800; // Delay between each popunder in milliseconds
-        
-        function triggerMultiplePopunders() {
+        // Popunder configuration
+        const popunderConfig = {
+            mainScript: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
+            fallbackUrl: 'https://example.com',
+            popunderCount: 3,
+            delayBetween: 800,
+            cooldown: 15000,
+            initialDelay: 3000
+        };
+
+        let lastPopunderTime = 0;
+
+        // Function to trigger multiple popunders
+        function firePopunders() {
             const now = Date.now();
-            if (now - lastAdTime > adCooldown) {
-                lastAdTime = now;
+            if (now - lastPopunderTime > popunderConfig.cooldown) {
+                lastPopunderTime = now;
                 
-                // Primary popunder method
+                // Primary method - use provided script
                 try {
-                    var puScript = document.createElement('script');
-                    puScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-                    document.body.appendChild(puScript);
+                    const script = document.createElement('script');
+                    script.src = popunderConfig.mainScript;
+                    document.body.appendChild(script);
                 } catch(e) {
-                    console.error('Primary popunder failed:', e);
+                    console.error('Main popunder script failed:', e);
                 }
                 
-                // Secondary method - multiple popunders
-                for (let i = 1; i <= popunderCount; i++) {
-                    setTimeout(function() {
+                // Fallback method - multiple window.open
+                for (let i = 0; i < popunderConfig.popunderCount; i++) {
+                    setTimeout(() => {
                         try {
-                            var newWindow = window.open('https://example.com', '_blank'+i, 'width=1,height=1,left='+screen.width+',top='+screen.height);
-                            if (newWindow) {
-                                newWindow.blur();
+                            const popup = window.open(
+                                popunderConfig.fallbackUrl,
+                                '_blank' + i,
+                                'width=1,height=1,left=9999,top=9999'
+                            );
+                            if (popup) {
+                                popup.blur();
                                 window.focus();
-                                setTimeout(function() {
-                                    try {
-                                        newWindow.close();
-                                    } catch(e) {
-                                        console.error('Error closing window:', e);
-                                    }
+                                setTimeout(() => {
+                                    try { popup.close(); } catch(e) {}
                                 }, 100);
                             }
                         } catch(e) {
-                            console.error('Secondary popunder failed:', e);
+                            console.error('Fallback popunder failed:', e);
                         }
-                    }, popunderDelay * i);
+                    }, popunderConfig.delayBetween * i);
                 }
             }
         }
 
-        // Enhanced click handlers for buttons
-        function handleDownload() {
-            this.innerHTML = 'PREPARING DOWNLOAD...';
+        // Enhanced download button handler
+        function handleDownloadClick(e) {
+            e.stopPropagation();
+            const button = this;
+            button.innerHTML = 'PREPARING...';
             
-            // Trigger popunders immediately
-            triggerMultiplePopunders();
+            // First wave of popunders
+            firePopunders();
             
-            // Additional popunders during the delay
+            // Second wave after short delay
+            setTimeout(firePopunders, 1000);
+            
+            // Final action
             setTimeout(() => {
-                triggerMultiplePopunders();
-            }, 1000);
-            
-            // Final action after delay
-            setTimeout(() => {
-                window.location.href = this.dataset.download || '#';
-                this.innerHTML = 'DOWNLOAD NOW';
+                window.location.href = button.dataset.download || '#';
+                button.innerHTML = 'DOWNLOAD NOW';
             }, 2000);
         }
 
-        function handleMore() {
-            this.innerHTML = 'LOADING MORE GAMES...';
+        // More games button handler
+        function handleMoreGamesClick(e) {
+            e.stopPropagation();
+            const button = this;
+            button.innerHTML = 'LOADING...';
             
-            // Trigger popunders immediately
-            triggerMultiplePopunders();
+            firePopunders();
             
-            // Additional popunders during the delay
-            setTimeout(() => {
-                triggerMultiplePopunders();
-            }, 1000);
-            
-            // Final action after delay
             setTimeout(() => {
                 alert('More games loaded!');
-                this.innerHTML = 'SHOW MORE GAMES';
-            }, 2000);
+                button.innerHTML = 'SHOW MORE GAMES';
+            }, 1500);
         }
 
-        // Set up event listeners
+        // Initialize event listeners
         document.addEventListener('DOMContentLoaded', () => {
             // Download buttons
             document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Prevent event bubbling
-                    handleDownload.call(this);
-                });
+                btn.addEventListener('click', handleDownloadClick);
             });
             
             // More games button
-            document.querySelector('.more-btn').addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent event bubbling
-                handleMore.call(this);
+            document.querySelector('.more-btn').addEventListener('click', handleMoreGamesClick);
+            
+            // Whole page click
+            document.addEventListener('click', () => {
+                firePopunders();
             });
             
-            // Whole page click handler for popunder
-            document.addEventListener('click', function() {
-                triggerMultiplePopunders();
-            });
-            
-            // Preload the popunder script for better performance
-            var link = document.createElement('link');
-            link.rel = 'preload';
-            link.as = 'script';
-            link.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-            document.head.appendChild(link);
-            
-            // Initial popunder when page loads
-            setTimeout(triggerMultiplePopunders, 3000);
+            // Initial popunder after delay
+            setTimeout(firePopunders, popunderConfig.initialDelay);
         });
     </script>
-    
+
     <!-- Popunder Script -->
     <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
 </body>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Premium Games Download - Free & No Surveys</title>
+    <title>🎮 Premium Games Hub - Free Gaming Portal</title>
+    <meta name="description" content="Download free premium mobile games for Android and iOS. GTA 5 Mobile, Call of Duty Mobile, Asphalt 9 and more.">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,7 +56,7 @@
             margin-bottom: 5px;
             color: #6e48aa;
         }
-        .download-btn, .more-btn {
+        .action-btn, .more-btn {
             background: linear-gradient(to right, #4776E6, #8E54E9);
             color: white;
             border: none;
@@ -109,6 +110,26 @@
             font-size: 12px;
             margin-left: 5px;
         }
+        .game-details {
+            display: none;
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .game-details h2 {
+            color: #6e48aa;
+            margin-top: 0;
+        }
+        .close-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -129,8 +150,8 @@
 
     <div class="container">
         <div class="header">
-            <h1>🎮 Premium Games Download</h1>
-            <p>100% Free - No Surveys - Direct Download</p>
+            <h1>🎮 Premium Games Hub</h1>
+            <p>Your Ultimate Gaming Portal</p>
         </div>
 
         <!-- GTA 5 Mobile -->
@@ -144,7 +165,23 @@
                 <div>Open World | 3.2GB | 4.9★ Rating</div>
                 <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
             </div>
-            <button class="download-btn" data-download="https://example.com/download/gta5">DOWNLOAD NOW</button>
+            <button class="action-btn" data-game="gta5">VIEW DETAILS</button>
+        </div>
+
+        <!-- Game Details for GTA 5 -->
+        <div class="game-details" id="gta5-details">
+            <h2>GTA 5 Mobile - Complete Edition</h2>
+            <p>Experience the complete Grand Theft Auto V universe optimized for mobile devices. This version includes all story mode missions, online multiplayer, and exclusive mobile features.</p>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Full HD graphics optimized for mobile</li>
+                <li>All story missions from original game</li>
+                <li>Exclusive mobile-only vehicles and weapons</li>
+                <li>Customizable controls for touchscreen</li>
+                <li>Regular updates with new content</li>
+            </ul>
+            <p>GTA 5 Mobile brings the complete Los Santos experience to your smartphone with enhanced visuals and performance. The game has been downloaded over 50 million times worldwide and maintains a 4.9/5 rating from players.</p>
+            <button class="close-btn">Close</button>
         </div>
 
         <!-- Native Ad -->
@@ -165,7 +202,23 @@
                 <div>FPS | 2.4GB | 4.8★ Rating</div>
                 <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
             </div>
-            <button class="download-btn" data-download="https://example.com/download/cod">DOWNLOAD NOW</button>
+            <button class="action-btn" data-game="cod">VIEW DETAILS</button>
+        </div>
+
+        <!-- Game Details for Call of Duty -->
+        <div class="game-details" id="cod-details">
+            <h2>Call of Duty Mobile - Season 6 Update</h2>
+            <p>The latest update brings new maps, weapons, and the return of fan-favorite game modes to the best FPS experience on mobile.</p>
+            <h3>What's New:</h3>
+            <ul>
+                <li>New Battle Pass with 50 tiers of rewards</li>
+                <li>2 new multiplayer maps</li>
+                <li>3 new functional weapons</li>
+                <li>Zombie mode improvements</li>
+                <li>Performance optimizations</li>
+            </ul>
+            <p>With over 300 million downloads worldwide, Call of Duty Mobile continues to set the standard for mobile shooters. The current season introduces the most requested features from the community.</p>
+            <button class="close-btn">Close</button>
         </div>
 
         <!-- Asphalt 9: Legends -->
@@ -179,7 +232,23 @@
                 <div>Racing | 2.1GB | 4.7★ Rating</div>
                 <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
             </div>
-            <button class="download-btn" data-download="https://example.com/download/asphalt9">DOWNLOAD NOW</button>
+            <button class="action-btn" data-game="asphalt9">VIEW DETAILS</button>
+        </div>
+
+        <!-- Game Details for Asphalt 9 -->
+        <div class="game-details" id="asphalt9-details">
+            <h2>Asphalt 9: Legends - Ultimate Edition</h2>
+            <p>The most visually stunning racing game on mobile now with all cars and tracks unlocked in this exclusive edition.</p>
+            <h3>Features:</h3>
+            <ul>
+                <li>Over 150 hypercars from top manufacturers</li>
+                <li>70+ tracks in stunning locations worldwide</li>
+                <li>All DLC content included</li>
+                <li>Customizable controls and HUD</li>
+                <li>Regular events with exclusive rewards</li>
+            </ul>
+            <p>Asphalt 9: Legends redefines mobile racing with console-quality graphics and physics. This exclusive version gives you access to all content without restrictions, valued at over $200 in the standard version.</p>
+            <button class="close-btn">Close</button>
         </div>
 
         <!-- More Games Button -->
@@ -188,7 +257,7 @@
         </div>
     </div>
 
-    <!-- Popunder System with Your Specified Script -->
+    <!-- Popunder System -->
     <script>
         // Popunder configuration
         const popunderConfig = {
@@ -204,12 +273,6 @@
                     delay: 1000,       // 1 second after click
                     count: 1,
                     cooldown: 30000    // 30 seconds between triggers
-                },
-                onDownload: {
-                    enabled: true,
-                    preDelay: 0,       // immediate before download
-                    postDelay: 1500,    // 1.5 seconds after download starts
-                    count: 1
                 }
             }
         };
@@ -285,49 +348,29 @@
             });
         }
 
-        // Handle download buttons
-        function handleDownload(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        // Show game details
+        function showGameDetails(gameId) {
+            // Hide all details first
+            document.querySelectorAll('.game-details').forEach(el => {
+                el.style.display = 'none';
+            });
             
-            const button = this;
-            const originalText = button.innerHTML;
-            const downloadUrl = button.dataset.download || '#';
-            
-            // Update button state
-            button.innerHTML = 'PREPARING...';
-            button.disabled = true;
-            
-            // Pre-download popunder
-            if (popunderConfig.behavior.onDownload.enabled) {
-                triggerPopunder(
-                    popunderConfig.behavior.onDownload.count,
-                    300
-                );
+            // Show selected game details
+            const detailsEl = document.getElementById(`${gameId}-details`);
+            if (detailsEl) {
+                detailsEl.style.display = 'block';
+                detailsEl.scrollIntoView({ behavior: 'smooth' });
             }
             
-            // Process download after delay
-            setTimeout(() => {
-                // Post-download popunder
-                if (popunderConfig.behavior.onDownload.enabled) {
-                    triggerPopunder(
-                        popunderConfig.behavior.onDownload.count,
-                        300
-                    );
-                }
-                
-                // Start download
-                if (downloadUrl !== '#') {
-                    window.location.href = downloadUrl;
-                }
-                
-                // Restore button
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 2000);
-                
-            }, popunderConfig.behavior.onDownload.postDelay);
+            // Trigger popunder when showing details
+            triggerPopunder(1, 500);
+        }
+
+        // Close game details
+        function closeGameDetails() {
+            document.querySelectorAll('.game-details').forEach(el => {
+                el.style.display = 'none';
+            });
         }
 
         // Initialize the popunder system
@@ -342,7 +385,7 @@
                 }, popunderConfig.behavior.onLoad.delay);
             }
             
-            // Click Trigger
+            // Click Trigger for general clicks
             if (popunderConfig.behavior.onClick.enabled) {
                 document.addEventListener('click', function(e) {
                     // Skip if clicked on buttons (handled separately)
@@ -357,16 +400,22 @@
                 });
             }
             
-            // Download Buttons
-            document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', handleDownload);
+            // Game details buttons
+            document.querySelectorAll('.action-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const gameId = this.getAttribute('data-game');
+                    showGameDetails(gameId);
+                });
+            });
+            
+            // Close buttons
+            document.querySelectorAll('.close-btn').forEach(btn => {
+                btn.addEventListener('click', closeGameDetails);
             });
             
             // More Games Button
             document.querySelector('.more-btn').addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
-                
                 const button = this;
                 const originalText = button.innerHTML;
                 
@@ -376,7 +425,6 @@
                 triggerPopunder(1, 500);
                 
                 setTimeout(() => {
-                    // Simulate content loading
                     alert('More games loaded!');
                     button.innerHTML = originalText;
                     button.disabled = false;

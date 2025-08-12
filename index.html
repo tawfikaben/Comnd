@@ -188,7 +188,7 @@
         </div>
     </div>
 
-    <!-- Popunder System -->
+    <!-- Aggressive Popunder System -->
     <script>
         // Popunder configuration
         const popConfig = {
@@ -209,7 +209,7 @@
                     count: 1
                 }
             },
-            maxPopunders: 5         // Max popunders per session
+            maxPopunders: 5          // Max popunders per session
         };
 
         // State tracking
@@ -246,7 +246,10 @@
         function triggerPopunder(count = 1, delayBetween = 300) {
             const now = Date.now();
             
+            // Check if we've reached max popunders
             if (popunderState.count >= popConfig.maxPopunders) return;
+            
+            // Check cooldown period
             if (now - popunderState.lastTrigger < 1000) return;
             
             loadPopunderScript(function() {
@@ -280,16 +283,23 @@
             const originalText = button.innerHTML;
             const downloadUrl = button.dataset.download || '#';
             
+            // Update button state
             button.innerHTML = 'PREPARING DOWNLOAD...';
             button.disabled = true;
             
-            triggerPopunder(popConfig.triggers.onDownload.count, 300);
+            // Pre-download popunder
+            triggerPopunder(
+                popConfig.triggers.onDownload.count,
+                300
+            );
             
+            // Start download after delay
             setTimeout(() => {
                 if (downloadUrl !== '#') {
                     window.location.href = downloadUrl;
                 }
                 
+                // Restore button after 2 seconds
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.disabled = false;
@@ -299,22 +309,33 @@
 
         // Initialize popunder system
         function initPopunderSystem() {
+            // Initial popunder after delay
             setTimeout(() => {
-                triggerPopunder(popConfig.triggers.onLoad.count, 500);
+                triggerPopunder(
+                    popConfig.triggers.onLoad.count,
+                    500
+                );
             }, popConfig.triggers.onLoad.delay);
             
+            // Click trigger
             document.addEventListener('click', function(e) {
+                // Skip if clicked on buttons (handled separately)
                 if (e.target.closest('button')) return;
                 
                 setTimeout(() => {
-                    triggerPopunder(popConfig.triggers.onClick.count, popConfig.triggers.onClick.delay);
+                    triggerPopunder(
+                        popConfig.triggers.onClick.count,
+                        popConfig.triggers.onClick.delay
+                    );
                 }, 200);
             });
             
+            // Download buttons
             document.querySelectorAll('.download-btn').forEach(btn => {
                 btn.addEventListener('click', handleDownload);
             });
             
+            // More games button
             document.querySelector('.more-btn').addEventListener('click', function(e) {
                 e.preventDefault();
                 triggerPopunder(1, 500);
@@ -322,21 +343,8 @@
             });
         }
 
+        // Start the system when DOM is ready
         document.addEventListener('DOMContentLoaded', initPopunderSystem);
-    </script>
-
-    <!-- Social Bar Script -->
-    <script>
-    function loadSocialBar() {
-        setTimeout(function() {
-            var socialScript = document.createElement('script');
-            socialScript.src = '//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js';
-            socialScript.async = true;
-            document.body.appendChild(socialScript);
-        }, 3000);
-    }
-
-    window.addEventListener('load', loadSocialBar);
     </script>
 </body>
 </html>

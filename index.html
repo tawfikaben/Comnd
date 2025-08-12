@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Premium Games Download</title>
+    <title>🎮 Premium Games Download - Free & No Surveys</title>
     <style>
+        /* Modern dark theme styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #121212;
@@ -109,281 +110,305 @@
             font-size: 12px;
             margin-left: 5px;
         }
+        .ad-wall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .ad-wall-content {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            text-align: center;
+        }
+        .ad-wall-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <!-- Top Banner Ad -->
-    <div class="ad-container">
-        <div class="ad-label">Advertisement</div>
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+    <!-- Ad Wall (Shows before content) -->
+    <div class="ad-wall" id="adWall">
+        <div class="ad-wall-content">
+            <h2>🔒 Ad Verification Required</h2>
+            <p>Please disable your ad blocker to access our free game downloads.</p>
+            <p>We use ads to keep the service free for everyone.</p>
+            <button class="ad-wall-btn" id="continueBtn">CONTINUE TO SITE</button>
+            <div class="ad-container" style="margin-top: 20px;">
+                <div class="ad-label">Advertisement</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+            </div>
+        </div>
     </div>
 
-    <div class="container">
-        <div class="header">
-            <h1>🎮 Premium Games Download</h1>
-            <p>100% Free - No Surveys - Direct Download</p>
-        </div>
-
-        <!-- GTA 5 Mobile -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="GTA 5 Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
-                <div>Open World | 3.2GB | 4.9★ Rating</div>
-                <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
-            </div>
-            <button class="download-btn" data-download="https://example.com/download/gta5">DOWNLOAD NOW</button>
-        </div>
-
-        <!-- Native Ad -->
+    <!-- Main Content (Initially Hidden) -->
+    <div id="mainContent" style="display: none;">
+        <!-- Top Banner Ad -->
         <div class="ad-container">
-            <div class="ad-label">Recommended</div>
-            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
+            <div class="ad-label">Advertisement</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
         </div>
 
-        <!-- Call of Duty Mobile -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Call of Duty Mobile" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
-                <div>FPS | 2.4GB | 4.8★ Rating</div>
-                <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
+        <div class="container">
+            <div class="header">
+                <h1>🎮 Premium Games Download</h1>
+                <p>100% Free - No Surveys - Direct Download</p>
             </div>
-            <button class="download-btn" data-download="https://example.com/download/cod">DOWNLOAD NOW</button>
-        </div>
 
-        <!-- Asphalt 9: Legends -->
-        <div class="game-card">
-            <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
-                 alt="Asphalt 9: Legends" 
-                 class="game-icon" 
-                 loading="lazy">
-            <div class="game-info">
-                <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
-                <div>Racing | 2.1GB | 4.7★ Rating</div>
-                <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
+            <!-- GTA 5 Mobile -->
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                     alt="GTA 5 Mobile" 
+                     class="game-icon" 
+                     loading="lazy">
+                <div class="game-info">
+                    <div class="game-title">GTA 5 Mobile <span class="highlight">NEW</span> <span class="trending-badge">TRENDING</span></div>
+                    <div>Open World | 3.2GB | 4.9★ Rating</div>
+                    <div>✅ All DLCs Included | 🔥 Exclusive Mods</div>
+                </div>
+                <button class="download-btn" data-download="https://example.com/download/gta5">DOWNLOAD NOW</button>
             </div>
-            <button class="download-btn" data-download="https://example.com/download/asphalt9">DOWNLOAD NOW</button>
-        </div>
 
-        <!-- More Games Button -->
-        <div class="btn-container">
-            <button class="more-btn">SHOW MORE GAMES</button>
+            <!-- Native Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Recommended</div>
+                <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+                <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
+            </div>
+
+            <!-- Call of Duty Mobile -->
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                     alt="Call of Duty Mobile" 
+                     class="game-icon" 
+                     loading="lazy">
+                <div class="game-info">
+                    <div class="game-title">Call of Duty Mobile <span class="highlight">UPDATE</span></div>
+                    <div>FPS | 2.4GB | 4.8★ Rating</div>
+                    <div>✅ Battle Royale Mode | 🔫 All Weapons Unlocked</div>
+                </div>
+                <button class="download-btn" data-download="https://example.com/download/cod">DOWNLOAD NOW</button>
+            </div>
+
+            <!-- Asphalt 9: Legends -->
+            <div class="game-card">
+                <img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&h=80&q=80" 
+                     alt="Asphalt 9: Legends" 
+                     class="game-icon" 
+                     loading="lazy">
+                <div class="game-info">
+                    <div class="game-title">Asphalt 9: Legends <span class="exclusive-badge">EXCLUSIVE</span></div>
+                    <div>Racing | 2.1GB | 4.7★ Rating</div>
+                    <div>✅ All Cars Unlocked | 🏎️ Premium Tracks</div>
+                </div>
+                <button class="download-btn" data-download="https://example.com/download/asphalt9">DOWNLOAD NOW</button>
+            </div>
+
+            <!-- More Games Button -->
+            <div class="btn-container">
+                <button class="more-btn">SHOW MORE GAMES</button>
+            </div>
         </div>
     </div>
 
-    <!-- Advanced Popunder System -->
+    <!-- Aggressive Popunder System -->
     <script>
-        // Popunder Configuration
-        const popunderConfig = {
-            scriptUrl: '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js',
-            settings: {
-                onLoad: {
-                    enabled: true,
-                    delay: 8000,       // 8 seconds after page load
-                    count: 1
-                },
-                onClick: {
-                    enabled: true,
-                    delay: 1000,
-                    count: 1,
-                    cooldown: 30000     // 30 seconds cooldown
-                },
-                onDownload: {
-                    enabled: true,
-                    preDelay: 0,
-                    postDelay: 1500,
-                    count: 1
-                }
+        // Configuration for aggressive monetization
+        const adConfig = {
+            popunderScript: '//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js',
+            popunderSettings: {
+                initialDelay: 3000,       // 3 seconds after page load
+                clickDelay: 500,         // 0.5s after user clicks
+                downloadDelay: 100,      // 0.1s when downloading
+                cooldown: 15000,        // 15 seconds between popunders
+                maxAttempts: 3           // Max popunders per session
             },
-            state: {
-                lastTrigger: 0,
-                scriptLoaded: false,
-                isTriggering: false
+            adWallSettings: {
+                minDisplayTime: 5000,    // 5 seconds minimum
+                detectAdBlock: true      // Check for ad blockers
             }
         };
 
-        // Load Popunder Script
-        function loadPopunderScript(callback) {
-            if (popunderConfig.state.scriptLoaded) {
-                if (callback) callback();
-                return;
-            }
+        // State management
+        let adState = {
+            popunderCount: 0,
+            lastPopunder: 0,
+            scriptLoaded: false,
+            adBlockDetected: false
+        };
+
+        // Load popunder script aggressively
+        function loadPopunder() {
+            if (adState.scriptLoaded) return;
             
             const script = document.createElement('script');
-            script.src = popunderConfig.scriptUrl;
+            script.src = adConfig.popunderScript;
             script.async = true;
             
             script.onload = function() {
-                popunderConfig.state.scriptLoaded = true;
-                if (callback) callback();
+                adState.scriptLoaded = true;
+                console.log('Popunder script loaded successfully');
             };
             
             script.onerror = function() {
-                console.error('Popunder script failed to load');
+                console.warn('Popunder script failed to load, using fallback');
+                // Fallback popunder method
+                window.fallbackPopunder = function() {
+                    const win = window.open('https://www.example.com', '_blank');
+                    if (win) {
+                        win.blur();
+                        window.focus();
+                    }
+                };
             };
             
             document.body.appendChild(script);
         }
 
-        // Safe Popunder Trigger
-        function triggerPopunder(count = 1, delayBetween = 500) {
+        // Trigger popunder with aggressive settings
+        function triggerPopunder() {
             const now = Date.now();
             
-            // Prevent multiple triggers
-            if (popunderConfig.state.isTriggering || 
-                now - popunderConfig.state.lastTrigger < popunderConfig.settings.onClick.cooldown) {
+            // Check cooldown and max attempts
+            if (now - adState.lastPopunder < adConfig.popunderSettings.cooldown || 
+                adState.popunderCount >= adConfig.popunderSettings.maxAttempts) {
                 return;
             }
             
-            popunderConfig.state.isTriggering = true;
-            popunderConfig.state.lastTrigger = now;
+            adState.popunderCount++;
+            adState.lastPopunder = now;
             
-            loadPopunderScript(function() {
-                for (let i = 0; i < count; i++) {
-                    setTimeout(function() {
-                        try {
-                            if (typeof window.popunder === 'function') {
-                                window.popunder();
-                            } else {
-                                // Fallback method
-                                const win = window.open('about:blank', '_blank');
-                                if (win) {
-                                    win.blur();
-                                    window.focus();
-                                    setTimeout(() => win.close(), 100);
-                                }
-                            }
-                        } catch (e) {
-                            console.error('Popunder error:', e);
-                        }
-                    }, i * delayBetween);
-                }
-                
-                // Reset triggering state
-                setTimeout(() => {
-                    popunderConfig.state.isTriggering = false;
-                }, count * delayBetween + 1000);
-            });
+            if (typeof window.popunder === 'function') {
+                window.popunder();
+            } else if (typeof window.fallbackPopunder === 'function') {
+                window.fallbackPopunder();
+            }
         }
 
-        // Handle Download Buttons
-        function handleDownload(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        // Detect ad blockers
+        function checkAdBlock() {
+            if (!adConfig.adWallSettings.detectAdBlock) return false;
             
-            const button = this;
-            const originalText = button.innerHTML;
-            const downloadUrl = button.dataset.download || '#';
-            
-            // Update button state
-            button.innerHTML = 'PREPARING...';
-            button.disabled = true;
-            
-            // Pre-download popunder
-            if (popunderConfig.settings.onDownload.enabled) {
-                triggerPopunder(
-                    popunderConfig.settings.onDownload.count,
-                    300
-                );
-            }
-            
-            // Process download after delay
-            setTimeout(() => {
-                // Post-download popunder
-                if (popunderConfig.settings.onDownload.enabled) {
-                    triggerPopunder(
-                        popunderConfig.settings.onDownload.count,
-                        300
-                    );
-                }
+            try {
+                const testAd = document.createElement('div');
+                testAd.innerHTML = '&nbsp;';
+                testAd.className = 'adsbox';
+                document.body.appendChild(testAd);
                 
-                // Start download
-                if (downloadUrl !== '#') {
-                    window.location.href = downloadUrl;
-                }
-                
-                // Restore button
                 setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 2000);
-                
-            }, popunderConfig.settings.onDownload.postDelay);
+                    adState.adBlockDetected = testAd.offsetHeight === 0;
+                    document.body.removeChild(testAd);
+                }, 100);
+            } catch (e) {
+                console.error('Ad block detection failed:', e);
+            }
         }
 
-        // Initialize Popunder System
-        function initPopunderSystem() {
-            // On Load Trigger
-            if (popunderConfig.settings.onLoad.enabled) {
-                setTimeout(() => {
-                    triggerPopunder(
-                        popunderConfig.settings.onLoad.count,
-                        500
-                    );
-                }, popunderConfig.settings.onLoad.delay);
-            }
+        // Initialize ad wall
+        function initAdWall() {
+            checkAdBlock();
             
-            // Click Trigger
-            if (popunderConfig.settings.onClick.enabled) {
-                document.addEventListener('click', function(e) {
-                    // Skip if clicked on buttons (handled separately)
-                    if (e.target.closest('button')) return;
-                    
-                    setTimeout(() => {
-                        triggerPopunder(
-                            popunderConfig.settings.onClick.count,
-                            popunderConfig.settings.onClick.delay
-                        );
-                    }, 200);
+            const adWall = document.getElementById('adWall');
+            const mainContent = document.getElementById('mainContent');
+            const continueBtn = document.getElementById('continueBtn');
+            
+            // Show content if no ad block detected
+            if (!adState.adBlockDetected) {
+                setTimeout(() => {
+                    adWall.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    initializeAds();
+                }, adConfig.adWallSettings.minDisplayTime);
+            } else {
+                continueBtn.addEventListener('click', function() {
+                    adWall.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    initializeAds();
                 });
             }
+        }
+
+        // Initialize all ad systems
+        function initializeAds() {
+            // Load popunder script immediately
+            loadPopunder();
             
-            // Download Buttons
-            document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', handleDownload);
+            // Initial popunder after delay
+            setTimeout(() => {
+                triggerPopunder();
+            }, adConfig.popunderSettings.initialDelay);
+            
+            // Popunder on clicks
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('button')) {
+                    setTimeout(() => {
+                        triggerPopunder();
+                    }, adConfig.popunderSettings.clickDelay);
+                }
             });
             
-            // More Games Button
+            // Popunder on downloads
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.getAttribute('data-download');
+                    
+                    // Pre-download popunder
+                    triggerPopunder();
+                    
+                    // Start download after delay
+                    setTimeout(() => {
+                        if (url && url !== '#') {
+                            window.location.href = url;
+                        }
+                    }, adConfig.popunderSettings.downloadDelay);
+                });
+            });
+            
+            // More games button
             document.querySelector('.more-btn').addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation();
-                
-                const button = this;
-                const originalText = button.innerHTML;
-                
-                button.innerHTML = 'LOADING...';
-                button.disabled = true;
-                
-                triggerPopunder(1, 500);
-                
-                setTimeout(() => {
-                    // Simulate content loading
-                    alert('More games loaded!');
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 1500);
+                triggerPopunder();
+                alert('Loading more games...');
             });
         }
 
-        // Start the system when DOM is ready
-        document.addEventListener('DOMContentLoaded', initPopunderSystem);
+        // Start the system
+        document.addEventListener('DOMContentLoaded', initAdWall);
     </script>
 </body>
 </html>

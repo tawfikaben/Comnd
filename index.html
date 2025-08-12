@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎮 Premium Games Hub - Free Gaming Portal</title>
     <meta name="description" content="Download free premium mobile games for Android and iOS. GTA 5 Mobile, Call of Duty Mobile, Asphalt 9 and more.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -180,21 +179,52 @@
             color: #e74c3c;
         }
     </style>
+    <!-- AdBlock Detection -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const adCheck = document.createElement('div');
+        adCheck.className = 'ad-check';
+        adCheck.style.cssText = 'height:1px;width:1px;visibility:hidden;';
+        document.body.appendChild(adCheck);
+        
+        setTimeout(() => {
+          if (adCheck.offsetHeight === 0) {
+            showAdBlockWarning();
+          }
+          adCheck.remove();
+        }, 2000);
+        
+        function showAdBlockWarning() {
+          const warning = document.createElement('div');
+          warning.innerHTML = `
+            <div style="position:fixed;top:0;left:0;right:0;background:#e74c3c;
+            color:white;padding:12px;text-align:center;z-index:9999;font-family:sans-serif;">
+              ⚠️ Please disable AdBlock to unlock all game features
+              <button onclick="this.parentNode.remove()" 
+                style="margin-left:12px;background:white;color:#e74c3c;
+                border:none;padding:3px 8px;border-radius:3px;cursor:pointer;">
+                I've disabled it
+              </button>
+            </div>
+          `;
+          document.body.prepend(warning);
+        }
+      });
+    </script>
 </head>
 <body>
     <!-- Top Banner Ad -->
     <div class="ad-container">
-        <div class="ad-label">Advertisement</div>
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+      <div class="ad-label">🎮 Exclusive Game Offer 🎮</div>
+      <script data-cfasync="false">
+        window.adsterra = window.adsterra || {};
+        adsterra.config = {
+          pid: '3043529ca5c93c815dd6d1dd6665778c',
+          type: 'banner',
+          format: 'responsive'
+        };
+      </script>
+      <script async src="https://www.profitabledisplaynetwork.com/loader.js"></script>
     </div>
 
     <div class="container">
@@ -220,24 +250,21 @@
         <!-- Game Details for GTA 5 -->
         <div class="game-details" id="gta5-details">
             <h2>GTA 5 Mobile - Complete Edition</h2>
-            <p>Experience the complete Grand Theft Auto V universe optimized for mobile devices. This version includes all story mode missions, online multiplayer, and exclusive mobile features.</p>
-            <h3>Key Features:</h3>
-            <ul>
-                <li>Full HD graphics optimized for mobile</li>
-                <li>All story missions from original game</li>
-                <li>Exclusive mobile-only vehicles and weapons</li>
-                <li>Customizable controls for touchscreen</li>
-                <li>Regular updates with new content</li>
-            </ul>
-            <p>GTA 5 Mobile brings the complete Los Santos experience to your smartphone with enhanced visuals and performance. The game has been downloaded over 50 million times worldwide and maintains a 4.9/5 rating from players.</p>
+            <p>Experience the complete Grand Theft Auto V universe optimized for mobile devices.</p>
             <button class="close-btn">Close</button>
         </div>
 
         <!-- Native Ad -->
         <div class="ad-container">
-            <div class="ad-label">Recommended</div>
-            <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
-            <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
+          <div class="ad-label">🔥 Hot Game Offer 🔥</div>
+          <script data-cfasync="false">
+            adsterra.config = {
+              pid: '3043529ca5c93c815dd6d1dd6665778c',
+              type: 'native',
+              template: 'game-promo'
+            };
+          </script>
+          <script async src="https://www.profitabledisplaynetwork.com/loader.js"></script>
         </div>
 
         <!-- Call of Duty Mobile -->
@@ -257,16 +284,7 @@
         <!-- Game Details for Call of Duty -->
         <div class="game-details" id="cod-details">
             <h2>Call of Duty Mobile - Season 6 Update</h2>
-            <p>The latest update brings new maps, weapons, and the return of fan-favorite game modes to the best FPS experience on mobile.</p>
-            <h3>What's New:</h3>
-            <ul>
-                <li>New Battle Pass with 50 tiers of rewards</li>
-                <li>2 new multiplayer maps</li>
-                <li>3 new functional weapons</li>
-                <li>Zombie mode improvements</li>
-                <li>Performance optimizations</li>
-            </ul>
-            <p>With over 300 million downloads worldwide, Call of Duty Mobile continues to set the standard for mobile shooters. The current season introduces the most requested features from the community.</p>
+            <p>The latest update brings new maps and weapons to the best FPS experience on mobile.</p>
             <button class="close-btn">Close</button>
         </div>
 
@@ -287,16 +305,7 @@
         <!-- Game Details for Asphalt 9 -->
         <div class="game-details" id="asphalt9-details">
             <h2>Asphalt 9: Legends - Ultimate Edition</h2>
-            <p>The most visually stunning racing game on mobile now with all cars and tracks unlocked in this exclusive edition.</p>
-            <h3>Features:</h3>
-            <ul>
-                <li>Over 150 hypercars from top manufacturers</li>
-                <li>70+ tracks in stunning locations worldwide</li>
-                <li>All DLC content included</li>
-                <li>Customizable controls and HUD</li>
-                <li>Regular events with exclusive rewards</li>
-            </ul>
-            <p>Asphalt 9: Legends redefines mobile racing with console-quality graphics and physics. This exclusive version gives you access to all content without restrictions, valued at over $200 in the standard version.</p>
+            <p>The most visually stunning racing game on mobile with all content unlocked.</p>
             <button class="close-btn">Close</button>
         </div>
 
@@ -318,210 +327,132 @@
 
     <!-- Popunder System -->
     <script>
-        // Popunder configuration
-        const popunderConfig = {
-            scriptUrl: '//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js',
-            behavior: {
-                onLoad: {
-                    enabled: true,
-                    delay: 5000,       // 5 seconds after page load
-                    count: 1
-                },
-                onClick: {
-                    enabled: true,
-                    delay: 1000,       // 1 second after click
-                    count: 1,
-                    cooldown: 30000    // 30 seconds between triggers
-                }
-            }
-        };
-
-        // State management
-        let popunderState = {
-            lastTrigger: 0,
-            scriptLoaded: false,
-            isTriggering: false
-        };
-
-        // Load the popunder script
-        function loadPopunderScript(callback) {
-            if (popunderState.scriptLoaded) {
-                if (callback) callback();
-                return;
-            }
+        // نظام Popunder محسن
+        const popunderManager = {
+          config: {
+            initialDelay: 8000,    // 8 ثواني قبل الظهور الأول
+            clickDelay: 1000,      // تأخير 1 ثانية بعد النقر
+            cooldown: 45000,       // 45 ثانية بين المحاولات
+            maxPerSession: 3       // الحد الأقصى للظهور في الجلسة
+          },
+          
+          init() {
+            // الظهور الأول بعد التأخير
+            setTimeout(() => this.trigger(), this.config.initialDelay);
             
-            const script = document.createElement('script');
-            script.src = popunderConfig.scriptUrl;
-            script.async = true;
-            
-            script.onload = function() {
-                popunderState.scriptLoaded = true;
-                if (callback) callback();
-            };
-            
-            script.onerror = function() {
-                console.error('Popunder script failed to load');
-            };
-            
-            document.body.appendChild(script);
-        }
-
-        // Trigger popunder safely
-        function triggerPopunder(count = 1, delayBetween = 500) {
-            const now = Date.now();
-            
-            // Prevent too frequent triggers
-            if (popunderState.isTriggering || 
-                now - popunderState.lastTrigger < popunderConfig.behavior.onClick.cooldown) {
-                return;
-            }
-            
-            popunderState.isTriggering = true;
-            popunderState.lastTrigger = now;
-            
-            loadPopunderScript(function() {
-                for (let i = 0; i < count; i++) {
-                    setTimeout(function() {
-                        try {
-                            if (typeof window.popunder === 'function') {
-                                window.popunder();
-                            } else {
-                                // Fallback method
-                                const win = window.open('about:blank', '_blank');
-                                if (win) {
-                                    win.blur();
-                                    window.focus();
-                                    setTimeout(() => win.close(), 100);
-                                }
-                            }
-                        } catch (e) {
-                            console.error('Popunder error:', e);
-                        }
-                    }, i * delayBetween);
-                }
-                
-                // Reset triggering state
-                setTimeout(() => {
-                    popunderState.isTriggering = false;
-                }, count * delayBetween + 1000);
+            // ربط أحداث النقر
+            document.addEventListener('click', (e) => {
+              if (this.canTrigger()) {
+                setTimeout(() => this.trigger(), this.config.clickDelay);
+              }
             });
-        }
+          },
+          
+          canTrigger() {
+            return this.count < this.config.maxPerSession && 
+                   Date.now() - this.lastTrigger > this.config.cooldown;
+          },
+          
+          trigger() {
+            try {
+              const win = window.open('https://www.profitabledisplaynetwork.com/redirect', '_blank');
+              if (win) {
+                setTimeout(() => {
+                  win.blur();
+                  window.focus();
+                  this.count++;
+                  this.lastTrigger = Date.now();
+                }, 300);
+              }
+            } catch(e) {
+              console.error('Popunder Error:', e);
+            }
+          },
+          
+          count: 0,
+          lastTrigger: 0
+        };
 
-        // Show game details
+        // إظهار تفاصيل اللعبة
         function showGameDetails(gameId) {
-            // Hide all details first
-            document.querySelectorAll('.game-details').forEach(el => {
-                el.style.display = 'none';
+          document.querySelectorAll('.game-details').forEach(el => {
+            el.style.display = 'none';
+          });
+          
+          const detailsEl = document.getElementById(`${gameId}-details`);
+          if (detailsEl) {
+            detailsEl.style.display = 'block';
+            detailsEl.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
             });
-            
-            // Show selected game details
-            const detailsEl = document.getElementById(`${gameId}-details`);
-            if (detailsEl) {
-                el.style.display = 'block';
-                detailsEl.scrollIntoView({ behavior: 'smooth' });
-            }
-            
-            // Trigger popunder when showing details
-            triggerPopunder(1, 500);
+          }
         }
 
-        // Close game details
+        // إغلاق تفاصيل اللعبة
         function closeGameDetails() {
-            document.querySelectorAll('.game-details').forEach(el => {
-                el.style.display = 'none';
-            });
+          document.querySelectorAll('.game-details').forEach(el => {
+            el.style.display = 'none';
+          });
         }
 
-        // Initialize the popunder system
-        function initPopunderSystem() {
-            // On Load Trigger
-            if (popunderConfig.behavior.onLoad.enabled) {
-                setTimeout(() => {
-                    triggerPopunder(
-                        popunderConfig.behavior.onLoad.count,
-                        500
-                    );
-                }, popunderConfig.behavior.onLoad.delay);
-            }
-            
-            // Click Trigger for general clicks
-            if (popunderConfig.behavior.onClick.enabled) {
-                document.addEventListener('click', function(e) {
-                    // Skip if clicked on buttons (handled separately)
-                    if (e.target.closest('button')) return;
-                    
-                    setTimeout(() => {
-                        triggerPopunder(
-                            popunderConfig.behavior.onClick.count,
-                            popunderConfig.behavior.onClick.delay
-                        );
-                    }, 200);
-                });
-            }
-            
-            // Game details buttons
-            document.querySelectorAll('.action-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const gameId = this.getAttribute('data-game');
-                    showGameDetails(gameId);
-                });
-            });
-            
-            // Close buttons
-            document.querySelectorAll('.close-btn').forEach(btn => {
-                btn.addEventListener('click', closeGameDetails);
-            });
-            
-            // More Games Button
-            document.querySelector('.more-btn').addEventListener('click', function(e) {
-                e.preventDefault();
-                const button = this;
-                const originalText = button.innerHTML;
-                
-                button.innerHTML = 'LOADING...';
-                button.disabled = true;
-                
-                triggerPopunder(1, 500);
-                
-                setTimeout(() => {
-                    alert('More games loaded!');
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                }, 1500);
-            });
-        }
-
-        // Show social media bar after 4 seconds
+        // إظهار شريط وسائل التواصل
         function showSocialBar() {
-            setTimeout(() => {
-                const socialBar = document.getElementById('socialBar');
-                if (socialBar) {
-                    socialBar.classList.add('visible');
-                }
-            }, 4000);
-        }
-
-        // Close social media bar
-        function setupSocialBarClose() {
-            const closeBtn = document.getElementById('closeSocial');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    const socialBar = document.getElementById('socialBar');
-                    if (socialBar) {
-                        socialBar.classList.remove('visible');
-                    }
-                });
+          setTimeout(() => {
+            const socialBar = document.getElementById('socialBar');
+            if (socialBar) {
+              socialBar.classList.add('visible');
             }
+          }, 10000);
         }
 
-        // Start all systems when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            initPopunderSystem();
-            showSocialBar();
-            setupSocialBarClose();
+        // إغلاق شريط وسائل التواصل
+        function setupSocialBarClose() {
+          const closeBtn = document.getElementById('closeSocial');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+              const socialBar = document.getElementById('socialBar');
+              if (socialBar) {
+                socialBar.classList.remove('visible');
+              }
+            });
+          }
+        }
+
+        // بدء جميع الأنظمة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+          popunderManager.init();
+          showSocialBar();
+          setupSocialBarClose();
+          
+          // أحداث الأزرار
+          document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const gameId = this.getAttribute('data-game');
+              showGameDetails(gameId);
+            });
+          });
+          
+          document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', closeGameDetails);
+          });
+          
+          document.querySelector('.more-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('More games will be loaded soon!');
+          });
         });
     </script>
-    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
-    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
+
+    <!-- Lazy Load Font Awesome -->
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const faScript = document.createElement('script');
+          faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js';
+          document.body.appendChild(faScript);
+        }, 3000);
+      });
+    </script>
 </body>
 </html>

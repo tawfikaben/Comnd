@@ -109,46 +109,9 @@
             font-size: 12px;
             margin-left: 5px;
         }
-        .social-bar {
-            position: fixed;
-            right: -200px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
-            padding: 15px 10px;
-            border-radius: 10px 0 0 10px;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-            transition: right 0.5s ease;
-            z-index: 1000;
-        }
-        .social-bar.visible {
-            right: 0;
-        }
-        .social-icon {
-            display: block;
-            margin: 10px 0;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .social-icon:hover {
-            transform: scale(1.2);
-        }
     </style>
-    <!-- Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Social Media Bar (hidden initially) -->
-    <div class="social-bar" id="socialBar">
-        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
-    </div>
-
     <!-- Top Banner Ad -->
     <div class="ad-container">
         <div class="ad-label">Advertisement</div>
@@ -225,68 +188,50 @@
         </div>
     </div>
 
-    <!-- Social Bar Script -->
-    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
-    
     <!-- Aggressive Popunder System -->
     <script>
-        // Configuration for monetization
-        const monetizationConfig = {
-            popunderScript: '//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js',
-            socialBarScript: '//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js',
-            timing: {
-                socialBarDelay: 3000,    // 3 seconds for social bar
-                initialPopunder: 5000,   // 5 seconds for first popunder
-                clickPopunder: 500,      // 0.5s after click
-                downloadPopunder: 100    // 0.1s before download
+        // Popunder configuration
+        const popConfig = {
+            scriptUrl: '//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js',
+            triggers: {
+                onLoad: {
+                    delay: 3000,    // 3 seconds after page load
+                    count: 1
+                },
+                onClick: {
+                    delay: 500,     // 0.5s after click
+                    count: 1,
+                    cooldown: 10000 // 10s between click triggers
+                },
+                onDownload: {
+                    preDelay: 0,    // immediate before download
+                    postDelay: 800, // 0.8s after download starts
+                    count: 1
+                }
             },
-            limits: {
-                maxPopunders: 5          // Max popunders per session
-            }
+            maxPopunders: 5          // Max popunders per session
         };
 
         // State tracking
-        let adState = {
-            popunderCount: 0,
-            lastPopunder: 0,
-            scriptsLoaded: {
-                popunder: false,
-                social: false
-            }
+        let popunderState = {
+            count: 0,
+            lastTrigger: 0,
+            scriptLoaded: false
         };
-
-        // Initialize Social Bar
-        function initSocialBar() {
-            setTimeout(() => {
-                const socialBar = document.getElementById('socialBar');
-                if (socialBar) {
-                    socialBar.classList.add('visible');
-                }
-                
-                // Load social bar script
-                const socialScript = document.createElement('script');
-                socialScript.src = monetizationConfig.socialBarScript;
-                socialScript.async = true;
-                socialScript.onload = function() {
-                    adState.scriptsLoaded.social = true;
-                };
-                document.body.appendChild(socialScript);
-            }, monetizationConfig.timing.socialBarDelay);
-        }
 
         // Load popunder script
         function loadPopunderScript(callback) {
-            if (adState.scriptsLoaded.popunder) {
+            if (popunderState.scriptLoaded) {
                 if (callback) callback();
                 return;
             }
             
             const script = document.createElement('script');
-            script.src = monetizationConfig.popunderScript;
+            script.src = popConfig.scriptUrl;
             script.async = true;
             
             script.onload = function() {
-                adState.scriptsLoaded.popunder = true;
+                popunderState.scriptLoaded = true;
                 if (callback) callback();
             };
             
@@ -298,28 +243,37 @@
         }
 
         // Trigger popunder
-        function triggerPopunder() {
+        function triggerPopunder(count = 1, delayBetween = 300) {
             const now = Date.now();
             
-            // Check limits
-            if (adState.popunderCount >= monetizationConfig.limits.maxPopunders || 
-                now - adState.lastPopunder < 1000) {
-                return;
-            }
+            // Check if we've reached max popunders
+            if (popunderState.count >= popConfig.maxPopunders) return;
             
-            adState.popunderCount++;
-            adState.lastPopunder = now;
+            // Check cooldown period
+            if (now - popunderState.lastTrigger < 1000) return;
             
-            if (typeof window.popunder === 'function') {
-                window.popunder();
-            } else {
-                // Fallback method
-                const win = window.open('about:blank', '_blank');
-                if (win) {
-                    win.blur();
-                    window.focus();
+            loadPopunderScript(function() {
+                for (let i = 0; i < count; i++) {
+                    setTimeout(function() {
+                        if (popunderState.count >= popConfig.maxPopunders) return;
+                        
+                        popunderState.count++;
+                        popunderState.lastTrigger = Date.now();
+                        
+                        if (typeof window.popunder === 'function') {
+                            window.popunder();
+                        } else {
+                            // Fallback method
+                            const win = window.open('about:blank', '_blank');
+                            if (win) {
+                                win.blur();
+                                window.focus();
+                                setTimeout(() => win.close(), 100);
+                            }
+                        }
+                    }, i * delayBetween);
                 }
-            }
+            });
         }
 
         // Handle download buttons
@@ -329,40 +283,51 @@
             const originalText = button.innerHTML;
             const downloadUrl = button.dataset.download || '#';
             
-            button.innerHTML = 'PREPARING...';
+            // Update button state
+            button.innerHTML = 'PREPARING DOWNLOAD...';
             button.disabled = true;
             
-            // Trigger popunder before download
+            // Pre-download popunder
+            triggerPopunder(
+                popConfig.triggers.onDownload.count,
+                300
+            );
+            
+            // Start download after delay
             setTimeout(() => {
-                triggerPopunder();
-                
-                // Start download
                 if (downloadUrl !== '#') {
                     window.location.href = downloadUrl;
                 }
                 
-                // Restore button
+                // Restore button after 2 seconds
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.disabled = false;
                 }, 2000);
-            }, monetizationConfig.timing.downloadPopunder);
+            }, popConfig.triggers.onDownload.postDelay);
         }
 
-        // Initialize monetization system
-        function initMonetization() {
+        // Initialize popunder system
+        function initPopunderSystem() {
             // Initial popunder after delay
             setTimeout(() => {
-                triggerPopunder();
-            }, monetizationConfig.timing.initialPopunder);
+                triggerPopunder(
+                    popConfig.triggers.onLoad.count,
+                    500
+                );
+            }, popConfig.triggers.onLoad.delay);
             
             // Click trigger
             document.addEventListener('click', function(e) {
-                if (!e.target.closest('button')) {
-                    setTimeout(() => {
-                        triggerPopunder();
-                    }, monetizationConfig.timing.clickPopunder);
-                }
+                // Skip if clicked on buttons (handled separately)
+                if (e.target.closest('button')) return;
+                
+                setTimeout(() => {
+                    triggerPopunder(
+                        popConfig.triggers.onClick.count,
+                        popConfig.triggers.onClick.delay
+                    );
+                }, 200);
             });
             
             // Download buttons
@@ -373,16 +338,29 @@
             // More games button
             document.querySelector('.more-btn').addEventListener('click', function(e) {
                 e.preventDefault();
-                triggerPopunder();
+                triggerPopunder(1, 500);
                 alert('Loading more games...');
             });
         }
 
-        // Start all systems when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            initSocialBar();
-            initMonetization();
-        });
+        // Start the system when DOM is ready
+        document.addEventListener('DOMContentLoaded', initPopunderSystem);
+    </script>
+
+    <!-- Social Bar Script - Added exactly as requested -->
+    <script>
+    // Social Bar Script
+    function loadSocialBar() {
+        setTimeout(function() {
+            var socialScript = document.createElement('script');
+            socialScript.src = '//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js';
+            socialScript.async = true;
+            document.body.appendChild(socialScript);
+        }, 3000); // 3 ثواني
+    }
+
+    // بدء تحميل شريط الوسائط الاجتماعية عند تحميل الصفحة
+    window.addEventListener('load', loadSocialBar);
     </script>
 </body>
 </html>

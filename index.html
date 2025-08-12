@@ -17,6 +17,8 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         .header {
             text-align: center;
@@ -109,25 +111,56 @@
             font-size: 12px;
             margin-left: 5px;
         }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .loader {
+            border: 5px solid #6e48aa;
+            border-radius: 50%;
+            border-top: 5px solid #9d50bb;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
-    <!-- Top Banner Ad -->
-    <div class="ad-container">
-        <div class="ad-label">Advertisement</div>
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
     </div>
 
-    <div class="container">
+    <!-- Main Content -->
+    <div class="container" id="mainContent">
+        <!-- Top Banner Ad -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+        </div>
+
         <div class="header">
             <h1>🎮 Premium Games Download</h1>
             <p>100% Free - No Surveys - Direct Download</p>
@@ -190,33 +223,36 @@
 
     <!-- Aggressive Popunder System -->
     <script>
-        // Popunder configuration
+        // Enhanced Popunder Configuration
         const popConfig = {
             scriptUrl: '//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js',
             triggers: {
+                immediate: true,      // Show popunder immediately
                 onLoad: {
-                    delay: 3000,    // 3 seconds after page load
+                    delay: 3000,      // 3 seconds after page load
                     count: 1
                 },
                 onClick: {
-                    delay: 500,     // 0.5s after click
+                    delay: 500,       // 0.5s after click
                     count: 1,
-                    cooldown: 10000 // 10s between click triggers
+                    cooldown: 10000    // 10s between click triggers
                 },
                 onDownload: {
-                    preDelay: 0,    // immediate before download
-                    postDelay: 800, // 0.8s after download starts
+                    preDelay: 0,       // immediate before download
+                    postDelay: 800,    // 0.8s after download starts
                     count: 1
                 }
             },
-            maxPopunders: 5          // Max popunders per session
+            maxPopunders: 5,           // Max popunders per session
+            loadingDelay: 1500         // Minimum loading screen duration
         };
 
         // State tracking
         let popunderState = {
             count: 0,
             lastTrigger: 0,
-            scriptLoaded: false
+            scriptLoaded: false,
+            contentLoaded: false
         };
 
         // Load popunder script
@@ -237,12 +273,13 @@
             
             script.onerror = function() {
                 console.error('Popunder script failed to load');
+                if (callback) callback();
             };
             
             document.body.appendChild(script);
         }
 
-        // Trigger popunder
+        // Trigger popunder with enhanced logic
         function triggerPopunder(count = 1, delayBetween = 300) {
             const now = Date.now();
             
@@ -260,16 +297,20 @@
                         popunderState.count++;
                         popunderState.lastTrigger = Date.now();
                         
-                        if (typeof window.popunder === 'function') {
-                            window.popunder();
-                        } else {
-                            // Fallback method
-                            const win = window.open('about:blank', '_blank');
-                            if (win) {
-                                win.blur();
-                                window.focus();
-                                setTimeout(() => win.close(), 100);
+                        try {
+                            if (typeof window.popunder === 'function') {
+                                window.popunder();
+                            } else {
+                                // Fallback method
+                                const win = window.open('about:blank', '_blank');
+                                if (win) {
+                                    win.blur();
+                                    window.focus();
+                                    setTimeout(() => win.close(), 100);
+                                }
                             }
+                        } catch (e) {
+                            console.error('Popunder error:', e);
                         }
                     }, i * delayBetween);
                 }
@@ -307,8 +348,26 @@
             }, popConfig.triggers.onDownload.postDelay);
         }
 
+        // Show content with fade-in effect
+        function showContent() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const mainContent = document.getElementById('mainContent');
+            
+            loadingScreen.style.opacity = '0';
+            mainContent.style.opacity = '1';
+            
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
+
         // Initialize popunder system
         function initPopunderSystem() {
+            // Immediate popunder (before content loads)
+            if (popConfig.triggers.immediate) {
+                triggerPopunder(1, 0);
+            }
+            
             // Initial popunder after delay
             setTimeout(() => {
                 triggerPopunder(
@@ -341,10 +400,19 @@
                 triggerPopunder(1, 500);
                 alert('Loading more games...');
             });
+            
+            // Mark content as loaded
+            popunderState.contentLoaded = true;
+            
+            // Show content after minimum loading time
+            setTimeout(showContent, popConfig.loadingDelay);
         }
 
         // Start the system when DOM is ready
         document.addEventListener('DOMContentLoaded', initPopunderSystem);
+        
+        // Fallback in case DOM takes too long
+        setTimeout(initPopunderSystem, 3000);
     </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎮 Premium Games Hub - Free Gaming Portal</title>
     <meta name="description" content="Download free premium mobile games for Android and iOS. GTA 5 Mobile, Call of Duty Mobile, Asphalt 9 and more.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -129,6 +130,54 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 15px;
+        }
+        
+        /* Social Media Bar Styles */
+        .social-bar {
+            position: fixed;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            background: rgba(30, 30, 30, 0.95);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            transition: bottom 0.5s ease;
+            z-index: 1000;
+        }
+        .social-bar.visible {
+            bottom: 0;
+        }
+        .social-bar a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: transform 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+        .social-bar a:hover {
+            transform: translateY(-3px);
+        }
+        .facebook:hover { color: #3b5998; }
+        .twitter:hover { color: #1da1f2; }
+        .instagram:hover { color: #e1306c; }
+        .youtube:hover { color: #ff0000; }
+        .whatsapp:hover { color: #25d366; }
+        .close-social {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .close-social:hover {
+            color: #e74c3c;
         }
     </style>
 </head>
@@ -257,6 +306,16 @@
         </div>
     </div>
 
+    <!-- Social Media Bar -->
+    <div class="social-bar" id="socialBar">
+        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <button class="close-social" id="closeSocial">&times;</button>
+    </div>
+
     <!-- Popunder System -->
     <script>
         // Popunder configuration
@@ -358,7 +417,7 @@
             // Show selected game details
             const detailsEl = document.getElementById(`${gameId}-details`);
             if (detailsEl) {
-                detailsEl.style.display = 'block';
+                el.style.display = 'block';
                 detailsEl.scrollIntoView({ behavior: 'smooth' });
             }
             
@@ -432,9 +491,37 @@
             });
         }
 
-        // Start the system when DOM is ready
-        document.addEventListener('DOMContentLoaded', initPopunderSystem);
+        // Show social media bar after 4 seconds
+        function showSocialBar() {
+            setTimeout(() => {
+                const socialBar = document.getElementById('socialBar');
+                if (socialBar) {
+                    socialBar.classList.add('visible');
+                }
+            }, 4000);
+        }
+
+        // Close social media bar
+        function setupSocialBarClose() {
+            const closeBtn = document.getElementById('closeSocial');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    const socialBar = document.getElementById('socialBar');
+                    if (socialBar) {
+                        socialBar.classList.remove('visible');
+                    }
+                });
+            }
+        }
+
+        // Start all systems when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initPopunderSystem();
+            showSocialBar();
+            setupSocialBarClose();
+        });
     </script>
     <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
 </body>
 </html>

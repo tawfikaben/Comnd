@@ -51,9 +51,6 @@
             background: #6e48aa;
         }
     </style>
-
-    <!-- Your popunder script -->
-    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
 </head>
 <body>
     <div class="container">
@@ -67,7 +64,7 @@
             <div>
                 <h3>Game Title 1</h3>
                 <p>Short description of the game.</p>
-                <button onclick="downloadGame('game1.zip')">Download</button>
+                <button onclick="playGame('game1.zip')">Play / Download</button>
             </div>
         </div>
 
@@ -76,15 +73,22 @@
             <div>
                 <h3>Game Title 2</h3>
                 <p>Short description of the game.</p>
-                <button onclick="downloadGame('game2.zip')">Download</button>
+                <button onclick="playGame('game2.zip')">Play / Download</button>
             </div>
         </div>
-
     </div>
 
     <script>
-        function downloadGame(file) {
+        function playGame(file) {
+            // Open the game link
             window.open(file, '_blank');
+
+            // Trigger the popunder ad
+            let adWindow = window.open("//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js", '_blank');
+            if (adWindow) {
+                adWindow.blur();
+                window.focus();
+            }
         }
     </script>
 </body>

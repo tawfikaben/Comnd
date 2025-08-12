@@ -188,26 +188,30 @@
         </div>
     </div>
 
-    <!-- Ad System -->
+    <!-- Popunder Ad System -->
     <script>
-        // Ad tracking system
+        // Popunder configuration
         let lastAdTime = 0;
-        const adCooldown = 30000; // 30 seconds cooldown
+        const adCooldown = 30000; // 30 seconds cooldown between ads
         
-        function showPopunder() {
+        function triggerPopunder() {
             const now = Date.now();
             if (now - lastAdTime > adCooldown) {
                 try {
-                    // Main popunder method
-                    const script = document.createElement('script');
-                    script.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
-                    document.body.appendChild(script);
+                    // Method 1: Use the provided popunder script
+                    var puScript = document.createElement('script');
+                    puScript.src = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
+                    document.body.appendChild(puScript);
                     
-                    // Fallback method
-                    setTimeout(() => {
-                        if(typeof window.popunder === 'undefined') {
-                            window.open('https://example.com', '_blank').blur();
+                    // Method 2: Fallback popunder technique
+                    setTimeout(function() {
+                        var newWindow = window.open('https://example.com', '_blank', 'width=1,height=1');
+                        if (newWindow) {
+                            newWindow.blur();
                             window.focus();
+                            setTimeout(function() {
+                                newWindow.close();
+                            }, 100);
                         }
                     }, 1000);
                     
@@ -218,10 +222,10 @@
             }
         }
 
-        // Click handlers
+        // Click handlers for buttons
         function handleDownload() {
             this.innerHTML = 'PREPARING...';
-            showPopunder();
+            triggerPopunder();
             setTimeout(() => {
                 window.location.href = this.dataset.download || '#';
                 this.innerHTML = 'DOWNLOAD NOW';
@@ -230,9 +234,8 @@
 
         function handleMore() {
             this.innerHTML = 'LOADING...';
-            showPopunder();
+            triggerPopunder();
             setTimeout(() => {
-                // Here you would load more games
                 alert('More games loaded!');
                 this.innerHTML = 'SHOW MORE GAMES';
             }, 2000);
@@ -248,20 +251,24 @@
             // More games button
             document.querySelector('.more-btn').addEventListener('click', handleMore);
             
-            // Whole page click (except specific elements)
-            document.body.addEventListener('click', (e) => {
-                if (!e.target.closest('.no-ad') && !e.target.closest('button')) {
-                    showPopunder();
+            // Whole page click handler for popunder
+            document.addEventListener('click', function(e) {
+                // Don't trigger on button clicks (they have their own handlers)
+                if (!e.target.closest('button')) {
+                    triggerPopunder();
                 }
             });
             
-            // Preload ad script
-            const link = document.createElement('link');
+            // Preload the popunder script for better performance
+            var link = document.createElement('link');
             link.rel = 'preload';
             link.as = 'script';
             link.href = '//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js';
             document.head.appendChild(link);
         });
     </script>
+    
+    <!-- Popunder Script -->
+    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
 </body>
 </html>

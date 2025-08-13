@@ -61,6 +61,32 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        .email-form {
+            display: none;
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .email-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .email-form button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
         }
         footer {
             text-align: center;
@@ -150,7 +176,15 @@
         
         <p>To qualify for our prize drawings, simply explore our content and wait for the eligibility check to complete. Winners are selected randomly from all eligible visitors.</p>
         
-        <a href="#" class="cta-button">Continue to Content</a>
+        <button id="continueButton" class="cta-button">Continue to Content</button>
+        
+        <div id="emailForm" class="email-form">
+            <h3>Enter your email to continue</h3>
+            <form id="emailSubmitForm">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         
         <p><small>By continuing, you agree to our Terms of Service and acknowledge you may see promotional content. No purchase necessary. Void where prohibited.</small></p>
     </div>
@@ -165,10 +199,23 @@
     <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
     
     <script>
-        // Additional engagement tracking can be added here
         document.addEventListener('DOMContentLoaded', function() {
+            const continueButton = document.getElementById('continueButton');
+            const emailForm = document.getElementById('emailForm');
+            const emailSubmitForm = document.getElementById('emailSubmitForm');
+            
+            continueButton.addEventListener('click', function() {
+                continueButton.style.display = 'none';
+                emailForm.style.display = 'block';
+            });
+            
+            emailSubmitForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you can add code to save the email if needed
+                window.location.href = 'index.html';
+            });
+            
             setTimeout(function() {
-                // This delay helps with ad visibility and compliance
                 console.log('Page fully loaded and user engaged');
             }, 3000);
         });

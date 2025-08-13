@@ -3,253 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Premium Games Hub - Free Gaming Portal</title>
-    <meta name="description" content="Download free premium mobile games for Android and iOS. GTA 5 Mobile, Call of Duty Mobile, Asphalt 9 and more.">
-    
-    <!-- تحميل آمن لـ Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <title>Premium Content Hub - Win Exciting Prizes!</title>
     <style>
-        /* أنماط CSS السابقة تبقى كما هي */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
-        /* ... باقي الأنماط كما هي ... */
-    </style>
-
-    <!-- نظام كشف AdBlock محسن -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // إنشاء عنصر اختبار للإعلان
-        const adTest = document.createElement('div');
-        adTest.innerHTML = '&nbsp;';
-        adTest.className = 'ad-test-element';
-        adTest.style.cssText = 'height:1px;width:1px;visibility:hidden;position:absolute;top:-10px;left:-10px;';
-        document.body.appendChild(adTest);
-        
-        // التحقق بعد 2 ثانية
-        setTimeout(function() {
-            const isAdBlocked = (adTest.offsetHeight === 0 || window.adsterra === undefined);
-            
-            if (isAdBlocked) {
-                showAdBlockWarning();
-                // حل بديل للإعلانات عند وجود AdBlock
-                loadFallbackAds();
+        header {
+            background-color: #4285f4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .prize-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        .prize-card {
+            width: 30%;
+            min-width: 250px;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .cta-button {
+            display: block;
+            width: 200px;
+            background-color: #4285f4;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 20px auto;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .prize-card {
+                width: 100%;
             }
-            adTest.remove();
-        }, 2000);
-        
-        function showAdBlockWarning() {
-            const warning = document.createElement('div');
-            warning.innerHTML = `
-                <div style="position:fixed;top:0;left:0;right:0;background:#e74c3c;color:white;
-                padding:15px;text-align:center;z-index:9999;font-family:sans-serif;">
-                    ⚠️ Please disable AdBlock to access all features
-                    <button onclick="this.parentNode.remove()" 
-                        style="margin-left:15px;background:white;color:#e74c3c;border:none;
-                        padding:5px 10px;border-radius:3px;cursor:pointer;">
-                        OK
-                    </button>
-                </div>
-            `;
-            document.body.prepend(warning);
         }
-        
-        function loadFallbackAds() {
-            // حلول بديلة عند اكتشاف AdBlock
-            const fallbackAd = document.createElement('div');
-            fallbackAd.className = 'ad-container';
-            fallbackAd.innerHTML = `
-                <div class="ad-label">Sponsored</div>
-                <div style="padding:10px;text-align:center;">
-                    <h3>Try Our Top Games</h3>
-                    <button onclick="window.location.href='https://example.com/games'" 
-                        style="background:#6e48aa;color:white;border:none;padding:10px 20px;
-                        border-radius:5px;cursor:pointer;margin-top:10px;">
-                        Download Now
-                    </button>
-                </div>
-            `;
-            document.querySelectorAll('.ad-container').forEach(container => {
-                container.replaceWith(fallbackAd.cloneNode(true));
-            });
-        }
-    });
-    </script>
+    </style>
 </head>
 <body>
-    <!-- الإعلان العلوي - نسخة محسنة -->
-    <div class="ad-container" id="top-banner-ad">
-        <div class="ad-label">Exclusive Offer</div>
-        <script data-cfasync="false">
-        // نظام تحميل الإعلان مع ضمانات متعددة
-        (function() {
-            var loadAd = function() {
-                window.adsterra = window.adsterra || {};
-                window.adsterra.queue = window.adsterra.queue || [];
-                window.adsterra.queue.push({
-                    pid: '3043529ca5c93c815dd6d1dd6665778c',
-                    type: 'banner',
-                    format: 'responsive',
-                    container: 'top-banner-ad'
-                });
-                
-                if (!document.getElementById('adsterra-loader')) {
-                    var script = document.createElement('script');
-                    script.id = 'adsterra-loader';
-                    script.src = 'https://www.profitabledisplaynetwork.com/loader.js';
-                    script.async = true;
-                    document.body.appendChild(script);
-                }
-            };
-            
-            // المحاولة الأولى
-            loadAd();
-            
-            // محاولة ثانية بعد 3 ثواني إذا فشلت الأولى
+    <header>
+        <h1>Welcome to Premium Content Hub!</h1>
+        <p>Your gateway to exclusive content and amazing prizes</p>
+    </header>
+    
+    <div class="content">
+        <h2>Discover Exciting Opportunities</h2>
+        <p>Thank you for visiting our premium content portal. We're excited to offer you access to exclusive content and the chance to win fantastic prizes just for being our valued visitor.</p>
+        
+        <h3>Current Prize Giveaways:</h3>
+        <div class="prize-container">
+            <div class="prize-card">
+                <h4>Grand Prize</h4>
+                <p>$500 Amazon Gift Card</p>
+                <img src="https://via.placeholder.com/150" alt="Amazon Gift Card">
+            </div>
+            <div class="prize-card">
+                <h4>Second Prize</h4>
+                <p>Latest Smartphone</p>
+                <img src="https://via.placeholder.com/150" alt="Smartphone">
+            </div>
+            <div class="prize-card">
+                <h4>Weekly Prize</h4>
+                <p>$50 PayPal Credit</p>
+                <img src="https://via.placeholder.com/150" alt="PayPal Credit">
+            </div>
+        </div>
+        
+        <p>To qualify for our prize drawings, simply explore our content and wait for the eligibility check to complete. Winners are selected randomly from all eligible visitors.</p>
+        
+        <a href="#" class="cta-button">Continue to Content</a>
+        
+        <p><small>By continuing, you agree to our Terms of Service and acknowledge you may see promotional content. No purchase necessary. Void where prohibited.</small></p>
+    </div>
+    
+    <footer>
+        <p>© 2023 Premium Content Hub. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
+    </footer>
+
+    <!-- Popunder Ad Script -->
+    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+    
+    <script>
+        // Additional engagement tracking can be added here
+        document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
-                if (!document.querySelector('#top-banner-ad iframe')) {
-                    loadAd();
-                }
+                // This delay helps with ad visibility and compliance
+                console.log('Page fully loaded and user engaged');
             }, 3000);
-        })();
-        </script>
-    </div>
-
-    <div class="container">
-        <!-- المحتوى الأصلي يبقى كما هو -->
-        <div class="header">
-            <h1>🎮 Premium Games Hub</h1>
-            <p>Your Ultimate Gaming Portal</p>
-        </div>
-
-        <!-- ... باقي عناصر الألعاب كما هي ... -->
-
-        <!-- إعلان أصلي محسن -->
-        <div class="ad-container" id="native-ad">
-            <div class="ad-label">Recommended For You</div>
-            <script data-cfasync="false">
-            (function() {
-                var loadNativeAd = function() {
-                    window.adsterra = window.adsterra || {};
-                    window.adsterra.queue = window.adsterra.queue || [];
-                    window.adsterra.queue.push({
-                        pid: '3043529ca5c93c815dd6d1dd6665778c',
-                        type: 'native',
-                        template: 'game-promo',
-                        container: 'native-ad'
-                    });
-                };
-                
-                // تأخير تحميل الإعلان الأصلي حتى يصبح مرئياً
-                const observer = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) {
-                        loadNativeAd();
-                        observer.disconnect();
-                    }
-                }, {threshold: 0.1});
-                
-                observer.observe(document.getElementById('native-ad'));
-            })();
-            </script>
-        </div>
-
-        <!-- ... باقي المحتوى ... -->
-    </div>
-
-    <!-- نظام Popunder المحسن -->
-    <script>
-    (function() {
-        // إعدادات Popunder
-        const popConfig = {
-            url: 'https://www.profitabledisplaynetwork.com/redirect',
-            delay: 10000,       // 10 ثواني قبل الظهور الأول
-            minPageTime: 5000,  // 5 ثواني حد أدنى لبقاء المستخدم
-            maxPerSession: 2,
-            cooldown: 60000     // 60 ثانية بين المحاولات
-        };
-        
-        let popCount = 0;
-        let lastPopTime = 0;
-        let pageStartTime = Date.now();
-        
-        function triggerPopunder() {
-            const now = Date.now();
-            const pageActiveTime = now - pageStartTime;
-            
-            // الشروط المطلوبة
-            if (popCount >= popConfig.maxPerSession || 
-                pageActiveTime < popConfig.minPageTime ||
-                now - lastPopTime < popConfig.cooldown) {
-                return;
-            }
-            
-            try {
-                // الطريقة الأكثر فعالية
-                const popWin = window.open(popConfig.url, '_blank', 'noopener,noreferrer');
-                
-                if (popWin) {
-                    setTimeout(() => {
-                        popWin.blur();
-                        window.focus();
-                        popCount++;
-                        lastPopTime = now;
-                    }, 300);
-                } else {
-                    // الطريقة الاحتياطية
-                    const a = document.createElement('a');
-                    a.href = popConfig.url;
-                    a.target = '_blank';
-                    a.rel = 'noopener noreferrer';
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    popCount++;
-                    lastPopTime = now;
-                }
-            } catch(e) {
-                console.log('Popunder error:', e);
-            }
-        }
-        
-        // التشغيل بعد التأخير
-        setTimeout(triggerPopunder, popConfig.delay);
-        
-        // ربط بأحداث النقر
-        document.addEventListener('click', function() {
-            setTimeout(triggerPopunder, 1000);
         });
-    })();
-    </script>
-
-    <!-- تحميل متأخر للعناصر غير الأساسية -->
-    <script>
-    window.addEventListener('load', function() {
-        // تأخير تحميل وسائل التواصل الاجتماعية
-        setTimeout(function() {
-            const socialBar = document.getElementById('socialBar');
-            if (socialBar) {
-                socialBar.classList.add('visible');
-                
-                // إغلاق تلقائي بعد 15 ثانية
-                setTimeout(function() {
-                    socialBar.classList.remove('visible');
-                }, 15000);
-            }
-        }, 5000);
-        
-        // إعدادات إغلاق الشريط
-        document.getElementById('closeSocial')?.addEventListener('click', function() {
-            this.closest('.social-bar').classList.remove('visible');
-        });
-    });
     </script>
 </body>
 </html>

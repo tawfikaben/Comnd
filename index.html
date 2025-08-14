@@ -536,8 +536,8 @@
         document.getElementById('surveyForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // يمكنك هنا إضافة كود لإرسال البيانات إلى الخادم
-            alert('شكراً لمشاركتك في الاستبيان! سنقدر رأيك لتحسين خدماتنا.');
+            // عرض رسالة الشكر
+            alert('شكراً لمشاركتك في الاستبيان! سيتم تحويلك الآن إلى الصفحة الرئيسية.');
             
             // تفعيل popunder بعد إرسال الاستبيان
             setTimeout(function() {
@@ -555,10 +555,13 @@
                 } catch (e) {
                     console.error('Popunder error:', e);
                 }
-            }, 1000);
-            
-            // إعادة تعيين النموذج
-            this.reset();
+                
+                // إعادة التوجيه إلى index.html بعد 1 ثانية
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+                
+            }, 500);
         });
         
         // تفعيل popunder عند النقر على أي إعلان

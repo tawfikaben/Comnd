@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>استبيان الألعاب المميزة</title>
+    <title>استبيان الألعاب للهاتف</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -23,72 +23,69 @@
         
         .container {
             width: 100%;
-            max-width: 100%;
-            padding: 15px;
+            padding: 10px;
             background-color: #fff;
+            padding-bottom: 70px; /* مساحة لشريط الوسائل */
         }
         
         .header {
             text-align: center;
-            padding: 15px 0;
+            padding: 12px 0;
             background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: white;
-            position: relative;
-            overflow: hidden;
         }
         
         .header h1 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin: 0;
-            padding: 0 10px;
         }
         
         .header p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin: 5px 0 0;
         }
         
         .survey-section {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 15px;
+            padding: 12px;
             background-color: #f9f9f9;
             border-radius: 8px;
             border-left: 4px solid #6e48aa;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         
         .question {
             font-weight: bold;
-            margin-bottom: 12px;
-            font-size: 1rem;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
             color: #444;
         }
         
         .options {
-            margin-right: 10px;
+            margin-right: 8px;
         }
         
         .option {
             margin-bottom: 8px;
             display: flex;
             align-items: center;
-            padding: 5px 0;
+            font-size: 0.9rem;
         }
         
         input[type="radio"], input[type="checkbox"] {
             margin-left: 8px;
-            transform: scale(1.1);
+            width: 16px;
+            height: 16px;
         }
         
         textarea {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             border: 1px solid #ddd;
             border-radius: 5px;
             resize: vertical;
-            min-height: 80px;
+            min-height: 70px;
             font-family: inherit;
             font-size: 0.9rem;
         }
@@ -97,28 +94,23 @@
             background: linear-gradient(to right, #4776E6, #8E54E9);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 12px;
             border-radius: 25px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s;
             display: block;
-            margin: 25px auto;
-            font-size: 1rem;
+            margin: 20px auto;
+            font-size: 0.95rem;
             width: 90%;
             max-width: 250px;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .submit-btn:active {
-            transform: scale(0.98);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
         
         /* إعلانات متجاوبة */
         .ad-container {
-            margin: 15px 0;
-            padding: 10px;
+            margin: 12px 0;
+            padding: 8px;
             background: #252525;
             border-radius: 6px;
             text-align: center;
@@ -126,17 +118,16 @@
         }
         
         .ad-label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #aaa;
-            margin-bottom: 5px;
-            text-transform: uppercase;
+            margin-bottom: 4px;
         }
         
         .ad-content {
-            padding: 8px;
+            padding: 6px;
             background: #1e1e1e;
             border-radius: 4px;
-            min-height: 80px;
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -147,8 +138,8 @@
             font-weight: bold;
             text-decoration: none;
             display: inline-block;
-            margin-top: 8px;
-            font-size: 0.9rem;
+            margin-top: 6px;
+            font-size: 0.8rem;
         }
         
         /* شريط وسائل التواصل للهاتف */
@@ -158,7 +149,7 @@
             left: 0;
             right: 0;
             background: rgba(110, 72, 170, 0.95);
-            padding: 10px 0;
+            padding: 8px 0;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -167,45 +158,20 @@
         
         .social-bar a {
             color: white;
-            font-size: 1.2rem;
-            transition: all 0.2s;
-            text-decoration: none;
+            font-size: 1.1rem;
             padding: 5px;
         }
         
-        .social-bar a:active {
-            transform: scale(1.2);
+        /* تأثيرات اللمس */
+        button, a {
+            transition: transform 0.1s;
         }
         
-        /* تحسينات للشاشات الصغيرة */
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 1.3rem;
-            }
-            
-            .survey-section {
-                padding: 12px;
-            }
-            
-            .question {
-                font-size: 0.95rem;
-            }
-            
-            .option {
-                font-size: 0.9rem;
-            }
-            
-            .submit-btn {
-                padding: 10px 20px;
-                font-size: 0.95rem;
-            }
+        button:active, a:active {
+            transform: scale(0.96);
         }
         
-        /* تحسينات للأجهزة التي تفضل الوضع المظلم */
+        /* الوضع المظلم */
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #121212;
@@ -218,6 +184,7 @@
             
             .survey-section {
                 background-color: #252525;
+                color: #eee;
             }
             
             .question {
@@ -233,12 +200,11 @@
     </style>
 </head>
 <body>
-    <!-- إعلان علوي متجاوب -->
+    <!-- إعلان علوي -->
     <div class="ad-container">
         <div class="ad-label">إعلان</div>
         <div class="ad-content">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
-            <!-- إعلان متجاوب للهاتف -->
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-1234567890123456"
@@ -253,33 +219,167 @@
 
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-gamepad"></i> استبيان الألعاب المميزة</h1>
-            <p>شاركنا رأيك عبر الهاتف!</p>
+            <h1><i class="fas fa-mobile-alt"></i> استبيان الألعاب للهاتف</h1>
+            <p>شارك برأيك في دقيقة واحدة!</p>
         </div>
         
-        <!-- إعلان داخلي متجاوب -->
+        <!-- إعلان داخلي 1 -->
         <div class="ad-container">
-            <div class="ad-label">عرض خاص</div>
+            <div class="ad-label">شريكنا</div>
             <div class="ad-content">
-                <div style="padding: 5px;">
-                    <h3 style="color: #f39c12; margin: 5px 0; font-size: 1rem;">ألعاب مجانية للهاتف!</h3>
-                    <p style="margin: 5px 0; font-size: 0.8rem;">حمّل أحدث الألعاب الآن</p>
-                    <a href="#" class="ad-link">اضغط هنا <i class="fas fa-arrow-left"></i></a>
+                <div style="padding:5px">
+                    <img src="https://via.placeholder.com/300x100/6e48aa/ffffff?text=Game+Ads" alt="إعلان ألعاب" style="width:100%;border-radius:4px">
+                    <a href="#" class="ad-link">عرض خاص للجوال <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
 
         <form id="surveyForm">
-            <!-- الأسئلة هنا بنفس الهيكل السابق مع تعديلات بسيطة للهاتف -->
-            <!-- ... -->
+            <!-- السؤال 1 -->
+            <div class="survey-section">
+                <div class="question">1. ما هو عمرك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="age1" name="age" value="under18" required>
+                        <label for="age1">أقل من 18 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age2" name="age" value="18-24">
+                        <label for="age2">18-24 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age3" name="age" value="25-34">
+                        <label for="age3">25-34 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age4" name="age" value="35-44">
+                        <label for="age4">35-44 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age5" name="age" value="45+">
+                        <label for="age5">45 سنة فأكثر</label>
+                    </div>
+                </div>
+            </div>
             
+            <!-- إعلان داخلي 2 -->
+            <div class="ad-container">
+                <div class="ad-label">إعلان</div>
+                <div class="ad-content">
+                    <div style="text-align:center;padding:5px">
+                        <h4 style="margin:5px 0;color:#f39c12">تحميل الألعاب</h4>
+                        <p style="margin:5px 0;font-size:0.8rem">أسرع طريقة لتحميل الألعاب على هاتفك</p>
+                        <a href="#" class="ad-link">اضغط هنا <i class="fas fa-download"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- السؤال 2 -->
+            <div class="survey-section">
+                <div class="question">2. كم ساعة تلعب يومياً على هاتفك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="hours1" name="hours" value="less1" required>
+                        <label for="hours1">أقل من ساعة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="hours2" name="hours" value="1-2">
+                        <label for="hours2">1-2 ساعة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="hours3" name="hours" value="2-4">
+                        <label for="hours3">2-4 ساعات</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="hours4" name="hours" value="4plus">
+                        <label for="hours4">أكثر من 4 ساعات</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- السؤال 3 -->
+            <div class="survey-section">
+                <div class="question">3. ما نوع الألعاب المفضلة لديك؟ (اختر كل ما ينطبق)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="type1" name="game_type" value="action">
+                        <label for="type1">أكشن ومغامرات</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="type2" name="game_type" value="sports">
+                        <label for="type2">رياضية</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="type3" name="game_type" value="puzzle">
+                        <label for="type3">ألغاز وتفكير</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="type4" name="game_type" value="racing">
+                        <label for="type4">سباقات</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي 3 -->
+            <div class="ad-container">
+                <div class="ad-label">عرض حصري</div>
+                <div class="ad-content">
+                    <div style="padding:5px">
+                        <p style="margin:5px 0;font-size:0.9rem">احصل على ألعاب مميزة مجاناً!</p>
+                        <a href="#" class="ad-link">اطلع الآن <i class="fas fa-gift"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- السؤال 4 -->
+            <div class="survey-section">
+                <div class="question">4. ما الذي تبحث عنه في لعبة الهاتف؟</div>
+                <textarea id="preferences" name="preferences" placeholder="اكتب ما يهمك في الألعاب..."></textarea>
+            </div>
+
+            <!-- السؤال 5 -->
+            <div class="survey-section">
+                <div class="question">5. هل تواجه مشاكل في تحميل الألعاب على هاتفك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="problem1" name="problems" value="yes" required>
+                        <label for="problem1">نعم، دائماً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="problem2" name="problems" value="sometimes">
+                        <label for="problem2">أحياناً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="problem3" name="problems" value="no">
+                        <label for="problem3">لا، لا أواجه مشاكل</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي 4 -->
+            <div class="ad-container">
+                <div class="ad-label">إعلان</div>
+                <div class="ad-content">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                            'format' : 'iframe',
+                            'height' : 100,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+                </div>
+            </div>
+
             <button type="submit" class="submit-btn">إرسال الاستبيان <i class="fas fa-paper-plane"></i></button>
         </form>
     </div>
     
-    <!-- شريط وسائل التواصل المخصص للهاتف -->
+    <!-- شريط وسائل التواصل -->
     <div class="social-bar">
-        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
         <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
         <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
@@ -287,74 +387,87 @@
     </div>
     
     <script>
-        // معالجة إرسال الاستبيان للهاتف
+        // معالجة إرسال الاستبيان
         document.getElementById('surveyForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // تنفيذ إعلان سريع
-            triggerMobileAd();
-            
-            // عرض رسالة تأكيد
-            setTimeout(() => {
-                alert('شكراً لمشاركتك! سيتم تحويلك الآن...');
-                window.location.href = 'index.html';
-            }, 800);
+            // تفعيل الإعلانات
+            showAd()
+                .then(() => {
+                    // بعد عرض الإعلان، توجيه إلى index.html
+                    alert('شكراً لمشاركتك! سنقدر رأيك كثيراً.');
+                    window.location.href = 'index.html';
+                })
+                .catch(() => {
+                    // إذا فشل الإعلان، التوجيه مباشرة
+                    window.location.href = 'index.html';
+                });
         });
         
-        // تفعيل الإعلانات عند النقر
-        document.querySelectorAll('.ad-link, .ad-content').forEach(el => {
-            el.addEventListener('click', function(e) {
+        // تفعيل الإعلانات عند النقر على الروابط
+        document.querySelectorAll('.ad-link').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                triggerMobileAd();
-                
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 500);
+                showAd()
+                    .then(() => {
+                        window.location.href = 'index.html';
+                    })
+                    .catch(() => {
+                        window.location.href = 'index.html';
+                    });
             });
         });
         
-        // إعلان تحميل الصفحة
+        // عرض إعلان عند تحميل الصفحة
         window.addEventListener('load', function() {
             setTimeout(() => {
-                triggerMobileAd();
-            }, 1500);
+                showAd();
+            }, 2000);
         });
         
-        // وظيفة الإعلان المخصصة للهاتف
-        function triggerMobileAd() {
-            try {
-                // محاولة فتح إعلان Popunder
-                if (typeof window.popunder === 'function') {
-                    window.popunder();
-                } else {
-                    // بديل للهواتف
-                    const win = window.open('', '_blank');
-                    if (win) {
-                        win.blur();
-                        window.focus();
-                        setTimeout(() => {
-                            win.close();
-                        }, 100);
+        // وظيفة عرض الإعلان
+        function showAd() {
+            return new Promise((resolve, reject) => {
+                try {
+                    // محاولة عرض popunder
+                    if (typeof window.popunder === 'function') {
+                        window.popunder();
+                        setTimeout(resolve, 500);
+                    } else {
+                        // بديل للهواتف
+                        const win = window.open('', '_blank');
+                        if (win) {
+                            win.blur();
+                            window.focus();
+                            setTimeout(() => {
+                                win.close();
+                                resolve();
+                            }, 300);
+                        } else {
+                            resolve();
+                        }
                     }
+                } catch (e) {
+                    console.error('Error showing ad:', e);
+                    reject();
                 }
-                
-                // تتبع الحدث
-                console.log('تم تنفيذ إعلان للهاتف');
-            } catch (e) {
-                console.error('خطأ في الإعلان:', e);
-            }
+            });
         }
         
-        // تحسينات للوحة اللمس
+        // تحسينات اللمس
         document.querySelectorAll('button, a').forEach(el => {
             el.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.95)';
+                this.style.opacity = '0.8';
             });
             
             el.addEventListener('touchend', function() {
-                this.style.transform = 'scale(1)';
+                this.style.opacity = '1';
             });
         });
     </script>
+    
+    <!-- أكواد الإعلانات -->
+    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+    <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
 </body>
 </html>

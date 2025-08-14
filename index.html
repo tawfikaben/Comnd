@@ -1,220 +1,595 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Gaming Hub - Win Exclusive Games!</title>
+    <title>استبيان - صفحة الألعاب المميزة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+            font-family: 'Tajawal', Arial, sans-serif;
+            background-color: #f5f5f5;
             color: #333;
-            max-width: 1200px;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 30px;
+            margin-bottom: 50px;
         }
-        header {
-            background-color: #4285f4;
-            color: white;
-            padding: 20px;
+        
+        .header {
             text-align: center;
-            border-radius: 5px;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .survey-section {
             margin-bottom: 30px;
-        }
-        .content {
-            background-color: white;
-            padding: 25px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .prize-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 30px 0;
-        }
-        .prize-card {
-            width: 30%;
-            min-width: 250px;
-            margin: 10px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .prize-card img {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .cta-button {
-            display: block;
-            width: 200px;
-            background-color: #4285f4;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin: 20px auto;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-        }
-        .email-form {
-            display: none;
-            margin: 20px auto;
-            max-width: 400px;
             padding: 20px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid #6e48aa;
         }
-        .email-form input[type="email"] {
+        
+        .question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #444;
+        }
+        
+        .options {
+            margin-right: 20px;
+        }
+        
+        .option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        input[type="radio"], input[type="checkbox"] {
+            margin-left: 10px;
+        }
+        
+        textarea {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 5px;
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
         }
-        .email-form button {
-            background-color: #4285f4;
+        
+        .submit-btn {
+            background: linear-gradient(to right, #4776E6, #8E54E9);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
             cursor: pointer;
-        }
-        footer {
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto;
+            font-size: 18px;
+            width: 200px;
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9em;
         }
-        /* Social Bar Styles */
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* إعلانات */
+        .ad-container {
+            margin: 25px 0;
+            padding: 15px;
+            background: #252525;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+        }
+        
+        .ad-label {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .ad-content {
+            padding: 10px;
+            background: #1e1e1e;
+            border-radius: 5px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ad-link {
+            color: #6e48aa;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        /* شريط وسائل التواصل */
         .social-bar {
             position: fixed;
+            bottom: 0;
+            left: 0;
             right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 5px 0 0 5px;
+            background: rgba(110, 72, 170, 0.95);
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
             z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.1s ease-in;
         }
+        
         .social-bar a {
-            display: block;
-            padding: 10px;
-            color: #fff;
-            text-align: center;
-            transition: all 0.2s ease;
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: all 0.3s;
+            text-decoration: none;
         }
+        
         .social-bar a:hover {
-            padding-left: 15px;
+            transform: scale(1.2) translateY(-5px);
         }
-        .social-bar a.facebook { background: #3b5998; }
-        .social-bar a.twitter { background: #1da1f2; }
-        .social-bar a.instagram { background: #e1306c; }
-        .social-bar a.youtube { background: #ff0000; }
+        
+        .facebook:hover { color: #3b5998; }
+        .twitter:hover { color: #1da1f2; }
+        .instagram:hover { color: #e1306c; }
+        .youtube:hover { color: #ff0000; }
+        
         @media (max-width: 768px) {
-            .prize-card {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .question {
+                font-size: 16px;
+            }
+            
+            .submit-btn {
                 width: 100%;
-            }
-            .social-bar {
-                display: flex;
-                position: static;
-                transform: none;
-                margin: 20px 0;
-                border-radius: 5px;
-                opacity: 1;
-            }
-            .social-bar a {
-                flex: 1;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Social Bar -->
-    <div class="social-bar" style="display: block;">
-        <a href="#" class="facebook">Facebook</a>
-        <a href="#" class="twitter">Twitter</a>
-        <a href="#" class="instagram">Instagram</a>
-        <a href="#" class="youtube">YouTube</a>
+    <!-- إعلان علوي -->
+    <div class="ad-container">
+        <div class="ad-label">إعلان</div>
+        <div class="ad-content">
+            <!-- إعلان AdSense -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1234567890123456"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 
-    <header>
-        <h1>Welcome to Premium Gaming Hub!</h1>
-        <p>Your gateway to exclusive games and amazing prizes</p>
-    </header>
-    
-    <div class="content">
-        <h2>Discover Exciting Games</h2>
-        <p>Thank you for visiting our premium gaming portal. We're excited to offer you access to exclusive games and the chance to win fantastic prizes just for being our valued visitor.</p>
-        
-        <h3>Current Game Giveaways:</h3>
-        <div class="prize-container">
-            <div class="prize-card">
-                <h4>Grand Prize</h4>
-                <p>Call of Duty: Modern Warfare III</p>
-                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202308/1020/d9ea5a9c6d754d01b009f6b9b557d0e8a2f9c4a0a8a0a9a.png" alt="Call of Duty: Modern Warfare III">
-            </div>
-            <div class="prize-card">
-                <h4>Second Prize</h4>
-                <p>EA Sports FC 24</p>
-                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202307/1212/1d2f05631d5a7b5fa3b3a9a8a9a8a9a.png" alt="EA Sports FC 24">
-            </div>
-            <div class="prize-card">
-                <h4>Weekly Prize</h4>
-                <p>Steam Wallet $50</p>
-                <img src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/593110/9d8968da5b9e9b9e9b9e9b9e9b9e9b9e9b9e9b9e.png" alt="Steam Wallet">
-            </div>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-gamepad"></i> استبيان صفحة الألعاب المميزة</h1>
+            <p>شاركنا رأيك واحصل على فرصة ربح هدايا قيمة!</p>
         </div>
         
-        <p>To qualify for our game giveaways, simply explore our content and wait for the eligibility check to complete. Winners are selected randomly from all eligible visitors.</p>
-        
-        <button id="continueButton" class="cta-button">Continue to Content</button>
-        
-        <div id="emailForm" class="email-form">
-            <h3>Enter your email to continue</h3>
-            <form id="emailSubmitForm">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">Submit</button>
-            </form>
+        <!-- إعلان داخلي -->
+        <div class="ad-container">
+            <div class="ad-label">عرض خاص</div>
+            <div class="ad-content">
+                <div>
+                    <h3 style="color: #f39c12; margin-top: 0;">هل تبحث عن ألعاب مجانية؟</h3>
+                    <p>زوروا موقعنا الجديد لتحميل أحدث الألعاب المجانية!</p>
+                    <a href="#" class="ad-link">اضغط هنا للانتقال <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
         </div>
-        
-        <p><small>By continuing, you agree to our Terms of Service and acknowledge you may see promotional content. No purchase necessary. Void where prohibited.</small></p>
+
+        <form id="surveyForm">
+            <div class="survey-section">
+                <div class="question">1. ما هو عمرك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="age1" name="age" value="under18">
+                        <label for="age1">أقل من 18 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age2" name="age" value="18-24">
+                        <label for="age2">18-24 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age3" name="age" value="25-34">
+                        <label for="age3">25-34 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age4" name="age" value="35-44">
+                        <label for="age4">35-44 سنة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="age5" name="age" value="45+">
+                        <label for="age5">45 سنة فأكثر</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي آخر -->
+            <div class="ad-container">
+                <div class="ad-label">إعلان</div>
+                <div class="ad-content">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '3043529ca5c93c815dd6d1dd6665778c',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">2. ما هو جنسك؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="gender1" name="gender" value="male">
+                        <label for="gender1">ذكر</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="gender2" name="gender" value="female">
+                        <label for="gender2">أنثى</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="gender3" name="gender" value="other">
+                        <label for="gender3">أخرى/أفضل عدم الإفصاح</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المزيد من الأسئلة -->
+            <div class="survey-section">
+                <div class="question">3. كيف تقيم التصميم العام للصفحة؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="design1" name="design" value="excellent">
+                        <label for="design1">ممتاز</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="design2" name="design" value="very_good">
+                        <label for="design2">جيد جداً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="design3" name="design" value="good">
+                        <label for="design3">جيد</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="design4" name="design" value="acceptable">
+                        <label for="design4">مقبول</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="design5" name="design" value="poor">
+                        <label for="design5">ضعيف</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي -->
+            <div class="ad-container">
+                <div class="ad-label">عرض خاص</div>
+                <div class="ad-content">
+                    <div>
+                        <h3 style="color: #f39c12; margin-top: 0;">مسابقة ألعاب!</h3>
+                        <p>شارك في مسابقتنا لربح هاتف ذكي جديد!</p>
+                        <a href="#" class="ad-link">اضغط للمشاركة <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">4. هل وجدت المعلومات المقدمة عن الألعاب كافية؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="info1" name="info" value="very_sufficient">
+                        <label for="info1">نعم، كافية جداً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="info2" name="info" value="somewhat_sufficient">
+                        <label for="info2">كافية إلى حد ما</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="info3" name="info" value="insufficient">
+                        <label for="info3">غير كافية</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">5. ما مدى سهولة التنقل بين أقسام الصفحة؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="nav1" name="navigation" value="very_easy">
+                        <label for="nav1">سهلة جداً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="nav2" name="navigation" value="easy">
+                        <label for="nav2">سهلة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="nav3" name="navigation" value="medium">
+                        <label for="nav3">متوسطة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="nav4" name="navigation" value="hard">
+                        <label for="nav4">صعبة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="nav5" name="navigation" value="very_hard">
+                        <label for="nav5">صعبة جداً</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي آخر -->
+            <div class="ad-container">
+                <div class="ad-label">إعلان</div>
+                <div class="ad-content">
+                    <script async="async" data-cfasync="false" src="//pl26916766.profitableratecpm.com/f4399cd0b96a06cea85380db3c8d2c3b/invoke.js"></script>
+                    <div id="container-f4399cd0b96a06cea85380db3c8d2c3b"></div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">6. أي من الألعاب التالية تثير اهتمامك أكثر؟ (يمكن اختيار أكثر من واحد)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="game1" name="games" value="gta5">
+                        <label for="game1">GTA 5 Mobile</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="game2" name="games" value="cod">
+                        <label for="game2">Call of Duty Mobile</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="game3" name="games" value="asphalt9">
+                        <label for="game3">Asphalt 9: Legends</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">7. ما الذي يجعلك تختار لعبة ما عن أخرى؟ (يمكن اختيار أكثر من واحد)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="factor1" name="factors" value="size">
+                        <label for="factor1">حجم اللعبة</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="factor2" name="factors" value="rating">
+                        <label for="factor2">تقييم اللعبة</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="factor3" name="factors" value="features">
+                        <label for="factor3">الميزات المذكورة</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="factor4" name="factors" value="images">
+                        <label for="factor4">الصور المعروضة</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="factor5" name="factors" value="badges">
+                        <label for="factor5">العلامات التجارية (مثل NEW، TRENDING)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي -->
+            <div class="ad-container">
+                <div class="ad-label">عرض خاص</div>
+                <div class="ad-content">
+                    <div>
+                        <h3 style="color: #f39c12; margin-top: 0;">هل تعلم؟</h3>
+                        <p>يمكنك كسب المال من خلال لعب الألعاب!</p>
+                        <a href="#" class="ad-link">اكتشف كيف <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">8. كيف تقيم كمية الإعلانات في الصفحة؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="ads1" name="ads" value="appropriate">
+                        <label for="ads1">مناسبة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="ads2" name="ads" value="too_many">
+                        <label for="ads2">كثيرة جداً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="ads3" name="ads" value="too_few">
+                        <label for="ads3">قليلة جداً</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">9. هل لاحظت أي إعلانات مزعجة أو غير مناسبة؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="inappropriate1" name="inappropriate" value="yes">
+                        <label for="inappropriate1">نعم (يرجى التوضيح في التعليقات)</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="inappropriate2" name="inappropriate" value="no">
+                        <label for="inappropriate2">لا</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">10. ما هي احتمالية أن تعود لزيارة هذه الصفحة أو تحمل الألعاب منها؟</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="return1" name="return" value="very_high">
+                        <label for="return1">عالية جداً</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="return2" name="return" value="high">
+                        <label for="return2">عالية</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="return3" name="return" value="medium">
+                        <label for="return3">متوسطة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="return4" name="return" value="low">
+                        <label for="return4">منخفضة</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="return5" name="return" value="very_low">
+                        <label for="return5">منخفضة جداً</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إعلان داخلي آخر -->
+            <div class="ad-container">
+                <div class="ad-label">إعلان</div>
+                <div class="ad-content">
+                    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">11. ما الذي ينقص الصفحة في رأيك؟ (اختياري)</div>
+                <textarea id="missing" name="missing" placeholder="اكتب رأيك هنا..."></textarea>
+            </div>
+
+            <div class="survey-section">
+                <div class="question">12. هل لديك أي اقتراحات لتحسين الصفحة؟ (اختياري)</div>
+                <textarea id="suggestions" name="suggestions" placeholder="اكتب اقتراحاتك هنا..."></textarea>
+            </div>
+            
+            <!-- إعلان داخلي -->
+            <div class="ad-container">
+                <div class="ad-label">عرض خاص</div>
+                <div class="ad-content">
+                    <div>
+                        <h3 style="color: #f39c12; margin-top: 0;">اشترك في نشرتنا البريدية</h3>
+                        <p>احصل على آخر التحديثات والعروض الحصرية!</p>
+                        <form style="margin-top: 10px;">
+                            <input type="email" placeholder="بريدك الإلكتروني" style="padding: 8px; width: 70%; border: none; border-radius: 4px;">
+                            <button type="submit" style="padding: 8px 15px; background: #6e48aa; color: white; border: none; border-radius: 4px; margin-right: 5px;">اشتراك</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">إرسال الاستبيان <i class="fas fa-paper-plane"></i></button>
+        </form>
     </div>
     
-    <footer>
-        <p>© 2025 Premium Gaming Hub. All rights reserved.</p>
-        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
-    </footer>
-
-    <!-- Popunder Ad Script -->
-    <script type='text/javascript' src='//pl27402924.profitableratecpm.com/69/a8/8c/69a88caa23b57d1cb3ec3b899cc0d5eb.js'></script>
+    <!-- شريط وسائل التواصل -->
+    <div class="social-bar">
+        <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+    </div>
+    
+    <!-- Popunder Script -->
     <script type='text/javascript' src='//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js'></script>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const continueButton = document.getElementById('continueButton');
-            const emailForm = document.getElementById('emailForm');
-            const emailSubmitForm = document.getElementById('emailSubmitForm');
+        // معالجة إرسال الاستبيان
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            continueButton.addEventListener('click', function() {
-                continueButton.style.display = 'none';
-                emailForm.style.display = 'block';
-            });
+            // يمكنك هنا إضافة كود لإرسال البيانات إلى الخادم
+            alert('شكراً لمشاركتك في الاستبيان! سنقدر رأيك لتحسين خدماتنا.');
             
-            emailSubmitForm.addEventListener('submit', function(e) {
+            // تفعيل popunder بعد إرسال الاستبيان
+            setTimeout(function() {
+                try {
+                    if (typeof window.popunder === 'function') {
+                        window.popunder();
+                    } else {
+                        const win = window.open('about:blank', '_blank');
+                        if (win) {
+                            win.blur();
+                            window.focus();
+                            setTimeout(() => win.close(), 100);
+                        }
+                    }
+                } catch (e) {
+                    console.error('Popunder error:', e);
+                }
+            }, 1000);
+            
+            // إعادة تعيين النموذج
+            this.reset();
+        });
+        
+        // تفعيل popunder عند النقر على أي إعلان
+        document.querySelectorAll('.ad-link, .ad-content').forEach(el => {
+            el.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location.href = 'index.html';
+                
+                setTimeout(function() {
+                    try {
+                        if (typeof window.popunder === 'function') {
+                            window.popunder();
+                        } else {
+                            const win = window.open('about:blank', '_blank');
+                            if (win) {
+                                win.blur();
+                                window.focus();
+                                setTimeout(() => win.close(), 100);
+                            }
+                        }
+                    } catch (e) {
+                        console.error('Popunder error:', e);
+                    }
+                }, 500);
+                
+                // يمكنك هنا تتبع النقرات على الإعلانات
+                console.log('تم النقر على إعلان');
+                
+                // افتح الرابط بعد تفعيل popunder
+                setTimeout(() => {
+                    window.open('https://example.com', '_blank');
+                }, 1000);
             });
         });
     </script>

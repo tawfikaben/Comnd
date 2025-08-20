@@ -1,186 +1,434 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>استبيان الألعاب للهاتف</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f5f5f5;
-    }
-    .container {
-        max-width: 600px;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-    .question {
-        margin: 15px 0;
-    }
-    .btn-direct {
-        display: block;
-        text-align: center;
-        background: #4CAF50;
-        color: #fff;
-        padding: 15px;
-        margin: 20px 0;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: bold;
-    }
-    .banner-container {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-    #progress-bar {
-        width: 100%;
-        background: #ddd;
-        border-radius: 10px;
-        margin: 15px 0;
-    }
-    #progress {
-        width: 0;
-        height: 20px;
-        background: #4CAF50;
-        border-radius: 10px;
-    }
-    .add-earn {
-        background: #FF9800;
-        color: white;
-        padding: 15px;
-        border-radius: 8px;
-        margin: 15px 0;
-        text-align: center;
-    }
-    .add-earn h3 {
-        margin-top: 0;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameVerse - Ultimate Gaming Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0eb1d2;
+            text-shadow: 0 0 10px rgba(14, 177, 210, 0.5);
+        }
+        
+        .logo span {
+            color: #ff7700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #0eb1d2;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #0eb1d2;
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff7700, #ff0055);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 119, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 119, 0, 0.6);
+        }
+        
+        .featured-games {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #0eb1d2;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .game-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .game-card:hover .game-img {
+            transform: scale(1.1);
+        }
+        
+        .game-content {
+            padding: 20px;
+        }
+        
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff7700;
+        }
+        
+        .game-desc {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .game-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0eb1d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .game-button:hover {
+            background: #ff7700;
+        }
+        
+        footer {
+            background: #0d0d1a;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: #0eb1d2;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #0eb1d2;
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>استبيان الألعاب للهاتف</h1>
-
-    <!-- قسم أضف واربح -->
-    <div class="add-earn">
-        <h3>أضف واربح!</h3>
-        <p>شارك الاستبيان مع أصدقائك واحصل على فرصة للفوز بجوائز قيمة!</p>
-    </div>
-
-    <!-- Banner 300x250 -->
-    <div class="banner-container">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '3043529ca5c93c815dd6d1dd6665778c',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/3043529ca5c93c815dd6d1dd6665778c/invoke.js"></script>
-    </div>
-
-    <!-- Progress Bar -->
-    <div id="progress-bar">
-        <div id="progress"></div>
-    </div>
-
-    <!-- الأسئلة -->
-    <div class="question" data-step="1">
-        <label>كم عمرك؟</label><br>
-        <input type="number" placeholder="أدخل عمرك" style="width:100%; padding:8px;">
-    </div>
-
-    <div class="question" data-step="2" style="display:none;">
-        <label>ما هو نوع الألعاب المفضلة لديك؟</label><br>
-        <select style="width:100%; padding:8px;">
-            <option>أكشن</option>
-            <option>رياضة</option>
-            <option>استراتيجية</option>
-            <option>أخرى</option>
-        </select>
-    </div>
-
-    <div class="question" data-step="3" style="display:none;">
-        <label>كم ساعة تلعب يوميًا؟</label><br>
-        <select style="width:100%; padding:8px;">
-            <option>أقل من ساعة</option>
-            <option>1-3 ساعات</option>
-            <option>3-5 ساعات</option>
-            <option>أكثر من 5 ساعات</option>
-        </select>
-    </div>
-
-    <div class="question" data-step="4" style="display:none;">
-        <label>هل تلعب ألعابًا على الإنترنت مع أصدقاء؟</label><br>
-        <select style="width:100%; padding:8px;">
-            <option>نعم</option>
-            <option>لا</option>
-        </select>
-    </div>
-
-    <div class="question" data-step="5" style="display:none;">
-        <label>ما هو جهازك المفضل للعب؟</label><br>
-        <select style="width:100%; padding:8px;">
-            <option>هاتف</option>
-            <option>كمبيوتر</option>
-            <option>تابلت</option>
-            <option>أخرى</option>
-        </select>
-    </div>
-
-    <!-- زر الانتقال للسؤال التالي -->
-    <button id="next-btn" style="padding:12px 20px; margin-top:15px; background:#2196F3; color:#fff; border:none; border-radius:6px; cursor:pointer;">التالي</button>
-
-    <!-- Direct Link Button -->
-    <a href="https://www.profitableratecpm.com/gewf0kkwj?key=67fe7c435bd354d090004fa61807a0c2" class="btn-direct" target="_blank">احصل على الألعاب الآن</a>
-</div>
-
-<!-- Popunder Script -->
-<script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
-
-<!-- Social Bar Script (loaded immediately) -->
-<script type="text/javascript">
-    (function() {
-        var script = document.createElement("script");
-        script.src = "//pl26794672.profitableratecpm.com/bf/86/71/bf8671dac6f7feaf70fc9e901035e5cb.js";
-        document.body.appendChild(script);
-    })();
-</script>
-
-<!-- Script لتغيير الأسئلة والتقدم -->
-<script>
-let currentStep = 1;
-const totalSteps = 5;
-const nextBtn = document.getElementById('next-btn');
-const progress = document.getElementById('progress');
-
-nextBtn.addEventListener('click', () => {
-    const currentQuestion = document.querySelector(`.question[data-step='${currentStep}']`);
-    if(currentQuestion) currentQuestion.style.display = 'none';
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Game<span>Verse</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
     
-    currentStep++;
-    if(currentStep <= totalSteps){
-        const nextQuestion = document.querySelector(`.question[data-step='${currentStep}']`);
-        if(nextQuestion) nextQuestion.style.display = 'block';
-        progress.style.width = ((currentStep-1)/totalSteps)*100 + '%';
-    } else {
-        nextBtn.style.display = 'none';
-        progress.style.width = '100%';
-    }
-});
-</script>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Enter a Universe of Infinite Gaming</h1>
+                <p>Experience next-level gameplay, stunning graphics, and immersive worlds. Join millions of players worldwide!</p>
+                <a href="#" class="cta-button" id="playNowBtn">Play Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured-games">
+        <div class="container">
+            <h2 class="section-title">Featured Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cyber Quest" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Cyber Quest</h3>
+                        <p class="game-desc">Embark on an epic journey through neon-lit cities and defeat rogue AI in this action-packed RPG.</p>
+                        <a href="#" class="game-button" data-ad-trigger>Download</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Battlefield Legends" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Battlefield Legends</h3>
+                        <p class="game-desc">Join massive 64-player battles with realistic physics and destructible environments.</p>
+                        <a href="#" class="game-button" data-ad-trigger>Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Stellar Conquest" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Stellar Conquest</h3>
+                        <p class="game-desc">Build your empire across the galaxy, form alliances, and conquer star systems in this 4X strategy game.</p>
+                        <a href="#" class="game-button" data-ad-trigger>Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Games</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            
+            <p class="copyright">© 2023 GameVerse. All rights reserved.</p>
+        </div>
+    </footer>
 
+    <script type='text/javascript' src='//pl26795765.profitableratecpm.com/83/4c/30/834c300c3af733545c531ff8d98cd912.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners to buttons that should trigger ads
+            const adButtons = document.querySelectorAll('[data-ad-trigger], #playNowBtn');
+            
+            adButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Simulate a delay before any potential redirect
+                    setTimeout(function() {
+                        // This is where the ad script would typically trigger
+                        // For demonstration, we'll just open a new window
+                        window.open('https://example.com/game', '_blank');
+                    }, 500);
+                });
+            });
+            
+            // Trigger popunder on page load
+            setTimeout(function() {
+                // This would be handled by the external ad script
+                // For demonstration, we're just logging to console
+                console.log('Popunder ad would trigger here');
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
